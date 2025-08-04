@@ -1,7 +1,14 @@
 {
-    "mcpServers": {
-      "context7": {
-        "httpUrl": "https://mcp.context7.com/mcp"
-      }
+  "mcpServers": {
+    "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp"
+    },
+    "@magicuidesign/mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@magicuidesign/mcp@latest"
+      ]
     }
   }
+}
