@@ -1,10 +1,15 @@
 "use client";
 
-import { NavigationBar } from "@/components/navigation-bar"; // Assuming NavigationBar is used for navigation
+import { NavigationBar } from "@/components/navigation-bar";
 import { Button } from "@/components/ui/button"; // Using Shadcn Button
 import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { Spotlight } from "@/components/ui/spotlight-new";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"; // Using Shadcn Card
+import { Spotlights } from "@/components/ui/spotlight-new";
+import { Spotlight } from "@/components/ui/spotlight";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import TechGrid from "@/components/tech-grid";
+import { techStack } from "@/lib/techStack";
+import { motion } from "motion/react"
+import { ProjectsSection } from "@/components/sections/project-section";
 
 export default function LandingPage() {
   return (
@@ -14,63 +19,80 @@ export default function LandingPage() {
 
       {/* Main content area */}
       <main className="flex-1">
-      <Spotlight />
+      <Spotlights />
         {/* Hero Section */}
-        <section id="hero" className="flex items-center justify-center h-screen">
-         
-          <div className="container mx-auto text-center px-4">
-            <TextEffect preset="fade" per="char" as="h1" className=" mb-6">
-                Revolutionize Your Workflow
-            </TextEffect>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 text-foreground">
-              {/* Placeholder for Hero Subtitle */}
-              Experience the future of productivity with our cutting-edge solution.
-            </p>
-            {/* Placeholder for Call to Action Button */}
-            <Button size="lg">Get Started Today</Button>
+        <section id="hero" className="relative w-full px-4 pt-28 md:pt-40 pb-12 md:pb-20">
+          
+          <div className="mx-auto w-full max-w-[1440px] text-center">
+
+            {/* Animated Heading */}
+            <div className="mb-4 max-w-[1128px] 2xl:max-w-[1880px] mx-auto">
+              <TextEffect
+                preset="blur"
+                per="char"
+                as="h1"
+                className="text-scale-72 md:text-scale-72 font-semibold"
+              >
+                Crafting End-to-End
+              </TextEffect>
+            </div>
+
+            {/* Subtitle Paragraph */}
+            <div className="mx-auto flex justify-center items-center mb-6 lg:mb-10">
+              <div className="max-w-[655px]">
+                <p className="text-scale-16 lg:text-scale-18 text-muted-foreground">
+                  A developer learning to build reliable, user-focused products across the stack.
+                </p>
+              </div>
+            </div>
+
+            {/* Call to Action Button */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-center items-center gap-4">
+              <Button size="lg" className="">
+                Get Started
+              </Button>
+            </div>
+
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="flex items-center justify-center h-screen">
-          <div className="container mx-auto text-center px-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-foreground">
-              {/* Placeholder for Features Title */}
-              Discover Powerful Features
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Placeholder Feature 1 */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Feature 1</CardTitle>
-                  <CardDescription>Short description of feature 1.</CardDescription>
-                </CardHeader>
-                <CardContent>{/* Placeholder for Feature 1 content/icon */}</CardContent>
-              </Card>
-              {/* Placeholder Feature 2 */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Feature 2</CardTitle>
-                  <CardDescription>Short description of feature 2.</CardDescription>
-                </CardHeader>
-                <CardContent>{/* Placeholder for Feature 2 content/icon */}</CardContent>
-              </Card>
-              {/* Placeholder Feature 3 */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Feature 3</CardTitle>
-                  <CardDescription>Short description of feature 3.</CardDescription>
-                </CardHeader>
-                <CardContent>{/* Placeholder for Feature 3 content/icon */}</CardContent>
-              </Card>
+
+        <section id="tech" className="relative w-full px-4 pt-28 md:pt-40 pb-24 md:pb-36">
+
+          <div className="mx-auto w-full max-w-[1440px] text-center flex flex-col items-center justify-center gap-14">
+
+            <div className="max-w-[655px] mx-auto">
+              <TextEffect
+                preset="fade"
+                per="char"
+                as="h3"
+                className="text-scale-18 lg:text-scale-25 text-muted-foreground"
+              >
+                My evolving toolbox — ever growing, ever learning.
+              </TextEffect>
             </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            >
+              <TechGrid />
+            </motion.div>
+
           </div>
         </section>
+
+
+
+
+        {/* Projects Section */}
+       <ProjectsSection />
 
         {/* Testimonials Section */}
         <section id="testimonials" className="flex items-center justify-center h-screen">
           <div className="container mx-auto text-center px-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-foreground">
+            <h2 className="mb-12 text-foreground">
               {/* Placeholder for Testimonials Title */}
               What Our Customers Say
             </h2>

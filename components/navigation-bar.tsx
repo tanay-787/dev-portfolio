@@ -39,8 +39,8 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   }, [isMobileMenuOpen]);
 
   const menuItems = [
-    { label: "Projects", href: "#features" },
-    { label: "About Me", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Work", href: "#work" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -51,24 +51,20 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl"
+         className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm"
       >
-        <div className="navbar-glass border border-border rounded-full shadow-lg px-6 py-3">
-          <div className="flex items-center justify-between">
+         <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
+          <div className="flex items-center justify-between h-10">
             {/* Logo */}
             <motion.div 
               className="flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <div className="relative">
-                <Circle className="w-6 h-6 text-primary" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-primary rounded-full" />
-              </div>
-              <span className="text-lg font-semibold text-foreground">Tanay</span>
+              <span className="text-lg font-semibold text-foreground">TG</span>
             </motion.div>
 
-            {/* Desktop Navigation - Hidden on mobile */}
+            {/* Desktop Navigation - Hidden on mobile
             <div className="hidden md:flex items-center space-x-1">
               {menuItems.map((item, index) => (
                 <motion.a
@@ -85,7 +81,8 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
                 </motion.a>
               ))}
             </div> 
-            
+             */}
+             
 
             {/* Right Side Controls */}
             <div className="flex items-center space-x-2">
