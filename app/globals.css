@@ -200,12 +200,12 @@
 
 @layer components {
   .navbar-glass {
-    @apply bg-background/20 backdrop-blur-lg;
+    @apply bg-background backdrop-blur-lg;
     /* You can add border and shadow styles here if needed */
     /* Example: @apply border-b border-border shadow-sm; */
   }
 
   .navbar-glass-menu{
-    @apply bg-background/60 backdrop-blur-md;
+    @apply bg-background backdrop-blur-md;
   }
 }
