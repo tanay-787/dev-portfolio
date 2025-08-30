@@ -1,5 +1,8 @@
-const query = `
- {
+import { getRawGithubFileUrl } from "@/lib/getRawGithubFileUrl";
+import type { PortfolioQueryResponse, RepositoryItem } from "./git-types"; 
+
+
+const query = `{
   user(login: "tanay-787") {
     lists(first: 10) {
       nodes {
@@ -11,16 +14,23 @@ const query = `
               description
               url
               homepageUrl
+              repositoryTopics(first: 10){
+                nodes{
+                  topic{
+                    name
+                  }
+                }
+              }
+              }
             }
           }
         }
       }
     }
   }
-}
-`;
+}`;
 
-export async function getPortfolioRepos() {
+export async function getPortfolioRepos(): Promise<RepositoryItem[]> {
   const res = await fetch("https://api.github.com/graphql", {
     method: "POST",
     headers: {
@@ -33,15 +43,17 @@ export async function getPortfolioRepos() {
 
   if (!res.ok) throw new Error("Failed to fetch GitHub lists");
 
-  const { data } = await res.json();
-
-  if(data){
-    console.log(data);
-  }
+  const { data }: PortfolioQueryResponse = await res.json();
 
   const portfolioList = data?.user?.lists.nodes.find(
-    (list: any) => list.name.toLowerCase() === "portfolio"
+    (list) => list.name.toLowerCase() === "portfolio"
   );
 
-  return portfolioList?.items?.nodes || [];
+  const repos = portfolioList?.items?.nodes || [];
+
+  return repos.map((repo: any) => ({
+    ...repo,
+    showcaseImage: getRawGithubFileUrl("tanay-787", repo.name, "Showcase.png"),
+  }));
 }
+

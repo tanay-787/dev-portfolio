@@ -3,7 +3,7 @@ import { techStack } from "@/lib/techStack";
 
 export default function TechGrid() {
   return (
-    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-7 gap-x-10 gap-y-12 place-items-center">
+    <div className="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-7 gap-x-10 gap-y-12 place-items-center">
       {techStack.map(({ name, Icon }) => (
         <div
           key={name}

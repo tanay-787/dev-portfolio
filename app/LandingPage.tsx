@@ -13,8 +13,9 @@ import Projects from "@/components/sections/projects";
 import Hero1 from "@/components/sections/hero1";
 import Hero2 from "@/components/sections/hero2";
 import Tools from "@/components/sections/tools";
+import type { RepositoryItem } from "@/lib/git-types";
 
-export default function LandingPage({ repos }: { repos: any[] }) {
+export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Site Header (Navigation Bar) */}
