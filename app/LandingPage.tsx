@@ -33,22 +33,6 @@ export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
         {/* Projects Section */}
        <Projects projects={repos} />
 
-        {/* Testimonials Section */}
-        <section id="testimonials" className="flex items-center justify-center h-screen">
-          <div className="container mx-auto text-center px-4">
-            <h2 className="mb-12 text-foreground">
-              {/* Placeholder for Testimonials Title */}
-              What Our Customers Say
-            </h2>
-            {/* Placeholder Testimonial */}
-            <Card className="max-w-2xl mx-auto">
-              <CardContent className="pt-6">
-                <p className="text-lg italic mb-4 text-foreground">"This is an amazing product that has transformed the way I work!"</p>
-                <p className="text-base font-semibold">- Satisfied Customer</p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}

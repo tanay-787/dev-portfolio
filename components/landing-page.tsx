@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Download, Mail, Phone, MapPin, Github, Linkedin, ExternalLink } from "lucide-react"
 import { NavigationBar } from "./navigation-bar"
-import { NAV_ITEMS } from "@/config/nav";
 
 const personalInfo = {
   name: "Tanay Gupte",

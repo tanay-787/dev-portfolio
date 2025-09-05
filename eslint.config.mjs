@@ -15,7 +15,8 @@ const eslintConfig = [
     extends: ['next'],
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-unused-vars": 0
+      "@typescript-eslint/no-unused-vars": 0,
+      "prefer-const": "off"
     },
   }),
 ];
