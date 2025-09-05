@@ -1,5 +1,6 @@
 import type { RepositoryTopicNode, RepositoryItem } from "@/lib/git-types"
 import type * as React from "react"
+import { GlowingEffect } from "./ui/glowing-effect"
 
 // Simple GitHub icon
 function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -31,16 +32,25 @@ export function ProjectCard({
   repositoryTopics
 }: ProjectCardProps) {
   return (
-    <article
+    <div
       id={`#${name}`}
-      className="group relative isolate overflow-hidden rounded-2xl bg-background ring-1 ring-border shadow-sm transition hover:shadow-md focus-within:ring-2 focus-within:ring-primary"
+      className="group relative isolate rounded-2xl bg-background ring-1 ring-border"
     >
+      <GlowingEffect
+        blur={0}
+        borderWidth={1}
+        spread={80}
+        glow={true}
+        disabled={false}
+        proximity={64}
+        inactiveZone={0.01}
+      />
       {/* Snapshot area: intentionally crops the image and reveals only a portion */}
       <div className="relative h-44 sm:h-60 overflow-hidden border-b border-muted">
         <img
           src={showcaseImage || "/placeholder.svg?height=400&width=800&query=project%20preview"}
           alt={name}
-          className="h-full w-full object-cover object-top scale-110 translate-y-3 transition-transform duration-500 ease-out group-hover:translate-y-0 group-hover:scale-105"
+          className="h-full w-full object-cover object-top scale-110 translate-y-3"
         />
       </div>
 
@@ -56,9 +66,9 @@ export function ProjectCard({
 
         <h3 className="mt-2 text-2xl md:text-3xl font-semibold text-pretty">{name}</h3>
 
-        {description ? (
+        {/* {description ? (
           <p className="mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">{description}</p>
-        ) : null}
+        ) : null} */}
 
         {repositoryTopics?.nodes.length > 0 ? (
           <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -80,6 +90,6 @@ export function ProjectCard({
         <div className="col-span-2 bg-orange-600" />
         <div className="col-span-1 bg-emerald-600" />
       </div>
-    </article>
+    </div>
   )
 }

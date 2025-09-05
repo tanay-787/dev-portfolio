@@ -1,6 +1,7 @@
+"use client"
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { motion } from "motion/react"
-import TechGrid from "@/components/tech-grid";
+import TechGrid, { TechCloud } from "@/components/tech-grid";
 
 export default function Tools(){
     return (
@@ -24,7 +25,7 @@ export default function Tools(){
               transition={{ duration: 0.6, ease: 'easeOut' }}
               viewport={{ once: true }}
             >
-              <TechGrid />
+              <TechCloud />
             </motion.div>
 
           </div>

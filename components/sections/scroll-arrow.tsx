@@ -16,7 +16,7 @@ type ScrollArrowProps = {
   waveDelay?: number;    // delay between full waves
 };
 
-const sizeMap = { sm: 14, md: 20, lg: 26 } as const;
+const sizeMap = { sm: 14, md: 20, lg: 30 } as const;
 
 export function ScrollArrow({
   href = '#',

@@ -1,35 +1,31 @@
 "use client";
 
 import { NavigationBar } from "@/components/navigation-bar";
-import { Button } from "@/components/ui/button"; // Using Shadcn Button
-import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { Spotlights } from "@/components/ui/spotlight-new";
 import { Spotlight } from "@/components/ui/spotlight";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import TechGrid from "@/components/tech-grid";
-import { techStack } from "@/lib/techStack";
+
 import { motion } from "motion/react"
 import Projects from "@/components/sections/projects";
 import Hero1 from "@/components/sections/hero1";
-import Hero2 from "@/components/sections/hero2";
 import Tools from "@/components/sections/tools";
+import AboutMe from "@/components/sections/about-me";
 import type { RepositoryItem } from "@/lib/git-types";
 
 export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Site Header (Navigation Bar) */}
-      <NavigationBar /> {/* This should be the actual NavigationBar component */}
+      <NavigationBar />
 
       {/* Main content area */}
       <main className="flex-1 ">
       {/* <Spotlights /> */}
         <Hero1 />
 
-       <Hero2 />
-
-
-        <Tools />
+        <AboutMe /> 
+{/*        
+        <Tools /> */}
 
 
 

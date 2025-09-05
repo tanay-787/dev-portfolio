@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
-import { StackProvider, StackTheme } from '@stackframe/stack';
-import { stackServerApp } from '../stack';
-import { DM_Sans, DM_Mono } from 'next/font/google';
+import { DM_Sans, DM_Mono, Playfair_Display } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import './globals.css';
 
@@ -9,11 +7,24 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
 });
 
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  variable: '--font-dm-mono',
+  weight: "500",
+  display: 'swap'
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap'
+})
+
 
 
 export const metadata: Metadata = {
-  title: 'Neon Auth example app',
-  description: 'Neon Auth example app',
+  title: "Tanay's Portfolio",
+  description: 'A portfolio website featuring the work done by Tanay',
 };
 
 export default async function RootLayout({
@@ -24,14 +35,10 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body
-        className={`${dmSans.className} antialiased`}
+        className={`${dmSans.className} ${dmMono.variable} ${playfair.variable}  antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <StackProvider app={stackServerApp}>
-            <StackTheme>
+        <ThemeProvider attribute="class" defaultTheme="light">
               {children}
-            </StackTheme>
-          </StackProvider>
         </ThemeProvider>
       </body>
     </html>

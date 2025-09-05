@@ -19,7 +19,8 @@ import DrizzleOrmIcon from "@/components/icons/drizzle-orm";
 import PrismaOrmIcon from "@/components/icons/prisma-orm";
 import ShadcnUiIcon from "@/components/icons/shadcn-ui";
 import ViteJsIcon from "@/components/icons/vite"
-
+import GraphqlIcon from "@/components/icons/graphql";
+import GitIcon from "@/components/icons/git"
 export const techStack = [
     {
         name: "HTML5",
@@ -57,6 +58,9 @@ export const techStack = [
     }, {
         name: "ExpressJS",
         Icon: ExpressJsIcon
+    },{
+        name: "GraphQL",
+        Icon: GraphqlIcon
     }, {
         name: "JWT Authentication",
         Icon: JwtIcon
@@ -84,6 +88,9 @@ export const techStack = [
     },{
         name: "Gemini",
         Icon: GeminiIcon
+    },{
+        name: "Git",
+        Icon: GitIcon
     }
 ]
   

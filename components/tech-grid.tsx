@@ -1,5 +1,13 @@
-// components/TechGrid.tsx
+"use client";
+
 import { techStack } from "@/lib/techStack";
+import dynamic from "next/dynamic";
+import React from 'react';
+
+const DynamicIconCloud = dynamic(
+  () => import("./magicui/icon-cloud").then((mod) => mod.IconCloud),
+  { ssr: false }
+);
 
 export default function TechGrid() {
   return (
@@ -17,3 +25,11 @@ export default function TechGrid() {
   );
 }
 
+export function TechCloud(){
+  const icons = techStack.map(({ name, Icon }) => <Icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16" key={name} />);
+  return(
+    <div className="relative overflow-hidden size-full">
+        <DynamicIconCloud icons={icons} height={650} width={650}/>
+    </div>
+  )
+}
