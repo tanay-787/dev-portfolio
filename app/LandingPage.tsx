@@ -37,7 +37,7 @@ export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
 
       {/* Footer */}
       <footer className="py-8 text-center text-muted-foreground">
-        <div className="container mx-auto">&copy; {new Date().getFullYear()} Your Company</div>
+        <div className="container mx-auto">Made with ❤️ by Tanay Gupte</div>
         {/* Placeholder for Footer Links/Content */}
       </footer>
     </div>
