@@ -1,46 +1,37 @@
 import React from "react";
 import { motion } from "motion/react";
-import { TechCloud } from "@/components/tech-grid";
+
 import GithubIcon from "@/components/icons/socials/github"; // Adjust path if needed
 import LinkedinIcon from "@/components/icons/socials/linkedin"; // Adjust path if needed
 import ScrollArrow from "@/components/sections/scroll-arrow";
 import { TypingText } from "@/components/animate-ui/text/typing";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "@/components/animate-ui/icons/arrow-right";
+import { AnimateIcon } from "@/components/animate-ui/icons/icon";
 
-type ConstructionProps = {
-  title?: React.ReactNode; // can be string or JSX (multiple lines)
-  description?: string;
-  className?: string;
-};
 
-export default function ConstructionPage({
-  title = (
-    <>
-      This Portfolio is
-      <br />
-      Under Construction<TypingText text={''} cursor/>
-    </>
-  ),
-  description = "Want to see the progress? Click the CTA button below",
-  className = "",
-}: ConstructionProps) {
+export default function ConstructionPage() {
   return (
-    <section className={`flex items-center justify-center min-h-screen pb-12 ${className}`}>
+    <section className={`flex items-center justify-center min-h-screen pb-12`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
         <div className="col-span-1">
           <h1 className="mt-4 text-[44px] sm:text-[56px] md:text-[72px] lg:text-[96px] leading-[0.95] font-extrabold tracking-tight">
-            {title}
+          <>
+      This Portfolio is Under Construction<TypingText text={''} cursor/>
+    </>
           </h1>
           
 
           <p className="mt-6 max-w-xl text-muted-foreground text-base sm:text-lg mx-auto">
-            {description}
+          Want to see the progress? Click the CTA button below
           </p>
 
           <div className="mt-8 flex gap-4 items-center justify-center">
           <Button className="" asChild>
             <a href="/landing">
-            To Landing Page
+            <AnimateIcon animation="default-loop" loop animateOnHover animateOnTap>
+            <span className="inline-flex items-center">To Landing Page <ArrowRight className="ml-1 -mt-0.8"/></span>
+            </AnimateIcon>
             </a>
         </Button>
             <a
