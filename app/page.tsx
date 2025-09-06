@@ -23,14 +23,14 @@ export default function ConstructionPage() {
           
 
           <p className="mt-6 max-w-xl text-muted-foreground text-base sm:text-lg mx-auto">
-          Want to see the progress? Click the CTA button below
+          Want to see the progress? Click the button below
           </p>
 
           <div className="mt-8 flex gap-4 items-center justify-center">
           <Button className="" asChild>
             <a href="/landing">
-            <AnimateIcon animation="default-loop" loop animateOnHover animateOnTap>
-            <span className="inline-flex items-center">To Landing Page <ArrowRight className="ml-1 -mt-0.8"/></span>
+            <AnimateIcon animation="default-loop" loop animate>
+            <span className="inline-flex items-center">See Progress <ArrowRight className="ml-1 -mt-0.8"/></span>
             </AnimateIcon>
             </a>
         </Button>
