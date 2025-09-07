@@ -4,7 +4,7 @@ import { TechCloud } from "../tech-grid";
 import GithubIcon from "../icons/socials/github"; // Adjust path if needed
 import LinkedinIcon from "../icons/socials/linkedin"; // Adjust path if needed
 import ScrollArrow from "./scroll-arrow";
-import { TypingText } from "../animate-ui/text/typing";
+import { TypingText } from "@/components/animate-ui/text/typing";
 import { Button } from "../ui/button";
 
 type Hero1Props = {

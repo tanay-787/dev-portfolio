@@ -1,45 +1,42 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ArrowUpRight, CirclePlay } from "lucide-react";
 import { TypingText } from "@/components/animate-ui/text/typing";
-import Typewriter from 'typewriter-effect';
+import React from "react";
 
-export default function Hero2() {
+const Hero02 = () => {
   return (
-    <section id="hero2" className="relative w-full px-4 pt-28 md:pt-40 pb-12 md:pb-20">
-
-      <div className="mx-auto w-full max-w-[1440px] text-center">
-
-        {/* Animated Heading */}
-        <div className="mb-4 max-w-[1128px] 2xl:max-w-[1880px] mx-auto">
-          <Typewriter
-            options={{
-              strings: 'Crafting End-to-End',
-              autoStart: true,
-              loop: false,
-              cursor: '_',
-              cursorClassName: 'text-scale-72 md:text-scale-72 font-semibold',
-              wrapperClassName: 'text-scale-72 md:text-scale-72 font-semibold'
-            }}
-          />
-            
-        </div>
-
-        {/* Subtitle Paragraph */}
-        <div className="mx-auto flex justify-center items-center mb-6 lg:mb-10">
-          <div className="max-w-[655px]">
-            <p className="text-scale-16 lg:text-scale-18 text-muted-foreground">
-              A developer learning to build reliable, user-focused products across the stack.
-            </p>
-          </div>
-        </div>
-
-        {/* Call to Action Button */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-center items-center gap-4">
-          <Button size="lg" className="">
-            Get Started
+    <div className="min-h-screen w-full flex flex-col gap-10 items-center justify-center px-6 py-16">
+      <div className="text-center max-w-2xl">
+        <Badge className="bg-accent text-accent-foreground rounded-full py-1 border-none">
+          Hello, I'm Tanay!
+        </Badge>
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
+        <>
+      Crafting
+      <br />
+      End-to-End<TypingText text={''} cursor/>
+    </>
+        </h1>
+        <p className="mt-6 text-[17px] md:text-lg">
+        A passionate developer learning to build reliable, user-focused products across the stack.
+        </p>
+        <div className="mt-6 flex items-center justify-center gap-4">
+          <Button size="lg" className="rounded-full text-base">
+            Get Started <ArrowUpRight className="!h-5 !w-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            className="rounded-full text-base shadow-none"
+          >
+            <CirclePlay className="!h-5 !w-5" /> Watch Demo
           </Button>
         </div>
-
       </div>
-    </section>
-  )
-}
+      <div className="w-full max-w-screen-xl mx-auto aspect-video bg-accent rounded-xl" />
+    </div>
+  );
+};
+
+export default Hero02;
