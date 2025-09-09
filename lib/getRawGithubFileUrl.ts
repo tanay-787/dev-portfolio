@@ -14,6 +14,6 @@ export function getRawGithubFileUrl(
     fileName: string,
     branchOrTag: string = "HEAD"
   ): string {
-    return `https://raw.githubusercontent.com/${owner}/${repo}/${branchOrTag}/${fileName}`;
+    return `https://raw.githubusercontent.com/${owner}/${repo}/${branchOrTag}/assets/${fileName}`;
   }
   

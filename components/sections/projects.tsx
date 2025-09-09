@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { TypingText } from '../animate-ui/text/typing';
 import type { RepositoryItem } from '@/lib/git-types';

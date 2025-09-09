@@ -1,5 +1,3 @@
-"use client";
-
 import { NavigationBar } from "@/components/navigation-bar";
 import { Spotlights } from "@/components/ui/spotlight-new";
 import { Spotlight } from "@/components/ui/spotlight";
@@ -31,11 +29,7 @@ export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
         <Tools /> */}
 
 
-
-
-        {/* Projects Section */}
-       <Projects projects={repos} />
-       <Projects2 />
+       <Projects2 projects={repos} />
 
       </main>
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { Circle, Sun, Moon, Menu, X } from "lucide-react";
+import { GlowingEffect } from "./ui/glowing-effect";
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -46,7 +47,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
 
   return (
     <div className={cn("w-full", className)}>
-      {/* Fixed Navigation Bar */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -54,6 +54,14 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
          className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm"
       >
          <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
+            <GlowingEffect
+                blur={0}
+                borderWidth={1}
+                spread={80}
+                glow={true}
+                disabled={false}
+                proximity={64}
+                inactiveZone={0.01}/>
           <div className="flex items-center justify-between h-10">
             {/* Logo */}
             <motion.div 
@@ -63,25 +71,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
             >
               <span className="text-lg font-semibold text-foreground">TG</span>
             </motion.div>
-
-            {/* Desktop Navigation - Hidden on mobile
-            <div className="hidden md:flex items-center space-x-1">
-              {menuItems.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.3 }}
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-            </div> 
-             */}
              
 
             {/* Right Side Controls */}
@@ -179,18 +168,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
               className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
             >
               <div className="navbar-glass-menu border border-border rounded-2xl shadow-xl p-6">
-                {/* Close Button */}
-               { /* <div className="flex justify-between items-center mb-6">
-                  <span className="text-lg font-semibold text-foreground">Menu</span>
-                  <motion.button
-                    onClick={toggleMobileMenu}
-                    className="p-2 rounded-full hover:bg-accent transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <X className="w-5 h-5 text-muted-foreground" />
-                  </motion.button>
-                </div> */ }
 
                 {/* Menu Items */}
                 <div className="space-y-1">
