@@ -11,7 +11,7 @@ import AboutMe from "@/components/sections/about-me";
 import type { RepositoryItem } from "@/lib/git-types";
 import Projects2 from "@/components/sections/projects2";
 import Footer from "@/components/sections/footer"
-import Hero02 from "@/components/sections/hero2"
+import Hero2 from "@/components/sections/hero2"
 
 export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
   return (

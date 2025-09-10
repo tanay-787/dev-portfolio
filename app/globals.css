@@ -171,35 +171,35 @@
 }
 
 .text-scale-18 {
-  font-size: 1.125rem; /* 18px */
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); /* 18px */
   line-height: 1.6;
   letter-spacing: 0px;
 }
 
 .text-scale-25 {
-  font-size: 1.5625rem; /* 25px */
+  font-size: clamp(1.25rem, 1rem + 1.5vw, 1.5625rem); /* 25px */
   line-height: 2rem;
 }
 
 .text-scale-40 {
-  font-size: 2.5rem; /* 40px */
+  font-size: clamp(1.75rem, 1rem + 3.75vw, 2.5rem); /* 40px */
   line-height: 1.2;
 }
 
 .text-scale-60 {
-  font-size: 3.75rem; /* 60px */
+  font-size: clamp(2.25rem, 1rem + 6.25vw, 3.75rem); /* 60px */
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
 .text-scale-72 {
-  font-size: 4.5rem; /* 72px */
+  font-size: clamp(2.5rem, 1rem + 8vw, 4.5rem); /* 72px */
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .text-scale-96 {
-  font-size: 6rem; /* 96px */
+  font-size: clamp(3rem, 1rem + 10vw, 6rem); /* 96px */
   line-height: 1;
   letter-spacing: -0.04em;
 }

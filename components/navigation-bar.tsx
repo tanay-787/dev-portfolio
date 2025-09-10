@@ -40,8 +40,8 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   }, [isMobileMenuOpen]);
 
   const menuItems = [
-    { label: "Projects", href: "#projects" },
-    { label: "Work", href: "#work" },
+    { label: "About Me", href: "#about-me" },
+    { label: "My Work", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -69,7 +69,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <span className="text-lg font-semibold text-foreground">TG</span>
+              <span className="text-scale-25 italic font-playfair font-semibold text-foreground">TG</span>
             </motion.div>
              
 

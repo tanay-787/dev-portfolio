@@ -1,43 +1,37 @@
-'use client';
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CirclePlay } from "lucide-react";
-import { TypingText } from "@/components/animate-ui/text/typing";
-import React from "react";
+"use client";
 
-const Hero02 = () => {
+import { IconCloud } from "@/components/magicui/icon-cloud";
+import { techStack } from "@/lib/techStack";
+
+export default function HeroSection() {
   return (
-    <div className="min-h-screen w-full flex flex-col gap-10 items-center justify-center px-6 py-16">
-      <div className="text-center max-w-2xl">
-        <Badge className="bg-accent text-accent-foreground rounded-full py-1 border-none">
-          Hello, I'm Tanay!
-        </Badge>
-        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
-        <>
-      Crafting
-      <br />
-      End-to-End<TypingText text={''} cursor/>
-    </>
+    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-2xl">
+        <h1 className="text-6xl font-bold leading-tight tracking-tight">
+          Crafting <span className="">End-to-End</span>
         </h1>
-        <p className="mt-6 text-[17px] md:text-lg">
-        A passionate developer learning to build reliable, user-focused products across the stack.
+        <p className="mt-4 text-lg text-gray-400">
+          Building reliable, user-focused products across the stack
         </p>
-        <div className="mt-6 flex items-center justify-center gap-4">
-          <Button size="lg" className="rounded-full text-base">
-            Get Started <ArrowUpRight className="!h-5 !w-5" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="rounded-full text-base shadow-none"
-          >
-            <CirclePlay className="!h-5 !w-5" /> Watch Demo
-          </Button>
+        <div className="mt-6 flex justify-center gap-3">
+          <button className="px-6 py-3 bg-white text-black rounded-full shadow-md hover:bg-gray-200 transition">
+            Get Started
+          </button>
+          <button className="px-6 py-3 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700 transition">
+            See Projects
+          </button>
         </div>
       </div>
-      <div className="w-full max-w-screen-xl mx-auto aspect-video bg-accent rounded-xl" />
-    </div>
-  );
-};
 
-export default Hero02;
+      {/* Icon Cloud */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <IconCloud
+          icons={techStack.map((t) => <t.Icon className="w-10 h-10" />)}
+          width={800}   // adjust canvas size
+          height={800}  // adjust canvas size
+        />
+      </div>
+    </section>
+  );
+}

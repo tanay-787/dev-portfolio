@@ -34,7 +34,7 @@ const projectNames = [
 const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-screen w-full py-10 px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto py-10 px-10 lg:px-12">
         <h2 className="text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight max-w-xl md:text-center md:mx-auto">
           Featured Projects <GitRepoIcon className="inline h-[1em] w-[1em]" />
         </h2>

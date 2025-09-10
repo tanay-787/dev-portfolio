@@ -26,16 +26,16 @@ export default function Hero1({
   className = "",
 }: Hero1Props) {
   return (
-    <section aria-label="Hero" className={`pb-12 relative ${className}`}> {/* Added 'relative' here */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <section aria-label="Hero" className={`pt-12 lg:pt-0 pb-12 ${className}`}> {/* Adjusted padding, removed relative */}
+      <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted max-width and padding */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"> {/* Adjusted gap */}
           <div className="col-span-1 lg:col-span-7">
-            <h1 className="mt-4 text-[44px] sm:text-[56px] md:text-[72px] lg:text-[96px] leading-[0.95] font-extrabold tracking-tight">
+            <h1 className="mt-4 text-scale-72 leading-[0.95] font-extrabold tracking-tight">
               {title}
             </h1>
             
 
-            <p className="mt-6 max-w-xl text-muted-foreground text-base sm:text-lg ">
+            <p className="mt-3 max-w-xl text-muted-foreground text-scale-18 ">
               {description}
             </p>
 
@@ -64,7 +64,7 @@ export default function Hero1({
             </div>
           </div>
 
-          <div className="col-span-1 lg:col-span-5 relative h-[40rem] flex items-center justify-center">
+          <div className="col-span-1 lg:col-span-5 relative h-[30rem] md:h-[35rem] lg:h-[40rem] flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -75,14 +75,17 @@ export default function Hero1({
             </motion.div>
           </div>
         </div>
+        {/* ScrollArrow moved outside the grid but within the max-w-7xl container */}
+        {/* <div className="hidden sm:flex justify-center">
+          <ScrollArrow
+            href="#about-me"
+            size="lg"
+            className="text-foreground"
+            duration={1.4}
+            spacing={14}
+          />
+        </div> */}
       </div>
-      <ScrollArrow
-        href="#about-me"
-        size="lg"
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 text-foreground" // Adjusted positioning classes
-        duration={1.4}
-        spacing={14}
-      />
     </section>
   );
 }
