@@ -42,7 +42,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   const menuItems = [
     { label: "About Me", href: "#about-me" },
     { label: "My Work", href: "#projects" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact Me", href: "#contact-me" },
   ];
 
   return (

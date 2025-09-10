@@ -33,8 +33,8 @@ const projectNames = [
 
 const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-7xl mx-auto py-10 px-10 lg:px-12">
+    <section aria-label="Projects" id="projects" className="py-16 pb-24"> {/* Changed to section and applied padding */}
+      <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted padding */}
         <h2 className="text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight max-w-xl md:text-center md:mx-auto">
           Featured Projects <GitRepoIcon className="inline h-[1em] w-[1em]" />
         </h2>
@@ -74,7 +74,7 @@ const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
