@@ -76,7 +76,7 @@ export default function Hero1({
           </div>
         </div>
         {/* ScrollArrow moved outside the grid but within the max-w-7xl container */}
-        {/* <div className="hidden lg:flex justify-center">
+        <div className="hidden lg:flex justify-center">
           <ScrollArrow
             href="#about-me"
             size="lg"
@@ -84,7 +84,7 @@ export default function Hero1({
             duration={1.4}
             spacing={14}
           />
-        </div> */}
+        </div>
       </div>
     </section>
   );
