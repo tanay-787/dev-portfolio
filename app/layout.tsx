@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DM_Sans, DM_Mono, Playfair_Display } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import './globals.css';
+import { Toaster } from '@/components/ui/sonner';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -39,6 +40,7 @@ export default async function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="light">
               {children}
+              <Toaster />
         </ThemeProvider>
       </body>
     </html>

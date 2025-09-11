@@ -55,20 +55,12 @@ const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
                 <p className="text-muted-foreground text-[17px]">
                   {project.description}
                 </p>
-                {/* <Button
-                  asChild
-                  className="mt-6 rounded-full min-w-40 text-[15px]"
-                >
-                  <Link href={project.tutorialLink}>
-                  <AnimateIcon animation="default-loop" loop animate>
-            <span className="inline-flex items-center">Learn More <ArrowRight className="ml-1 -mt-0.8"/></span>
-            </AnimateIcon>
-                  </Link>
-                </Button> */}
                 <AnimatedButton 
                 text="Learn More" 
                 href={project.url} 
-                icon={<ArrowRight className="ml-1 -mt-0.8"/>} />
+                icon={<ArrowRight className="ml-1 -mt-0.8"/>} 
+                isBlogLink={true} // Added this prop
+                />
               </div>
             </div>
           ))}
