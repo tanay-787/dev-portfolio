@@ -9,27 +9,32 @@ const DynamicIconCloud = dynamic(
   { ssr: false }
 );
 
-export default function TechGrid() {
-  return (
-    <div className="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-7 gap-x-10 gap-y-12 place-items-center">
-      {techStack.map(({ name, Icon }) => (
-        <div
-          key={name}
-          className="group relative flex items-center justify-center text-muted-foreground hover:text-foreground transition duration-300"
-          title={name}
-        >
-          <Icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 group-hover:scale-[1.15] transition-transform duration-300 ease-in-out" />
-        </div>
-      ))}
-    </div>
-  );
-}
+// FLAT ICON GRID
+// export default function TechGrid() {
+//   return (
+//     <div className="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-6 xl:grid-cols-7 gap-x-10 gap-y-12 place-items-center">
+//       {techStack.map(({ name, Icon }) => (
+//         <div
+//           key={name}
+//           className="group relative flex items-center justify-center text-muted-foreground hover:text-foreground transition duration-300"
+//           title={name}
+//         >
+//           <Icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 group-hover:scale-[1.15] transition-transform duration-300 ease-in-out" />
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
 
-export function TechCloud(){
-  const icons = techStack.map(({ name, Icon }) => <Icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16" key={name} />);
+type TechCloudProps = {
+  width?: number;
+  height?: number;
+};
+
+export function TechCloud({ width, height }: TechCloudProps){
   return(
-    <div className="relative overflow-hidden size-full">
-        <DynamicIconCloud icons={icons} height={650} width={650}/>
+    <div className="relative flex h-full w-full items-center justify-center rounded-lg bg-background">
+        <DynamicIconCloud icons={techStack} height={height} width={width}/>
     </div>
   )
 }

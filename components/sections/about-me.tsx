@@ -8,7 +8,7 @@ export default function AboutMe() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Text Section */}
           <div className="col-span-1 lg:col-span-7">
-            <h2 className="text-scale-72 leading-[0.95] font-extrabold tracking-tight">
+            <h2 className="text-scale-72">
               About Me
             </h2>
             <p className="mt-6 max-w-xl text-muted-foreground text-base sm:text-lg leading-relaxed">

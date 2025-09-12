@@ -14,12 +14,12 @@ import Footer from "@/components/sections/footer"
 
 export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen max-w-full justify-center">
       {/* Site Header (Navigation Bar) */}
-      <NavigationBar />
+      <NavigationBar className="" />
 
       {/* Main content area */}
-      <main className="flex-1 ">
+      <main className="flex-1">
       {/* <Spotlights /> */}
         <Hero1 />
 

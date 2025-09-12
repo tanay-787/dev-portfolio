@@ -7,6 +7,7 @@ import LinkedinIcon from "../icons/socials/linkedin"; // Adjust path if needed
 import ScrollArrow from "./scroll-arrow";
 import { TypingText } from "@/components/animate-ui/text/typing";
 import { Button } from "../ui/button";
+import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
 
 type Hero1Props = {
   title?: React.ReactNode; // can be string or JSX (multiple lines)
@@ -25,21 +26,22 @@ export default function Hero1({
   description = "A passionate developer learning to build reliable, user-focused products across the stack.",
   className = "",
 }: Hero1Props) {
+  const [containerRef, dimensions] = useContainerSize<HTMLDivElement>(); // Use the hook
+
   return (
-    <section aria-label="Hero" className={`pt-12 lg:pt-0 ${className}`}> {/* Adjusted padding, removed relative */}
+    <section aria-label="Hero" className={`min-h-screen max-w-full py-12 ${className}`}> {/* Adjusted padding, removed relative */}
       <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted max-width and padding */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"> {/* Adjusted gap */}
-          <div className="col-span-1 lg:col-span-7">
-            <h1 className="mt-4 text-scale-72 leading-[0.95] font-extrabold tracking-tight">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 justify-center items-center"> {/* Adjusted gap */}
+          <div className="col-span-1 lg:col-span-7 ">
+            <h1 className="mt-4 text-scale-96">
               {title}
             </h1>
             
-
             <p className="mt-3 max-w-xl text-muted-foreground text-scale-18 ">
               {description}
             </p>
 
-            <div className="mt-8 flex gap-4 items-center">
+            <div className="mt-4 flex gap-4 items-center">
             <Button className="">
             Get Started
           </Button>
@@ -64,14 +66,19 @@ export default function Hero1({
             </div>
           </div>
 
-          <div className="col-span-1 lg:col-span-5 relative h-[30rem] md:h-[35rem] lg:h-[40rem] flex items-center justify-center">
+          <div 
+            ref={containerRef} // Attach the ref here
+            className="col-span-1 lg:col-span-5 relative flex items-center justify-center aspect-square"
+          >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
+              className="w-full h-full" // Ensure motion div fills the container
             >
-              <TechCloud />
+              {/* Pass the dynamic dimensions to TechCloud */}
+              <TechCloud width={dimensions.width} height={dimensions.height} /> 
             </motion.div>
           </div>
         </div>

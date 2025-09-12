@@ -5,6 +5,10 @@ import { renderToString } from "react-dom/server";
 import { getTailwindColor } from "@/lib/getTailwindColor";
 import { useTheme } from "next-themes";
 
+interface IconProps extends React.SVGAttributes<SVGElement> {
+    className?: string;
+}
+
 interface Icon {
   x: number;
   y: number;
@@ -15,7 +19,7 @@ interface Icon {
 }
 
 interface IconCloudProps {
-  icons?: React.ReactNode[];
+  icons?: { name: string, Icon: React.ComponentType<IconProps> }[];
   images?: string[];
   width?: number;
   height?: number;
@@ -53,13 +57,23 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
   const imagesLoadedRef = useRef<boolean[]>([]);
   const { resolvedTheme } = useTheme();
+  const [renderedIcons, setRenderedIcons] = useState<React.ReactNode[]>([]);
+
+  useEffect(() => {
+    if (!width) return;
+    const iconSize = width ? Math.max(24, Math.floor(width / 15)) : 32;
+    const newRenderedIcons = icons?.map(({ name, Icon }, i) => (
+        <Icon key={name} className={`w-${iconSize} h-${iconSize}`} style={{ overflow: 'visible' }}/>
+    ))
+    setRenderedIcons(newRenderedIcons || [])
+  },[icons, width])
 
 
   // Create icon canvases once when icons/images change
   useEffect(() => {
-    if (!icons && !images) return;
+    if (!renderedIcons && !images) return;
 
-    const items = icons || images || [];
+    const items = renderedIcons || images || [];
     imagesLoadedRef.current = new Array(items.length).fill(false);
 
     // Resolve current Tailwind foreground color dynamically
@@ -114,11 +128,11 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
     });
 
     iconCanvasesRef.current = newIconCanvases;
-  }, [icons, images, resolvedTheme]);
+  }, [renderedIcons, images, resolvedTheme]);
 
   // Generate initial icon positions on a sphere
   useEffect(() => {
-    const items = icons || images || [];
+    const items = renderedIcons || images || [];
     const newIcons: Icon[] = [];
     const numIcons = items.length || 20;
 
@@ -135,16 +149,16 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
       const z = Math.sin(phi) * r;
 
       newIcons.push({
-        x: x * 100,
-        y: y * 100,
-        z: z * 100,
+        x: x * 170, // Increased multiplier from 100 to 200
+        y: y * 170, // Increased multiplier from 100 to 200
+        z: z * 170, // Increased multiplier from 100 to 200
         scale: 1,
         opacity: 1,
         id: i,
       });
     }
     setIconPositions(newIcons);
-  }, [icons, images]);
+  }, [renderedIcons, images]);
 
   // Handle mouse events
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -298,10 +312,10 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
           canvas.width / 2 + scaledRotatedX,
           canvas.height / 2 + scaledRotatedY,
         );
-        ctx.scale(1, 1);
+        ctx.scale(1, 1); // Use the calculated scale
         ctx.globalAlpha = opacity;
 
-        if (icons || images) {
+        if (renderedIcons || images) {
           // Only try to render icons/images if they exist
           if (
             iconCanvasesRef.current[index] &&
@@ -334,7 +348,7 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [icons, images, iconPositions, isDragging, mousePos, targetRotation, width, height]);
+  }, [renderedIcons, images, iconPositions, isDragging, mousePos, targetRotation, width, height]);
 
   return (
     <canvas

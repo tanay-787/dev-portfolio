@@ -46,7 +46,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   ];
 
   return (
-    <div className={cn("w-full", className)}>
+    <div className={cn("w-7xl", className)}>
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
