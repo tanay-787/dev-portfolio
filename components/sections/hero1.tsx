@@ -29,7 +29,7 @@ export default function Hero1({
   const [containerRef, dimensions] = useContainerSize<HTMLDivElement>(); // Use the hook
 
   return (
-    <section aria-label="Hero" className={`min-h-screen max-w-full py-12 ${className}`}> {/* Adjusted padding, removed relative */}
+    <section aria-label="Hero" className={`max-w-full py-12 pb-24 ${className}`}> {/* Adjusted padding, removed relative */}
       <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted max-width and padding */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 justify-center items-center"> {/* Adjusted gap */}
           <div className="col-span-1 lg:col-span-7 ">
@@ -83,7 +83,7 @@ export default function Hero1({
           </div>
         </div>
         {/* ScrollArrow moved outside the grid but within the max-w-7xl container */}
-        <div className="hidden lg:flex justify-center">
+        <div className="mt-12 flex justify-center">
           <ScrollArrow
             href="#about-me"
             size="lg"

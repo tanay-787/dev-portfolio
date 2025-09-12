@@ -36,9 +36,9 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-        <div className="max-w-screen-xl mx-auto border-t">
-          <div className="py-12 flex flex-col justify-start items-center">
-            {/* Logo */}
+        <div className="max-w-7xl mx-auto border-t">
+          {/* <div className="py-12 flex flex-col justify-start items-center">
+        
             <svg
               id="logo-7"
               width="124"
@@ -70,7 +70,7 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <Separator />
+          <Separator /> */}
           <div className="py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6 xl:px-0">
             {/* Copyright */}
             <span className="text-muted-foreground">
