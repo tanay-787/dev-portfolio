@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
 import { motion } from "motion/react";
-import { TechCloud } from "../tech-grid";
+import { TechCloud } from "../tech-cloud";
 import GithubIcon from "../icons/socials/github"; // Adjust path if needed
 import LinkedinIcon from "../icons/socials/linkedin"; // Adjust path if needed
 import ScrollArrow from "./scroll-arrow";

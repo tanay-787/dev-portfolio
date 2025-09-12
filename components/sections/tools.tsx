@@ -1,7 +1,7 @@
 "use client"
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { motion } from "motion/react"
-import TechGrid, { TechCloud } from "@/components/tech-grid";
+import { TechCloud } from "@/components/tech-cloud";
 
 export default function Tools(){
     return (
