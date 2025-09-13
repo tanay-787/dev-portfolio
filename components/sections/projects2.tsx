@@ -44,7 +44,16 @@ const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
               key={project.name}
               className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"
             >
-              <img className="w-full aspect-video bg-muted rounded-xl border border-border/50 basis-1/2" src={project.showcaseImage!} />
+              <div className="relative w-full aspect-video basis-1/2 group">
+                <img
+                  className="w-full h-full object-cover bg-muted rounded-xl border border-border/50 transition-transform duration-300 group-hover:scale-105"
+                  src={project.showcaseImage!}
+                  alt={project.name}
+                />
+                <div className="absolute inset-0 bg-opacity-10 flex items-center justify-center rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ArrowRight className="h-12 w-12 text-white transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                </div>
+              </div>
               <div className="basis-1/2 shrink-0">
                 <span className="lowercase inline-flex items-center font-semibold text-sm text-muted-foreground">
                   <GitRepoIcon className="mr-1 h-[1em] w-[1em]"/>tanay-787/{project.name} 
@@ -60,6 +69,7 @@ const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
                 href={project.url} 
                 icon={<ArrowRight className="ml-1 -mt-0.8"/>} 
                 isBlogLink={true}
+                className="mt-6 rounded-full min-w-40 text-[15px]"
                 />
               </div>
             </div>

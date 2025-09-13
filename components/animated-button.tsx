@@ -11,9 +11,10 @@ interface AnimatedButtonProps {
   href: string;
   icon: React.ReactNode;
   isBlogLink?: boolean; 
+  className?: string
 }
 
-const AnimatedButton: React.FC<AnimatedButtonProps> = ({ text, href, icon, isBlogLink = false }) => {
+const AnimatedButton: React.FC<AnimatedButtonProps> = ({ text, href, icon, isBlogLink = false, className }) => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isBlogLink) {
@@ -23,7 +24,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({ text, href, icon, isBlo
   };
 
   return (
-    <Button className="mt-6 rounded-full min-w-40 text-[15px]" asChild onClick={handleClick}>
+    <Button className={className} asChild onClick={handleClick}>
       {isBlogLink ? (
         <a href="#" className="inline-flex items-center">
            <AnimateIcon animation="default-loop" loop animate>

@@ -8,6 +8,10 @@ import ScrollArrow from "./scroll-arrow";
 import { TypingText } from "@/components/animate-ui/text/typing";
 import { Button } from "../ui/button";
 import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
+import AnimatedButton from "../animated-button";
+import { ArrowDown } from "lucide-react";
+import { MoveDown } from "../animate-ui/icons/move-down";
+import { Download } from "../animate-ui/icons/download";
 
 type Hero1Props = {
   title?: React.ReactNode; // can be string or JSX (multiple lines)
@@ -20,7 +24,7 @@ export default function Hero1({
     <>
       Crafting
       <br />
-      End-to-End<TypingText text={''} cursor/>
+      End-to-End<TypingText text={''} cursorClassName="hidden xl:inline" cursor/>
     </>
   ),
   description = "A passionate developer learning to build reliable, user-focused products across the stack.",
@@ -42,9 +46,11 @@ export default function Hero1({
             </p>
 
             <div className="mt-4 flex gap-4 items-center">
-            <Button className="">
-            Get Started
-          </Button>
+            <AnimatedButton 
+                text="My Resume" 
+                href={"#projects"} 
+                icon={<Download className="ml-1 -mt-0.8"/>} 
+                />
               <a
                 href="https://github.com/tanay-787"
                 target="_blank"

@@ -5,12 +5,25 @@ export default function AboutMe() {
   return (
     <section aria-label="About Me" id="about-me" className="py-16 pb-24"> {/* Removed relative from here */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <h2 className="text-scale-72 w-full text-center">
+          About Me
+        </h2>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+          {/* Avatar / Graphic Art */}
+          <div className="col-span-1 lg:col-span-5 flex items-center justify-center">
+            <div className="relative w-full h-full rounded-full overflow-hidden shadow-xl border-4 border-primary/30 p-4">
+              {/* Replace this div with your graphic art / avatar image */}
+              <img
+                src="/my-avatar.png"
+                alt="Tanay Gupte Avatar"
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+
           {/* Text Section */}
           <div className="col-span-1 lg:col-span-7">
-            <h2 className="text-scale-72">
-              About Me
-            </h2>
             <p className="mt-6 max-w-xl text-muted-foreground text-base sm:text-lg leading-relaxed">
               Hey, I’m <span className="font-playfair italic font-semibold leading-[none]">Tanay</span>, an
               innovative and curious developer passionate about building
@@ -43,18 +56,6 @@ export default function AboutMe() {
                   UpGrad
                 </p>
               </div>
-            </div>
-          </div>
-
-          {/* Avatar / Graphic Art */}
-          <div className="col-span-1 lg:col-span-5 flex items-center justify-center">
-            <div className="relative w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-primary/30">
-              {/* Replace this div with your graphic art / avatar image */}
-              <img
-                src="/avatar.png"
-                alt="Tanay Gupte Avatar"
-                className="object-cover w-full h-full"
-              />
             </div>
           </div>
         </div>
