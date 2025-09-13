@@ -9,12 +9,13 @@ import { toast } from "sonner";
 interface AnimatedButtonProps {
   text: string;
   href: string;
+  isExternal?: boolean;
   icon: React.ReactNode;
   isBlogLink?: boolean; 
   className?: string
 }
 
-const AnimatedButton: React.FC<AnimatedButtonProps> = ({ text, href, icon, isBlogLink = false, className }) => {
+const AnimatedButton: React.FC<AnimatedButtonProps> = ({ text, href, icon, isExternal= false, isBlogLink = false, className }) => {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isBlogLink) {
@@ -28,6 +29,20 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({ text, href, icon, isBlo
       {isBlogLink ? (
         <a href="#" className="inline-flex items-center">
            <AnimateIcon animation="default-loop" loop animate>
+            <span className="inline-flex items-center">
+              {text}
+              {icon}
+            </span>
+          </AnimateIcon>
+        </a>
+      ) : isExternal ? (
+        <a 
+          href={href} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="inline-flex items-center"
+        >
+          <AnimateIcon animation="default-loop" loop animate>
             <span className="inline-flex items-center">
               {text}
               {icon}

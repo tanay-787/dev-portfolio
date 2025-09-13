@@ -47,9 +47,10 @@ export default function Hero1({
 
             <div className="mt-4 flex gap-4 items-center">
             <AnimatedButton 
-                text="My Resume" 
-                href={"#projects"} 
-                icon={<Download className="ml-1 -mt-0.8"/>} 
+                text="My Resume"
+                href={"https://drive.google.com/uc?export=download&id=19raxk9FxgccvNEPfiJk4SPbbelht0TuA"} 
+                icon={<Download className="ml-1 -mt-0.8"/>}
+                isExternal
                 />
               <a
                 href="https://github.com/tanay-787"
