@@ -1,21 +1,20 @@
 // app/[project]/page.tsx
 import { getPortfolioRepos } from "@/lib/getPortfolioRepos";
 import { getRawGithubFileUrl } from "@/lib/getRawGithubFileUrl";
-import React from "react";
-import BlogPage from "@/app/[project]/BlogPage"; // <- correct import
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { compileMDX } from "next-mdx-remote/rsc";
+import BlogPageContent from "@/components/blog-page-content"; // Import the new component
 
 interface ProjectPageProps {
-  // Next.js 15+: params is a Promise
   params: Promise<{ project: string }>;
 }
 
+// ✅ SEO metadata from frontmatter
 export async function generateMetadata(
   { params }: ProjectPageProps
 ): Promise<Metadata> {
   const { project } = await params;
-
   const repos = await getPortfolioRepos();
   const repo = repos.find((r: any) => r.name.toLowerCase() === project.toLowerCase());
 
@@ -26,27 +25,45 @@ export async function generateMetadata(
     };
   }
 
+  // Fetch blog file
+  const blogUrl = getRawGithubFileUrl("tanay-787", repo.name, "BLOG.mdx");
+  const blogRes = await fetch(blogUrl, { cache: "no-store" });
+  const blogMarkdown = blogRes.ok ? await blogRes.text() : "";
+
+  // Compile & extract frontmatter (fallback to repo data if missing)
+  let frontmatter: { title?: string; description?: string; previewImage?: string } = {};
+  if (blogMarkdown) {
+    try {
+      const parsed = await compileMDX<{ title?: string; description?: string; previewImage?: string }>({
+        source: blogMarkdown,
+        options: { parseFrontmatter: true },
+      });
+      frontmatter = parsed.frontmatter;
+    } catch {
+      // fallback
+    }
+  }
+
+  const title = frontmatter.title || repo.name;
+  const description = frontmatter.description || repo.description || "A project from Tanay's portfolio.";
+  const imageUrl = frontmatter.previewImage
+    ? `https://raw.githubusercontent.com/tanay-787/${repo.name}/HEAD/assets/${frontmatter.previewImage}`
+    : repo.showcaseImage!;
+
   return {
-    title: `${repo.name} | Tanay Codes`,
-    description: repo.description || "A project from Tanay's portfolio.",
+    title: `${title} | Tanay Codes`,
+    description,
     openGraph: {
-      title: repo.name,
-      description: repo.description || "",
+      title,
+      description,
       url: `https://tanaycodes.vercel.app/${repo.name.toLowerCase()}`,
-      images: [
-        {
-          url: repo.showcaseImage!,
-          width: 1200,
-          height: 630,
-          alt: `${repo.name} showcase image`,
-        },
-      ],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: `${title} preview` }],
     },
     twitter: {
       card: "summary_large_image",
-      title: repo.name,
-      description: repo.description || "",
-      images: [repo.showcaseImage!],
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }
@@ -60,14 +77,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { project } = await params;
   const repos = await getPortfolioRepos();
   const repo = repos.find((r: any) => r.name.toLowerCase() === project.toLowerCase());
+  if (!repo) notFound();
 
-  if (!repo) {
-    notFound();
-  }
-
-  const blogUrl = getRawGithubFileUrl("tanay-787", repo.name, "BLOG.md");
-  const blogRes = await fetch(blogUrl);
+  const blogUrl = getRawGithubFileUrl("tanay-787", repo.name, "BLOG.mdx");
+  const blogRes = await fetch(blogUrl, { cache: "no-store" });
   const blogMarkdown = blogRes.ok ? await blogRes.text() : "# Blog not found";
 
-  return <BlogPage project={repo} blogMarkdown={blogMarkdown} />;
+  const { content, frontmatter } = await compileMDX<{ title?: string }>({
+    source: blogMarkdown,
+    options: { parseFrontmatter: true },
+  });
+
+  return (
+    <BlogPageContent content={content} frontmatter={frontmatter} repo={repo} />
+  );
 }
