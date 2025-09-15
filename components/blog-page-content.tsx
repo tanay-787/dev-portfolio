@@ -11,7 +11,7 @@ interface BlogPageContentProps {
 
 const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo }) => {
   return (
-    <div className="flex flex-col min-h-screen max-w-full justify-center">
+    <div className="flex min-h-screen max-w-full justify-center">
     <div className="max-w-7xl my-16 mx-12">
       {/* Title */}
       <h1 className="capitalize text-scale-96 tracking-tighter">
@@ -32,7 +32,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
       {/* Main 2-column layout */}
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 mx-auto border-t pt-7 ">
         {/* Left column (Blog content) */}
-        <article className="prose lg:prose-xl max-w-none">
+        <article className="prose dark:inverse-prose lg:prose-xl max-w-none">
           {content}
         </article>
 
@@ -69,7 +69,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
 
           {repo.url && (
             <div>
-              <h2 className="text-base font-semibold mb-1">GitHub</h2>
+              <h2 className="text-base font-semibold mb-1">Repository</h2>
               <a
                 href={repo.url}
                 className="text-primary hover:underline break-all"
@@ -77,6 +77,20 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
                 rel="noopener noreferrer"
               >
                 {repo.url}
+              </a>
+            </div>
+          )}
+
+{repo.url && (
+            <div>
+              <h2 className="text-base font-semibold mb-1">DeepWiki</h2>
+              <a
+                href={`https://deepwiki.com/tanay-787/${repo.name}`}
+                className="text-primary hover:underline break-all"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {`https://deepwiki.com/tanay-787/${repo.name}`}
               </a>
             </div>
           )}
