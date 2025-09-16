@@ -1,11 +1,16 @@
 import { Separator } from "@/components/ui/separator";
 import {
   DribbbleIcon,
-  GithubIcon,
+  Instagram,
   TwitchIcon,
   TwitterIcon,
 } from "lucide-react";
+
 import Link from "next/link";
+import GithubIcon from "../icons/socials/github";
+import LinkedinIcon from "../icons/socials/linkedin";
+import InstagramIcon from "../icons/socials/instagram";
+import GmailIcon from "../icons/socials/gmail";
 
 const footerLinks = [
   {
@@ -78,17 +83,17 @@ const Footer = () => {
             </span>
 
             <div className="flex items-center gap-5 text-muted-foreground">
-              <Link href="#" target="_blank">
-                <TwitterIcon className="h-5 w-5" />
+            <Link href="#" target="_blank">
+                <GmailIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
               <Link href="#" target="_blank">
-                <DribbbleIcon className="h-5 w-5" />
+                <InstagramIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
               <Link href="#" target="_blank">
-                <TwitchIcon className="h-5 w-5" />
+                <GithubIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
               <Link href="#" target="_blank">
-                <GithubIcon className="h-5 w-5" />
+                <LinkedinIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
             </div>
           </div>

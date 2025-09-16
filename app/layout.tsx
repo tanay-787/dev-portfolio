@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from "next/script";
 import { DM_Sans, DM_Mono, Playfair_Display } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import './globals.css';
@@ -34,13 +35,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body
-        className={`${dmSans.className} ${dmMono.variable} ${playfair.variable}  antialiased`}
-      >
-        <ThemeProvider attribute="class" enableSystem defaultTheme='system'>
-              {children}
-              <Toaster />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+      </head>
+      <body className={`${dmSans.className} ${dmMono.variable} ${playfair.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

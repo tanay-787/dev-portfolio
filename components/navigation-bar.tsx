@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { Circle, Sun, Moon, Menu, X } from "lucide-react";
 import { GlowingEffect } from "./ui/glowing-effect";
+import AntDesign from "./icons/colored/ant-design";
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -16,26 +17,40 @@ interface NavigationBarProps {
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // local state used for animation / immediate UI updates — kept in sync with resolvedTheme
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const { theme, setTheme } = useTheme();
+
+  // Use resolvedTheme to get the actual applied theme (accounts for system + theme)
+  const { resolvedTheme, setTheme } = useTheme();
+
+  // Sync local isDarkMode with resolvedTheme whenever it changes
+  useEffect(() => {
+    if (resolvedTheme) {
+      setIsDarkMode(resolvedTheme === "dark");
+    }
+  }, [resolvedTheme]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    setTheme(isDarkMode ? "dark" : "light");
+    // Determine next theme based on the current resolvedTheme (fallback to 'light' if undefined)
+    const current = resolvedTheme ?? "light";
+    const next = current === "dark" ? "light" : "dark";
+    setTheme(next);
+    // Optimistically update local UI state for animation
+    setIsDarkMode(next === "dark");
   };
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
@@ -46,32 +61,32 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   ];
 
   return (
-    <div className={cn("w-7xl", className)}>
+    <div className={cn("max-w-7xl", className)}>
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-         className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm"
+        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm"
       >
-         <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
-            <GlowingEffect
-                blur={0}
-                borderWidth={1}
-                spread={80}
-                glow={true}
-                disabled={false}
-                proximity={64}
-                inactiveZone={0.01}/>
+        <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
+          <GlowingEffect
+            blur={0}
+            borderWidth={1}
+            spread={80}
+            glow={true}
+            disabled={false}
+            proximity={64}
+            inactiveZone={0.01}
+          />
           <div className="flex items-center justify-between h-10">
             {/* Logo */}
-            <motion.div 
+            <motion.div
               className="flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <span className="text-scale-25 italic font-playfair font-semibold text-foreground">TG</span>
             </motion.div>
-             
 
             {/* Right Side Controls */}
             <div className="flex items-center space-x-2">
@@ -84,7 +99,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
                 aria-label="Toggle theme"
               >
                 <AnimatePresence mode="wait">
-                  {isDarkMode ? (
+                  {!isDarkMode ? (
                     <motion.div
                       key="sun"
                       initial={{ rotate: -90, opacity: 0 }}
@@ -168,7 +183,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
               className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
             >
               <div className="navbar-glass-menu border border-border rounded-2xl shadow-xl p-6">
-
                 {/* Menu Items */}
                 <div className="space-y-1">
                   {menuItems.map((item, index) => (
@@ -185,9 +199,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
                       >
                         {item.label}
                       </a>
-                      {index < menuItems.length - 1 && (
-                        <div className="h-px bg-border mx-4" />
-                      )}
+                      {index < menuItems.length - 1 && <div className="h-px bg-border mx-4" />}
                     </motion.div>
                   ))}
                 </div>
@@ -199,4 +211,3 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
     </div>
   );
 };
-

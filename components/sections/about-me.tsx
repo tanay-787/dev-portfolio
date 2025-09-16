@@ -12,7 +12,7 @@ export default function AboutMe() {
 
           {/* Avatar / Graphic Art */}
           <div className="col-span-1 lg:col-span-5 flex items-center justify-center">
-            <div className="relative w-full h-full rounded-full overflow-hidden shadow-xl border-4 border-primary/30 p-4">
+            <div className="relative w-full h-full max-w-[465px] rounded-full overflow-hidden shadow-xl border-4 border-primary/30 p-4">
               {/* Replace this div with your graphic art / avatar image */}
               <img
                 src="/my-avatar.png"

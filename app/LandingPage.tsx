@@ -1,10 +1,5 @@
 import { NavigationBar } from "@/components/navigation-bar";
 import { Spotlights } from "@/components/ui/spotlight-new";
-import { Spotlight } from "@/components/ui/spotlight";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
-import { motion } from "motion/react"
-import Projects from "@/components/sections/projects";
 import Hero1 from "@/components/sections/hero1";
 import Tools from "@/components/sections/tools";
 import AboutMe from "@/components/sections/about-me";
@@ -16,11 +11,11 @@ export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
   return (
     <div className="flex flex-col min-h-screen max-w-full justify-center">
       {/* Site Header (Navigation Bar) */}
-      <NavigationBar className="" />
+      <NavigationBar />
 
       {/* Main content area */}
       <main className="flex-1">
-      {/* <Spotlights /> */}
+      <Spotlights />
         <Hero1 />
 
         <AboutMe /> 

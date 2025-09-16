@@ -75,7 +75,7 @@ export default function Hero1({
 
           <div 
             ref={containerRef} // Attach the ref here
-            className="col-span-1 lg:col-span-5 relative flex items-center justify-center aspect-square"
+            className="col-span-1 lg:col-span-5 max-w-[465px] relative flex items-center justify-center aspect-square"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
