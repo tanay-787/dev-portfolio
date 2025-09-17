@@ -11,17 +11,17 @@ export function getTailwindColor(className: string): { light: string; dark: stri
   const light = normalizeToRGB(getComputedStyle(elLight).color);
   document.body.removeChild(elLight);
 
-  // Dark (temporarily force dark mode on <html>)
-  const root = document.documentElement;
-  root.classList.add("dark");
+  // Dark (simulate dark mode locally)
+  const darkContainer = document.createElement("div");
+  darkContainer.classList.add("dark");
+  document.body.appendChild(darkContainer);
 
   const elDark = document.createElement("div");
   elDark.className = className;
-  document.body.appendChild(elDark);
+  darkContainer.appendChild(elDark);
   const dark = normalizeToRGB(getComputedStyle(elDark).color);
-  document.body.removeChild(elDark);
 
-  root.classList.remove("dark");
+  document.body.removeChild(darkContainer);
 
   return { light, dark };
 }

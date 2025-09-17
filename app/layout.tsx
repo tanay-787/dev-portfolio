@@ -39,7 +39,7 @@ export default async function RootLayout({
       <head>
       </head>
       <body className={`${dmSans.className} ${dmMono.variable} ${playfair.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider attribute="class" enableSystem defaultTheme="dark">
           {children}
           <Toaster />
         </ThemeProvider>

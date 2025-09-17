@@ -36,8 +36,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
 
   const toggleTheme = () => {
     // Determine next theme based on the current resolvedTheme (fallback to 'light' if undefined)
-    const current = resolvedTheme ?? "light";
-    const next = current === "dark" ? "light" : "dark";
+    const next = isDarkMode ? "light" : "dark";
     setTheme(next);
     // Optimistically update local UI state for animation
     setIsDarkMode(next === "dark");
