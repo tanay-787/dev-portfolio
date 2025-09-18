@@ -77,7 +77,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
             proximity={64}
             inactiveZone={0.01}
           />
-          <div className="flex items-center justify-between h-10">
+          <div className="flex items-center justify-between h-8 lg:h-10">
             {/* Logo */}
             <motion.div
               className="flex items-center space-x-2"
