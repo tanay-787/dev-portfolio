@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { Circle, Sun, Moon, Menu, X } from "lucide-react";
 import { GlowingEffect } from "./ui/glowing-effect";
-import AntDesign from "./icons/colored/ant-design";
+
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(" ");

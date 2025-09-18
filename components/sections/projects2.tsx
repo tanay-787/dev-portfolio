@@ -36,7 +36,7 @@ const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
     <section aria-label="Projects" id="projects" className="py-16 pb-24"> {/* Changed to section and applied padding */}
       <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted padding */}
         <h2 className="text-scale-72 w-full md:text-center md:mx-auto">
-          Featured Projects <GitRepoIcon className="inline h-[1em] w-[1em]" />
+        {'Featured '}<span className="inline text-brand">Projects</span> <GitRepoIcon className="inline h-[1em] w-[1em] text-brand" />
         </h2>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
           {projects.sort((a, b) => a.name.localeCompare(b.name)).map((project) => (
