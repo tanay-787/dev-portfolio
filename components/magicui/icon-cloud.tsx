@@ -6,7 +6,7 @@ import { getTailwindColor } from "@/lib/getTailwindColor";
 import { useTheme } from "next-themes";
 
 interface IconProps extends React.SVGAttributes<SVGElement> {
-    className?: string;
+  className?: string;
 }
 
 interface Icon {
@@ -63,10 +63,10 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
     if (!width) return;
     const iconSize = width ? Math.max(24, Math.floor(width / 15)) : 32;
     const newRenderedIcons = icons?.map(({ name, Icon }, i) => (
-        <Icon key={name} className={`w-${iconSize} h-${iconSize}`} style={{ overflow: 'visible' }}/>
+      <Icon key={name} style={{ overflow: 'visible' }} />
     ))
     setRenderedIcons(newRenderedIcons || [])
-  },[icons, width])
+  }, [icons, width])
 
 
   // Create icon canvases once when icons/images change
@@ -77,8 +77,8 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
     imagesLoadedRef.current = new Array(items.length).fill(false);
 
     // Resolve current Tailwind foreground color dynamically
-  const { light, dark } = getTailwindColor("text-foreground");
-  const foreground = resolvedTheme === "dark" ? dark : light;
+    const { light, dark } = getTailwindColor("text-foreground");
+    const foreground = resolvedTheme === "dark" ? dark : light;
 
     const newIconCanvases = items.map((item, index) => {
       const offscreen = document.createElement("canvas");
@@ -304,15 +304,17 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
         const scaledRotatedZ = rotatedZ * scaleFactor;
 
 
-        const scale = (scaledRotatedZ + 200) / 300;
+        // Scale the perspective constants based on the overall scaleFactor
+        const perspectiveDepth = 200 * scaleFactor;
+        const perspectiveFov = 300 * scaleFactor;
+        const scale = (scaledRotatedZ + perspectiveDepth) / perspectiveFov;
         const opacity = Math.max(0.2, Math.min(1, (scaledRotatedZ + 150) / 200));
-
         ctx.save();
         ctx.translate(
           canvas.width / 2 + scaledRotatedX,
           canvas.height / 2 + scaledRotatedY,
         );
-        ctx.scale(1, 1); // Use the calculated scale
+        ctx.scale(scale, scale); // Use the calculated scale
         ctx.globalAlpha = opacity;
 
         if (renderedIcons || images) {

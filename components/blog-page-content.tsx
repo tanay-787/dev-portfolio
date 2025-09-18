@@ -2,6 +2,7 @@ import { RepositoryItem } from "@/lib/git-types";
 import { FC } from "react";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
+import { TracingBeam } from "./tracing-beam";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
@@ -11,6 +12,7 @@ interface BlogPageContentProps {
 
 const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo }) => {
   return (
+    <TracingBeam className="px-2">
     <div className="flex min-h-screen max-w-full justify-center">
     <div className="max-w-7xl my-16 mx-12">
       {/* Title */}
@@ -98,6 +100,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
       </div>
     </div>
     </div>
+    </TracingBeam>
   );
 };
 
