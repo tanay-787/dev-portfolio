@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { Circle, Sun, Moon, Menu, X } from "lucide-react";
@@ -18,43 +18,35 @@ interface NavigationBarProps {
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // local state used for animation / immediate UI updates — kept in sync with resolvedTheme
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Use resolvedTheme to get the actual applied theme (accounts for system + theme)
   const { resolvedTheme, setTheme } = useTheme();
+  const isMobile = useIsMobile();
+  const [isCompact, setIsCompact] = useState(false);
 
-  const isMobile = useIsMobile(); // Detect if on mobile screen
-  const [isCompact, setIsCompact] = useState(false); // State for compact mode
-
-  // Sync local isDarkMode with resolvedTheme whenever it changes
   useEffect(() => {
     if (resolvedTheme) {
       setIsDarkMode(resolvedTheme === "dark");
     }
   }, [resolvedTheme]);
 
-  // Effect to trigger compaction after mount on mobile screens
   useEffect(() => {
     if (isMobile) {
       const timer = setTimeout(() => {
         setIsCompact(true);
-      }, 1000); // 1-second delay for the animation to start
+      }, 1000);
       return () => clearTimeout(timer);
     } else {
-      setIsCompact(false); // Ensure not compact on larger screens
+      setIsCompact(false);
     }
-  }, [isMobile]); // Re-run if mobile state changes
+  }, [isMobile]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const toggleTheme = () => {
-    // Determine next theme based on the current resolvedTheme (fallback to 'light' if undefined)
     const next = isDarkMode ? "light" : "dark";
     setTheme(next);
-    // Optimistically update local UI state for animation
     setIsDarkMode(next === "dark");
   };
 
@@ -63,7 +55,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
-    }
+    };
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -78,15 +70,38 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   return (
     <div className={cn("max-w-7xl", className)}>
       <motion.nav
-        initial={{ y: -100, opacity: 0, x: "-50%", left: "50%", right: "auto", width: "calc(100% - 2rem)", maxWidth: "384px" }}
-        animate={
-          isCompact && isMobile
-            ? { y: 0, opacity: 1, x: 0, width: "fit-content", right: "1rem", left: "auto", maxWidth: "fit-content" }
-            : { y: 0, opacity: 1, x: "-50%", width: "calc(100% - 2rem)", right: "auto", left: "50%", maxWidth: "384px" }
+  initial={{
+    y: -100,
+    opacity: 0,
+    left: "50%",
+    x: "-50%",
+    width: "calc(100% - 2rem)",
+    maxWidth: "384px",
+  }}
+  animate={
+    isCompact && isMobile
+      ? {
+          y: 0,
+          opacity: 1,
+          left: "auto",      // 👈 release left
+          right: "1rem",     // 👈 anchor to right properly
+          x: 0,              // 👈 no translate
+          width: "fit-content",
+          maxWidth: "fit-content",
         }
-        transition={{ duration: 1.2, ease: "easeOut" }} // Increased duration to 1.2 for slower animation
-        className="fixed top-4 z-50" // Removed width and positioning from className, handled by motion
-      >
+      : {
+          y: 0,
+          opacity: 1,
+          left: "50%",       // 👈 anchor to center
+          x: "-50%",         // 👈 center by shifting back
+          right: "auto",
+          width: "calc(100% - 2rem)",
+          maxWidth: "384px",
+        }
+  }
+  transition={{ duration: 1.2, ease: "easeOut" }}
+  className="fixed top-4 z-50"
+>
         <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
           <GlowingEffect
             blur={0}
@@ -103,7 +118,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
               className="flex items-center space-x-2"
               initial={{ opacity: 1, width: "auto", overflow: "hidden", pointerEvents: "auto" }}
               animate={isCompact && isMobile ? { opacity: 0, width: 0, pointerEvents: "none" } : { opacity: 1, width: "auto", pointerEvents: "auto" }}
-              transition={{ duration: 0.8 }} // Adjusted duration for the logo fade-out
+              transition={{ duration: 0.8 }} 
               whileHover={{ scale: 1.05 }}
             >
               <span className="text-scale-25 italic font-playfair font-semibold text-foreground">TG</span>
