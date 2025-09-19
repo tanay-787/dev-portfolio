@@ -8,7 +8,7 @@ export function getTailwindColor(className: string): { light: string; dark: stri
   const elLight = document.createElement("div");
   elLight.className = className;
   document.body.appendChild(elLight);
-  const light = normalizeToRGB(getComputedStyle(elLight).color);
+  const light = cssColorToHex(getComputedStyle(elLight).color);
   document.body.removeChild(elLight);
 
   // Dark (simulate dark mode locally)
@@ -19,7 +19,7 @@ export function getTailwindColor(className: string): { light: string; dark: stri
   const elDark = document.createElement("div");
   elDark.className = className;
   darkContainer.appendChild(elDark);
-  const dark = normalizeToRGB(getComputedStyle(elDark).color);
+  const dark = cssColorToHex(getComputedStyle(elDark).color);
 
   document.body.removeChild(darkContainer);
 
@@ -27,16 +27,7 @@ export function getTailwindColor(className: string): { light: string; dark: stri
 }
 
 
-function normalizeToRGB(color: string): string {
-  const ctx = document.createElement("canvas").getContext("2d");
-  if (!ctx) throw new Error("Canvas not supported");
-  ctx.fillStyle = color;
-  return ctx.fillStyle; // browser always gives rgb(...) or rgba(...)
-}
-
-// Sub Utility fn
-
-function cssColorToHex(color: string): string {
+export function cssColorToHex(color: string): string {
   // Create a dummy canvas context
   const ctx = document.createElement("canvas").getContext("2d");
   if (!ctx) throw new Error("Canvas not supported");

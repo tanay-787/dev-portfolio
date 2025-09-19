@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { Circle, Sun, Moon, Menu, X } from "lucide-react";
 import { GlowingEffect } from "./ui/glowing-effect";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
@@ -23,12 +24,27 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   // Use resolvedTheme to get the actual applied theme (accounts for system + theme)
   const { resolvedTheme, setTheme } = useTheme();
 
+  const isMobile = useIsMobile(); // Detect if on mobile screen
+  const [isCompact, setIsCompact] = useState(false); // State for compact mode
+
   // Sync local isDarkMode with resolvedTheme whenever it changes
   useEffect(() => {
     if (resolvedTheme) {
       setIsDarkMode(resolvedTheme === "dark");
     }
   }, [resolvedTheme]);
+
+  // Effect to trigger compaction after mount on mobile screens
+  useEffect(() => {
+    if (isMobile) {
+      const timer = setTimeout(() => {
+        setIsCompact(true);
+      }, 1000); // 1-second delay for the animation to start
+      return () => clearTimeout(timer);
+    } else {
+      setIsCompact(false); // Ensure not compact on larger screens
+    }
+  }, [isMobile]); // Re-run if mobile state changes
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -62,10 +78,14 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   return (
     <div className={cn("max-w-7xl", className)}>
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-sm"
+        initial={{ y: -100, opacity: 0, x: "-50%", left: "50%", right: "auto", width: "calc(100% - 2rem)", maxWidth: "384px" }}
+        animate={
+          isCompact && isMobile
+            ? { y: 0, opacity: 1, x: 0, width: "fit-content", right: "1rem", left: "auto", maxWidth: "fit-content" }
+            : { y: 0, opacity: 1, x: "-50%", width: "calc(100% - 2rem)", right: "auto", left: "50%", maxWidth: "384px" }
+        }
+        transition={{ duration: 1.2, ease: "easeOut" }} // Increased duration to 1.2 for slower animation
+        className="fixed top-4 z-50" // Removed width and positioning from className, handled by motion
       >
         <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
           <GlowingEffect
@@ -77,12 +97,14 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
             proximity={64}
             inactiveZone={0.01}
           />
-          <div className="flex items-center justify-between h-8 lg:h-10">
+          <div className={cn("flex items-center h-10", isCompact && isMobile ? "justify-end" : "justify-between")}>
             {/* Logo */}
             <motion.div
               className="flex items-center space-x-2"
+              initial={{ opacity: 1, width: "auto", overflow: "hidden", pointerEvents: "auto" }}
+              animate={isCompact && isMobile ? { opacity: 0, width: 0, pointerEvents: "none" } : { opacity: 1, width: "auto", pointerEvents: "auto" }}
+              transition={{ duration: 0.8 }} // Adjusted duration for the logo fade-out
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <span className="text-scale-25 italic font-playfair font-semibold text-foreground">TG</span>
             </motion.div>
