@@ -9,8 +9,6 @@ import { TypingText } from "@/components/animate-ui/text/typing";
 import { Button } from "../ui/button";
 import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
 import AnimatedButton from "../animated-button";
-import { ArrowDown } from "lucide-react";
-import { MoveDown } from "../animate-ui/icons/move-down";
 import { Download } from "../animate-ui/icons/download";
 
 type Hero1Props = {
@@ -57,7 +55,7 @@ export default function Hero1({
                 <GithubIcon className="w-8 h-8" />
               </a>
               <a
-                href="https://linkedin.com/in/your-linkedin-profile"
+                href="https://linkedin.com/in/tanay-gupte-841685309"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"

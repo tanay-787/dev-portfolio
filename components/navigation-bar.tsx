@@ -66,7 +66,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
     { label: "My Work", href: "#projects" },
     { label: "Contact Me", href: "#contact-me" },
   ];
-
   return (
     <div className={cn("max-w-7xl", className)}>
       <motion.nav

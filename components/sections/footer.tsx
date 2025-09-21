@@ -82,17 +82,17 @@ const Footer = () => {
             Made with ❤️ by Tanay Gupte
             </span>
 
-            <div className="flex items-center gap-5 text-muted-foreground">
-            <Link href="#" target="_blank">
+            <div className="flex items-center gap-5 text-muted-foreground" aria-description="Socials">
+            <Link href="mailto:tanaygupte22@gmail.com" target="_blank">
                 <GmailIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="https://www.instagram.com/tanay7_" target="_blank">
                 <InstagramIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="https://github.com/tanay-787" target="_blank">
                 <GithubIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="https://linkedin.com/in/tanay-gupte-841685309" target="_blank">
                 <LinkedinIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
             </div>

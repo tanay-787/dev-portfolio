@@ -14,13 +14,13 @@ export default function LandingPage({ repos }: { repos: RepositoryItem[] }) {
       <NavigationBar />
 
       {/* Main content area */}
-      <main className="flex-1">
+      <main className="">
       <Spotlights />
         <Hero1 />
 
         <AboutMe /> 
-{/*        
-        <Tools /> */}
+       
+        {/* <Tools /> */}
 
 
        <Projects2 projects={repos} />

@@ -3,6 +3,7 @@ import { FC } from "react";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 import { TracingBeam } from "./tracing-beam";
+import Footer from "./sections/footer";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
@@ -12,6 +13,8 @@ interface BlogPageContentProps {
 
 const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo }) => {
   return (
+    <>
+    <main>
     <TracingBeam className="px-2">
       <div className="flex min-h-screen max-w-full justify-center">
         <div className="max-w-7xl my-16 mx-12">
@@ -103,6 +106,13 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
         </div>
       </div>
     </TracingBeam>
+    </main>
+    <footer className="py-8 text-center text-muted-foreground">
+        {/* <div className="container mx-auto">Made with ❤️ by Tanay Gupte</div>
+         */}
+         <Footer />
+      </footer>
+    </>
   );
 };
 
