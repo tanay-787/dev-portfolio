@@ -4,6 +4,7 @@ import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 import { TracingBeam } from "./tracing-beam";
 import Footer from "./sections/footer";
+import { RepoTechStack } from "./repo-tech-stack";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
@@ -12,6 +13,7 @@ interface BlogPageContentProps {
 }
 
 const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo }) => {
+
   return (
     <>
     <main>
@@ -48,13 +50,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
               <div>
                 <h2 className="text-base font-semibold mb-2">Technologies</h2>
                 {repo.repositoryTopics.nodes.length > 0 ? (
-                  <div className="flex flex-wrap gap-2">
-                    {repo.repositoryTopics.nodes.map((topicNode, idx) => (
-                      <Badge key={idx} variant="secondary">
-                        {topicNode.topic.name}
-                      </Badge>
-                    ))}
-                  </div>
+                 <RepoTechStack repo={repo}/>
                 ) : (
                   <p className="text-muted-foreground">Not specified</p>
                 )}
