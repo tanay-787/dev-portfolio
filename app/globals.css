@@ -1,5 +1,23 @@
+@font-face {
+  font-family: 'Baskerville Neo';
+  src: url('/fonts/Baskerville-Neo-Display.otf') format('opentype');
+  font-weight: 400; /* better to use 400 instead of "normal" */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baskerville Neo';
+  src: url('/fonts/Baskerville-Neo-Display-SemiBold-Italic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+
 @import "tailwindcss";
 @import "tw-animate-css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,6 +134,10 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+:root {
+  --font-neo: 'Baskerville Neo', serif;
+}
+
 @theme inline {
   --animate-aurora: aurora 60s linear infinite;
   @keyframes aurora {
@@ -131,8 +153,6 @@
     }
   }
 }
-
-
 
 @theme inline {
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
@@ -151,9 +171,8 @@
 
 @theme inline {
   --font-playfair: var(--font-playfair);
+  --font-neo: var(--font-neo), sans-serif;
 }
-
-
 
 @layer base { 
   * {
@@ -222,5 +241,20 @@
 
   .navbar-glass-menu{
     @apply bg-background backdrop-blur-md;
+  }
+}
+
+@layer utilities {
+  .font-neo {
+    font-family: var(--font-neo);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-variant-ligatures: normal;
+  }
+
+  /* optional: a display class you can combine with text-scale utils */
+  .display-neo {
+    @apply font-neo;
+    font-size: clamp(1.75rem, 1rem + 3.75vw, 2.5rem);
   }
 }

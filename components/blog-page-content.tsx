@@ -21,8 +21,8 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
           {/* Title */}
           <h1 className="capitalize text-scale-96 tracking-tighter">
             <span className="text-brand">{'Blog: '}</span>
-            <br className="block lg:hidden" />
-            {repo.name}
+            <br className="block  lg:hidden" />
+            <span className="">{repo.name}</span>
           </h1>
 
           {/* Hero image */}

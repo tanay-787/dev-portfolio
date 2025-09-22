@@ -5,8 +5,8 @@ export default function AboutMe() {
   return (
     <section aria-label="About Me" id="about-me" className="py-16 pb-24"> {/* Removed relative from here */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-scale-72 w-full text-center">
-          {'About '}<span className="inline text-brand">Me</span>
+        <div className="text-scale-72 w-full  text-center">
+        <span className="inline font-neo italic font-semibold">{'About '}</span><span className="inline text-brand">Me</span>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
@@ -25,7 +25,7 @@ export default function AboutMe() {
           {/* Text Section */}
           <div className="col-span-1 lg:col-span-7">
             <p className="mt-6 max-w-xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-              Hey, I’m <span className="font-playfair italic font-semibold leading-[none] text-brand">Tanay</span>, an
+              Hey, I’m <span className="font-neo italic font-semibold leading-[none] text-brand">Tanay</span>, an
               innovative and curious developer passionate about building
               user-centered applications. I enjoy solving problems, designing
               smooth user experiences, and bringing creative ideas to life with

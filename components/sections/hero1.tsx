@@ -28,11 +28,11 @@ export default function Hero1({
       <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted max-width and padding */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 justify-center items-center"> {/* Adjusted gap */}
           <div className="col-span-1 lg:col-span-7 ">
-            <div className="mt-4 text-scale-96">
-              <span className="inline">Crafting</span>
+            <h1 className="mt-4 text-scale-96">
+              <span className="inline font-neo italic font-semibold">Crafting</span>
                 <br />
-                <span className="inline text-brand">End-to-End<TypingText text={''} cursorClassName="hidden xl:inline" cursor /></span>
-            </div>
+                <span className="inline text-brand ">End-to-End<TypingText text={''} cursorClassName="hidden xl:inline" cursor /></span>
+            </h1>
             
             <p className="mt-3 max-w-xl text-muted-foreground text-scale-18 ">
               {description}
