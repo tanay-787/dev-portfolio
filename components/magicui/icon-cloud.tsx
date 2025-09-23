@@ -107,8 +107,6 @@ export function IconCloud({ icons, images, width = 400, height = 400 }: IconClou
             imagesLoadedRef.current[index] = true;
           };
         } else {
-          console.log(resolvedTheme)
-          console.log(foreground);
           // Handle SVG icons
           offCtx.scale(1, 1);
           let svgString = renderToString(item as React.ReactElement);

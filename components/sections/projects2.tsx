@@ -6,6 +6,7 @@ import { AnimateIcon } from "@/components/animate-ui/icons/icon";
 import AnimatedButton from "../animated-button";
 import { RepositoryItem } from "@/lib/git-types";
 import GitRepoIcon from "../icons/socials/git-repo";
+import { RepoTechStack } from "../repo-tech-stack";
 
 const projectNames = [
   {
@@ -68,6 +69,7 @@ const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
                 <p className="text-muted-foreground text-scale-18">
                   {project.description}
                 </p>
+                <RepoTechStack repo={project}/>
                 <AnimatedButton
                   text="Learn More"
                   href={`${project.name}`}

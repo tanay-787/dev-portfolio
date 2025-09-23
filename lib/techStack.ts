@@ -68,7 +68,7 @@ export const techStack = [
         name: "NextJS",
         Icon: Nextjs
     }, {
-        name: "Tailwind CSS",
+        name: "TailwindCSS",
         Icon: TailwindCSS
     }, {
         name: "Motion",
@@ -92,13 +92,13 @@ export const techStack = [
         name: "Firebase",
         Icon: Firebase
     },{
-        name: "Neon Postgres",
+        name: "Neon-Postgres",
         Icon: Neon
     },{
-        name: "Drizzle ORM",
+        name: "Drizzle-ORM",
         Icon: DrizzleORM
     }, {
-        name: "Prisma ORM",
+        name: "Prisma-ORM",
         Icon: PrismaOrmIcon
     },{
         name: "Vercel",
@@ -113,7 +113,7 @@ export const techStack = [
         name: "AntDesign",
         Icon: AntDesign
     },{
-        name: "Firebase Studio",
+        name: "FirebaseStudio",
         Icon: FirebaseStudio
     },{
         name: "Auth0",
