@@ -92,7 +92,7 @@ const Footer = () => {
               <Link href="https://github.com/tanay-787" target="_blank">
                 <GithubIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
-              <Link href="https://linkedin.com/in/tanay-gupte-841685309" target="_blank">
+              <Link href="https://linkedin.com/in/tanay-gupte" target="_blank">
                 <LinkedinIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
             </div>

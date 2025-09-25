@@ -55,7 +55,7 @@ export default function Hero1({
                 <GithubIcon className="w-8 h-8" />
               </a>
               <a
-                href="https://linkedin.com/in/tanay-gupte-841685309"
+                href="https://linkedin.com/in/tanay-gupte"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
@@ -68,7 +68,7 @@ export default function Hero1({
 
           <div 
             ref={containerRef} // Attach the ref here
-            className="col-span-1 lg:col-span-5 max-w-[465px] relative flex items-center justify-center aspect-square"
+            className="hidden col-span-1 lg:col-span-5 max-w-[465px] relative lg:flex items-center justify-center aspect-square"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}

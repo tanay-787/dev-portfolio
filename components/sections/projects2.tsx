@@ -8,7 +8,7 @@ import { RepositoryItem } from "@/lib/git-types";
 import GitRepoIcon from "../icons/socials/git-repo";
 import { RepoTechStack } from "../repo-tech-stack";
 
-const projectNames = [
+export const projectNames = [
   {
     key: 'cleat-central',
     name: 'CleatCentral'
@@ -24,8 +24,8 @@ const projectNames = [
     key: 'product-demo-app',
     name: 'Tourify Demos'
   }, {
-    key: 'actfour-fitness',
-    name: 'Act4Fitness'
+    key: 'act4-fitness',
+    name: 'Act4 Fitness'
   }, {
     key: 'resume-analyzer-app',
     name: 'Resume-Analyzer AI'

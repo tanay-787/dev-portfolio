@@ -102,7 +102,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       const filePath = path.join(process.cwd(), "public", mockBlogInfo.filePath);
       blogMarkdown = await readFile(filePath, "utf-8");
     } catch (err) {
-      blogMarkdown = "# Mock Blog not found";
+      blogMarkdown = "# Blog not found";
     }
   } else if (repo) {
     blogMarkdown = "# Repo blog coming soon...";

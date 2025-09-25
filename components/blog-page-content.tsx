@@ -46,7 +46,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
             </article>
 
             {/* Right column (sidebar) */}
-            <aside className="space-y-6 text-scale-18 text-muted-foreground border-l pl-4">
+            <aside className="space-y-6 text-scale-16 text-muted-foreground border-l pl-4">
               <div>
                 <h2 className="text-base font-semibold mb-2">Technologies</h2>
                 {repo.repositoryTopics.nodes.length > 0 ? (
