@@ -72,9 +72,9 @@ const Projects2 = ({ projects }: { projects: RepositoryItem[] }) => {
                 <RepoTechStack repo={project}/>
                 <AnimatedButton
                   text="Learn More"
-                  href={`${project.name}`}
+                  href={`/${project.name}`}
                   icon={<ArrowRight className="ml-1 -mt-0.8" />}
-                  isBlogLink={true}
+                  isBlogLink
                   className="mt-6 rounded-full min-w-40 text-[15px]"
                 />
               </div>

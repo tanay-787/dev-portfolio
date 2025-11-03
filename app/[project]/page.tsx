@@ -12,18 +12,37 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { MdxImage } from "@/components/mdx-image";
 import { getBlogUrl } from "@/lib/getBlogUrl";
+import { cache } from "react";
 
 interface ProjectPageProps {
   params: Promise<{ project: string }>;
 }
+
+const getPageData = cache(async (project: string) => {
+	const repos = await getPortfolioRepos();
+	const repo = repos.find(
+		(r: any) => r.name.toLowerCase() === project.toLowerCase()
+	);
+
+	if (!repo) {
+		return { repo: null, blogMarkdown: null };
+	}
+
+	const blogUrl = getBlogUrl(repo.name);
+	const blogRes = await fetch(blogUrl, { cache: "no-store" });
+	const blogMarkdown = blogRes.ok ? await blogRes.text() : null;
+
+	return { repo, blogMarkdown };
+});
+
 
 // ✅ SEO metadata from frontmatter
 export async function generateMetadata(
   { params }: ProjectPageProps
 ): Promise<Metadata> {
   const { project } = await params;
-  const repos = await getPortfolioRepos();
-  const repo = repos.find((r: any) => r.name.toLowerCase() === project.toLowerCase());
+  const { repo, blogMarkdown } = await getPageData(project);
+
 
   if (!repo) {
     return {
@@ -31,11 +50,6 @@ export async function generateMetadata(
       description: "This project does not exist in the portfolio.",
     };
   }
-
-  // Fetch blog file
-  const blogUrl = getBlogUrl(repo.name);
-  const blogRes = await fetch(blogUrl, { cache: "no-store" });
-  const blogMarkdown = blogRes.ok ? await blogRes.text() : "";
 
   // Compile & extract frontmatter (fallback to repo data if missing)
   let frontmatter: { title?: string; description?: string; previewImage?: string } = {};
@@ -81,14 +95,13 @@ export async function generateStaticParams() {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { project } = await params;
-  const repos = await getPortfolioRepos();
-  const repo = repos.find((r: any) => r.name.toLowerCase() === project.toLowerCase());
+	const { repo, blogMarkdown } = await getPageData(project);
+
   if (!repo) notFound();
 
+
   // Production setup
-  const blogUrl = getBlogUrl(repo.name);
-  const blogRes = await fetch(blogUrl, { cache: "no-store" });
-  const blogMarkdown = blogRes.ok ? await blogRes.text() : "# Blog not found";
+  const blogSource = blogMarkdown || "# Blog not found";
   
   const components = {
     h1: (props: any) => <h1 className="mt-8 mb-4 text-scale-60" {...props} />,
@@ -112,9 +125,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   };
 
   const { content, frontmatter } = await compileMDX<{ title?: string }>({
-    source: blogMarkdown,
+    source: blogSource,
     options: { parseFrontmatter: true },
-    components, // Pass the custom components here
+    components,
   });
 
   return (

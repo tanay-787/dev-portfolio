@@ -5,12 +5,18 @@ import { Separator } from "./ui/separator";
 import { TracingBeam } from "./tracing-beam";
 import Footer from "./sections/footer";
 import { RepoTechStack } from "./repo-tech-stack";
+import { Arrow } from "@radix-ui/react-dropdown-menu";
+import { ArrowUpRight } from "lucide-react";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
   frontmatter: { title?: string };
   repo: RepositoryItem;
 }
+
+const removeHttps = (url: string) => {
+    return url.replace(/https?:\/\//, '');
+};
 
 const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo }) => {
 
@@ -24,7 +30,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
           <h1 className="capitalize text-scale-96 tracking-tighter">
             <span className="text-brand">{'Blog: '}</span>
             <br className="block  lg:hidden" />
-            <span className="">{repo.name}</span>
+            <span className="">{frontmatter.title}</span>
           </h1>
 
           {/* Hero image */}
@@ -48,7 +54,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
             {/* Right column (sidebar) */}
             <aside className="space-y-6 text-scale-16 text-muted-foreground border-l pl-4">
               <div>
-                <h2 className="text-base font-semibold mb-2">Technologies</h2>
+                <h2 className="text-base font-semibold mb-2">Built Using</h2>
                 {repo.repositoryTopics.nodes.length > 0 ? (
                  <RepoTechStack repo={repo}/>
                 ) : (
@@ -58,42 +64,42 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
 
               {repo.homepageUrl && (
                 <div>
-                  <h2 className="text-base font-semibold mb-1">Live Demo</h2>
+                  <h2 className="text-base font-semibold mb-1">Live Demo At</h2>
                   <a
                     href={repo.homepageUrl}
-                    className="text-primary hover:underline break-all"
+                    className="text-primary hover:text-brand break-all"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {repo.homepageUrl}
+                    {removeHttps(repo.homepageUrl)}
                   </a>
                 </div>
               )}
 
               {repo.url && (
                 <div>
-                  <h2 className="text-base font-semibold mb-1">Repository</h2>
+                  <h2 className="text-base font-semibold mb-1">Repo URL</h2>
                   <a
                     href={repo.url}
-                    className="text-primary hover:underline break-all"
+                    className="text-primary hover:text-brand break-all"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {repo.url}
+                    {removeHttps(repo.url)}
                   </a>
                 </div>
               )}
 
               {repo.url && (
                 <div>
-                  <h2 className="text-base font-semibold mb-1">DeepWiki</h2>
+                  <h2 className="text-base font-semibold mb-1">Deepwiki Docs</h2>
                   <a
                     href={`https://deepwiki.com/tanay-787/${repo.name}`}
-                    className="text-primary hover:underline break-all"
+                    className="text-primary hover:text-brand break-all"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {`https://deepwiki.com/tanay-787/${repo.name}`}
+                    {removeHttps(`https://deepwiki.com/tanay-787/${repo.name}`)}
                   </a>
                 </div>
               )}
