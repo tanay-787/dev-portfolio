@@ -7,6 +7,7 @@ import Footer from "./sections/footer";
 import { RepoTechStack } from "./repo-tech-stack";
 import { Arrow } from "@radix-ui/react-dropdown-menu";
 import { ArrowUpRight } from "lucide-react";
+import { DashedLine } from "@/components/dashed-line";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
@@ -50,7 +51,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
             <article className="prose dark:inverse-prose lg:prose-xl max-w-none">
               {content}
             </article>
-
+            
             {/* Right column (sidebar) */}
             <aside className="space-y-6 text-scale-16 text-muted-foreground border-l pl-4">
               <div>

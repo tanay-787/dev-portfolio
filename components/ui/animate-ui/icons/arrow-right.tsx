@@ -8,97 +8,92 @@ import {
   useAnimateIconContext,
   IconWrapper,
   type IconProps,
-} from '@/components/animate-ui/icons/icon';
+} from '@/components/ui/animate-ui/icons/icon';
 
-type MoveDownProps = IconProps<keyof typeof animations>;
+type ArrowRightProps = IconProps<keyof typeof animations>;
 
 const animations = {
   default: {
-    group1: {
+    group: {
       initial: {
-        y: 0,
+        x: 0,
         transition: { ease: 'easeInOut', duration: 0.3 },
       },
       animate: {
-        y: '15%',
+        x: '25%',
         transition: { ease: 'easeInOut', duration: 0.3 },
       },
     },
-    group2: {},
     path1: {},
     path2: {},
   } satisfies Record<string, Variants>,
   'default-loop': {
-    group1: {
+    group: {
       initial: {
-        y: 0,
+        x: 0,
       },
       animate: {
-        y: [0, '15%', 0],
+        x: [0, '25%', 0],
         transition: { ease: 'easeInOut', duration: 0.6 },
       },
     },
-    group2: {},
     path1: {},
     path2: {},
   } satisfies Record<string, Variants>,
   pointing: {
-    group1: {},
-    group2: {},
+    group: {},
     path1: {
       initial: {
-        d: 'M12 2V22',
+        d: 'M5 12h14',
         transition: { ease: 'easeInOut', duration: 0.3 },
       },
       animate: {
-        d: 'M12 2V12',
+        d: 'M5 12h10',
         transition: { ease: 'easeInOut', duration: 0.3 },
       },
     },
     path2: {
       initial: {
-        d: 'M8 18L12 22L16 18',
+        d: 'm12 5 7 7-7 7',
         transition: { ease: 'easeInOut', duration: 0.3 },
       },
       animate: {
-        d: 'M8 8L12 12L16 8',
+        d: 'm8 5 7 7-7 7',
         transition: { ease: 'easeInOut', duration: 0.3 },
       },
     },
   } satisfies Record<string, Variants>,
   'pointing-loop': {
-    group1: {},
-    group2: {},
+    group: {},
     path1: {
       initial: {
-        d: 'M12 2V22',
+        d: 'M5 12h14',
       },
       animate: {
-        d: ['M12 2V22', 'M12 2V12', 'M12 2V22'],
+        d: ['M5 12h14', 'M5 12h10', 'M5 12h14'],
         transition: { ease: 'easeInOut', duration: 0.6 },
       },
     },
     path2: {
       initial: {
-        d: 'M8 18L12 22L16 18',
+        d: 'm12 5 7 7-7 7',
       },
       animate: {
-        d: ['M8 18L12 22L16 18', 'M8 8L12 12L16 8', 'M8 18L12 22L16 18'],
+        d: ['m12 5 7 7-7 7', 'm8 5 7 7-7 7', 'm12 5 7 7-7 7'],
         transition: { ease: 'easeInOut', duration: 0.6 },
       },
     },
   } satisfies Record<string, Variants>,
   out: {
-    group1: {},
-    group2: {
+    group: {
       initial: {
-        y: 0,
+        x: 0,
       },
       animate: {
-        y: [0, '150%', '-150%', 0],
+        x: [0, '150%', '-150%', 0],
         transition: {
           default: { ease: 'easeInOut', duration: 0.8 },
-          y: {
+          x: {
             ease: 'easeInOut',
             duration: 0.8,
             times: [0, 0.5, 0.5, 1],
@@ -111,7 +106,7 @@ const animations = {
   } satisfies Record<string, Variants>,
 } as const;
 
-function IconComponent({ size, ...props }: MoveDownProps) {
+function IconComponent({ size, ...props }: ArrowRightProps) {
   const { controls } = useAnimateIconContext();
   const variants = getVariants(animations);
 
@@ -126,20 +121,17 @@ function IconComponent({ size, ...props }: MoveDownProps) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      variants={variants.group1}
-      initial="initial"
-      animate={controls}
       {...props}
     >
-      <motion.g variants={variants.group2} initial="initial" animate={controls}>
+      <motion.g variants={variants.group} initial="initial" animate={controls}>
         <motion.path
-          d="M12 2V22"
+          d="M5 12h14"
           variants={variants.path1}
           initial="initial"
           animate={controls}
         />
         <motion.path
-          d="M8 18L12 22L16 18"
+          d="m12 5 7 7-7 7"
           variants={variants.path2}
           initial="initial"
           animate={controls}
@@ -149,14 +141,14 @@ function IconComponent({ size, ...props }: MoveDownProps) {
   );
 }
 
-function MoveDown(props: MoveDownProps) {
+function ArrowRight(props: ArrowRightProps) {
   return <IconWrapper icon={IconComponent} {...props} />;
 }
 
 export {
   animations,
-  MoveDown,
-  MoveDown as MoveDownIcon,
-  type MoveDownProps,
-  type MoveDownProps as MoveDownIconProps,
+  ArrowRight,
+  ArrowRight as ArrowRightIcon,
+  type ArrowRightProps,
+  type ArrowRightProps as ArrowRightIconProps,
 };

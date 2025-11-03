@@ -4,10 +4,10 @@ import { motion } from "motion/react";
 import GithubIcon from "@/components/icons/socials/github"; // Adjust path if needed
 import LinkedinIcon from "@/components/icons/socials/linkedin"; // Adjust path if needed
 import ScrollArrow from "@/components/sections/scroll-arrow";
-import { TypingText } from "@/components/animate-ui/text/typing";
+import { TypingText } from "@/components/ui/animate-ui/text/typing";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowRightIcon } from "@/components/animate-ui/icons/arrow-right";
-import { AnimateIcon } from "@/components/animate-ui/icons/icon";
+import { ArrowRight, ArrowRightIcon } from "@/components/ui/animate-ui/icons/arrow-right";
+import { AnimateIcon } from "@/components/ui/animate-ui/icons/icon";
 
 
 export default function ConstructionPage() {

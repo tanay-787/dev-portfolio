@@ -5,11 +5,11 @@ import { TechCloud } from "../tech-cloud";
 import GithubIcon from "../icons/socials/github"; // Adjust path if needed
 import LinkedinIcon from "../icons/socials/linkedin"; // Adjust path if needed
 import ScrollArrow from "./scroll-arrow";
-import { TypingText } from "@/components/animate-ui/text/typing";
+import { TypingText } from "@/components/ui/animate-ui/text/typing";
 import { Button } from "../ui/button";
 import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
 import AnimatedButton from "../animated-button";
-import { Download } from "../animate-ui/icons/download";
+import { Download } from "../ui/animate-ui/icons/download";
 
 type Hero1Props = {
   title?: React.ReactNode; // can be string or JSX (multiple lines)
@@ -21,17 +21,17 @@ export default function Hero1({
   description = "A passionate developer learning to build reliable, user-focused products across the stack.",
   className = "",
 }: Hero1Props) {
-  const [containerRef, dimensions] = useContainerSize<HTMLDivElement>(); // Use the hook
+  const [containerRef, dimensions] = useContainerSize<HTMLDivElement>();
 
   return (
-    <section aria-label="Hero" className={`max-w-full min-h-screen flex items-center py-12 pb-24 ${className}`}> {/* Adjusted padding, removed relative */}
-      <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted max-width and padding */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 justify-center items-center"> {/* Adjusted gap */}
+    <section aria-label="Hero" className={`py-12 pb-24`}> 
+      <div className="max-w-7xl mx-auto px-10 lg:px-12"> 
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 justify-center items-center"> 
           <div className="col-span-1 lg:col-span-7 ">
             <h1 className="mt-4 text-scale-96">
-              <span className="inline font-neo italic font-semibold">Crafting</span>
+              <span className="inline font-neo italic font-semibold tracking-tighter">Crafting</span>
                 <br />
-                <span className="inline text-brand ">End-to-End<TypingText text={''} cursorClassName="hidden xl:inline" cursor /></span>
+                <span className="inline text-brand tracking-tighter">End-to-End<TypingText text={''} cursorClassName="hidden xl:inline" cursor /></span>
             </h1>
             
             <p className="mt-3 max-w-xl text-muted-foreground text-scale-18 ">
@@ -67,7 +67,7 @@ export default function Hero1({
           </div>
 
           <div 
-            ref={containerRef} // Attach the ref here
+            ref={containerRef}
             className="hidden col-span-1 lg:col-span-5 max-w-[465px] relative lg:flex items-center justify-center aspect-square"
           >
             <motion.div
@@ -75,18 +75,17 @@ export default function Hero1({
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="w-full h-full" // Ensure motion div fills the container
+              className="w-full h-full"
             >
-              {/* Pass the dynamic dimensions to TechCloud */}
+      
               <TechCloud width={dimensions.width} height={dimensions.height} /> 
             </motion.div>
           </div>
         </div>
-        {/* ScrollArrow moved outside the grid but within the max-w-7xl container */}
         <div className="mt-12 flex justify-center">
           <ScrollArrow
             href="#about-me"
-            size="lg"
+            size="md"
             className="text-foreground"
             duration={1.4}
             spacing={14}

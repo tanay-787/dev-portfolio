@@ -1,5 +1,5 @@
 "use client"
-import { TextEffect } from "@/components/motion-primitives/text-effect";
+import { TextEffect } from "@/components/ui/motion-primitives/text-effect";
 import { motion } from "motion/react"
 import { TechCloud } from "@/components/tech-cloud";
 

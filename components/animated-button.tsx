@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { AnimateIcon } from "@/components/animate-ui/icons/icon";
+import { AnimateIcon } from "@/components/ui/animate-ui/icons/icon";
 import { toast } from "sonner";
 
 interface AnimatedButtonProps {

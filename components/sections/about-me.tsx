@@ -63,7 +63,7 @@ export default function AboutMe() {
         <div className="mt-12 flex justify-center">
           <ScrollArrow
             href="#projects"
-            size="lg"
+            size="md"
             className="text-foreground"
             duration={1.4}
             spacing={14}

@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import React from 'react';
 
 const DynamicIconCloud = dynamic(
-  () => import("./magicui/icon-cloud").then((mod) => mod.IconCloud),
+  () => import("./ui/magicui/icon-cloud").then((mod) => mod.IconCloud),
   { ssr: false }
 );
 
