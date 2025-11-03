@@ -1,6 +1,5 @@
 // app/[project]/page.tsx
 import { getPortfolioRepos } from "@/lib/getPortfolioRepos";
-import { getRawGithubFileUrl } from "@/lib/getRawGithubFileUrl";
 import { notFound } from "next/navigation";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext} from "@/components/ui/carousel"
 import type { Metadata } from "next";
@@ -12,6 +11,7 @@ import { mockBlogs } from "@/lib/mockBlogs";
 import { readFile } from "fs/promises";
 import path from "path";
 import { MdxImage } from "@/components/mdx-image";
+import { getBlogUrl } from "@/lib/getBlogUrl";
 
 interface ProjectPageProps {
   params: Promise<{ project: string }>;
@@ -33,7 +33,7 @@ export async function generateMetadata(
   }
 
   // Fetch blog file
-  const blogUrl = getRawGithubFileUrl("tanay-787", repo.name, "BLOG.mdx");
+  const blogUrl = getBlogUrl(repo.name);
   const blogRes = await fetch(blogUrl, { cache: "no-store" });
   const blogMarkdown = blogRes.ok ? await blogRes.text() : "";
 
@@ -53,9 +53,8 @@ export async function generateMetadata(
 
   const title = frontmatter.title || repo.name;
   const description = frontmatter.description || repo.description || "A project from Tanay's portfolio.";
-  const imageUrl = frontmatter.previewImage
-    ? `https://raw.githubusercontent.com/tanay-787/${repo.name}/HEAD/assets/${frontmatter.previewImage}`
-    : repo.showcaseImage!;
+  const imageUrl = frontmatter.previewImage!;
+  console.log(imageUrl)
 
   return {
     title: `${title} | Tanay Codes`,
@@ -86,29 +85,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const repo = repos.find((r: any) => r.name.toLowerCase() === project.toLowerCase());
   if (!repo) notFound();
 
-  // Uncomment for Production
-  // const blogUrl = getRawGithubFileUrl("tanay-787", repo.name, "BLOG.mdx");
-  // const blogRes = await fetch(blogUrl, { cache: "no-store" });
-  // const blogMarkdown = blogRes.ok ? await blogRes.text() : "# Blog not found";
-
-   // MOCK SETUP For DEV
-   const mockBlogInfo = mockBlogs.find(
-    (b) => b.name.toLowerCase() === project.toLowerCase()
-  );
-
-  let blogMarkdown = "";
-  if (mockBlogInfo) {
-    try {
-      const filePath = path.join(process.cwd(), "public", mockBlogInfo.filePath);
-      blogMarkdown = await readFile(filePath, "utf-8");
-    } catch (err) {
-      blogMarkdown = "# Blog not found";
-    }
-  } else if (repo) {
-    blogMarkdown = "# Repo blog coming soon...";
-  } else {
-    notFound();
-  }
+  // Production setup
+  const blogUrl = getBlogUrl(repo.name);
+  const blogRes = await fetch(blogUrl, { cache: "no-store" });
+  const blogMarkdown = blogRes.ok ? await blogRes.text() : "# Blog not found";
   
   const components = {
     h1: (props: any) => <h1 className="mt-8 mb-4 text-scale-60" {...props} />,
