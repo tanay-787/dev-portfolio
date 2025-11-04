@@ -8,7 +8,7 @@ export default function AboutMe() {
         <div className="text-scale-72 w-full  text-center">
         <span className="inline font-neo italic font-semibold">{'About '}</span><span className="inline text-brand">Me</span>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center justofy-center">
 
           {/* Avatar / Graphic Art */}
           <div className="col-span-1 lg:col-span-5 flex items-center justify-center">

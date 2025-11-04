@@ -8,6 +8,7 @@ import { RepoTechStack } from "./repo-tech-stack";
 import { Arrow } from "@radix-ui/react-dropdown-menu";
 import { ArrowUpRight } from "lucide-react";
 import { DashedLine } from "@/components/dashed-line";
+import { Link001 } from "./ui/skiper-ui/animated-links";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
@@ -15,7 +16,12 @@ interface BlogPageContentProps {
   repo: RepositoryItem;
 }
 
-const removeHttps = (url: string) => {
+const getShortenedLink = (url: string) => {
+    const regex = /(?:github\.com|deepwiki\.com)\/([^/]+\/[^/]+)/;
+    const match = url.match(regex);
+    if (match && match[1]) {
+        return match[1];
+    }
     return url.replace(/https?:\/\//, '');
 };
 
@@ -63,45 +69,45 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
                 )}
               </div>
 
-              {repo.homepageUrl && (
+{repo.homepageUrl && (
                 <div>
                   <h2 className="text-base font-semibold mb-1">Live Demo At</h2>
-                  <a
-                    href={repo.homepageUrl}
-                    className="text-primary hover:text-brand break-all"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {removeHttps(repo.homepageUrl)}
-                  </a>
+                  <div className="w-fit">
+                    <Link001
+                      href={repo.homepageUrl}
+                      className="text-primary hover:text-brand"
+                    >
+                      {getShortenedLink(repo.homepageUrl)}
+                    </Link001>
+                  </div>
                 </div>
               )}
 
               {repo.url && (
                 <div>
-                  <h2 className="text-base font-semibold mb-1">Repo URL</h2>
-                  <a
-                    href={repo.url}
-                    className="text-primary hover:text-brand break-all"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {removeHttps(repo.url)}
-                  </a>
+                  <h2 className="text-base font-semibold mb-1">Github Repo</h2>
+                  <div className="w-fit">
+                    <Link001
+                      href={repo.url}
+                      className="text-primary hover:text-brand"
+                    >
+                    {getShortenedLink(repo.url)}
+                    </Link001>
+                    </div>
                 </div>
               )}
 
               {repo.url && (
                 <div>
                   <h2 className="text-base font-semibold mb-1">Deepwiki Docs</h2>
-                  <a
+                  <div className="w-fit">
+                  <Link001
                     href={`https://deepwiki.com/tanay-787/${repo.name}`}
                     className="text-primary hover:text-brand break-all"
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
-                    {removeHttps(`https://deepwiki.com/tanay-787/${repo.name}`)}
-                  </a>
+                    {getShortenedLink(`https://deepwiki.com/tanay-787/${repo.name}`)}
+                    </Link001>
+                    </div>
                 </div>
               )}
             </aside>

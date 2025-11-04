@@ -9,6 +9,8 @@ import AboutMe from "@/components/sections/about-me";
 import type { RepositoryItem } from "@/lib/git-types";
 import Projects from "@/components/sections/projects";
 import Footer from "@/components/sections/footer"
+import Hero2 from "@/components/sections/sample-hero";
+import NewHero from "@/components/sections/new-hero";
 
 
 export default async function Page() {
@@ -29,8 +31,12 @@ function LandingPage({ repos }: { repos: RepositoryItem[] }) {
       {/* Main content area */}
       <main className="">
       <Spotlights />
-        <Hero1 />
+        {/* <Hero1 /> */}
 
+        <NewHero/>
+
+        
+        
         <AboutMe /> 
        
         {/* <Tools /> */}

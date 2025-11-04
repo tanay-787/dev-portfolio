@@ -11,6 +11,7 @@
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
     pkgs.pnpm
+    pkgs.nodejs_22
   ];
   # Sets environment variables in the workspace
   env = {};

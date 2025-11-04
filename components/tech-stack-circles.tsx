@@ -45,7 +45,7 @@ export function TechStackCircles({
             <div
               key={item.id ?? item.name}
               className={cn(
-                "flex items-center justify-center rounded-full bg-muted border-2 border-background",
+                "flex items-center justify-center rounded-full bg-muted border-none border-background",
                 sizeClass,
                 "transition-transform hover:scale-110 hover:z-10",
                 "shadow-sm",
