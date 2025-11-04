@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import type { RepositoryItem } from '@/lib/git-types';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { getBlurDataURL } from '@/lib/image-blur';
 
 export function ProjectGridCard({ project }: { project: RepositoryItem }) {
   return (
@@ -21,10 +23,15 @@ export function ProjectGridCard({ project }: { project: RepositoryItem }) {
     
       <div className="relative flex flex-col justify-between gap-4 rounded-xl border p-6 hover:shadow-lg transition-shadow h-full">
       <div className="relative h-44 sm:h-60 overflow-hidden border-b border-muted">
-        <img
+        <Image
           src={project.showcaseImage || "/placeholder.svg?height=400&width=800&query=project%20preview"}
           alt={project.name}
-          className="h-full w-full object-cover object-top scale-110 translate-y-3 transition-transform duration-500 ease-out group-hover:translate-y-0 group-hover:scale-105"
+          width={800}
+          height={240}
+          className="h-full w-full object-cover object-top scale-110 translate-y-3 transition-transform duration-500 ease-out group-hover:translate-y-0 group-hover:scale-105 image-fade-in"
+          placeholder="blur"
+          blurDataURL={getBlurDataURL(800, 240)}
+          loading="lazy"
         />
       </div>
         <div className="flex-grow">

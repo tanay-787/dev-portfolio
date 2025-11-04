@@ -11,16 +11,16 @@ import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
 import AnimatedButton from "../animated-button";
 import { Download } from "../ui/animate-ui/icons/download";
 
-type Hero1Props = {
+type HeroProps = {
   title?: React.ReactNode; // can be string or JSX (multiple lines)
   description?: string;
   className?: string;
 };
 
-export default function Hero1({
+export default function Hero({
   description = "A passionate developer learning to build reliable, user-focused products across the stack.",
   className = "",
-}: Hero1Props) {
+}: HeroProps) {
   const [containerRef, dimensions] = useContainerSize<HTMLDivElement>();
 
   return (

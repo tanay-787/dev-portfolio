@@ -1,4 +1,6 @@
 import { Button } from "./ui/moving-border";
+import Image from "next/image";
+import { getBlurDataURL } from "@/lib/image-blur";
 
 type Project = {
     title: string;
@@ -23,10 +25,15 @@ type Project = {
       <div className="grid lg:grid-cols-2 items-center gap-10 px-4">
         {/* Image */}
         <div className="overflow-hidden rounded-xl border bg-card/30 shadow-lg">
-          <img
+          <Image
             src={image}
             alt={title}
-            className="w-full h-full object-cover object-center"
+            width={800}
+            height={600}
+            className="w-full h-full object-cover object-center image-fade-in"
+            placeholder="blur"
+            blurDataURL={getBlurDataURL(800, 600)}
+            loading="lazy"
           />
         </div>
   

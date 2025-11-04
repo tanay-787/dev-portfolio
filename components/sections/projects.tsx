@@ -7,6 +7,8 @@ import AnimatedButton from "../animated-button";
 import { RepositoryItem } from "@/lib/git-types";
 import GitRepoIcon from "../icons/socials/git-repo";
 import { RepoTechStack } from "../repo-tech-stack";
+import Image from "next/image";
+import { getBlurDataURL } from "@/lib/image-blur";
 
 export const projectNames = [
   {
@@ -40,16 +42,21 @@ const Projects = ({ projects }: { projects: RepositoryItem[] }) => {
         <span className="">{'Featured '}</span><span className="inline text-brand font-neo italic font-semibold">Projects</span> <GitRepoIcon className="inline h-[1em] w-[1em] text-brand" />
         </h2>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
-          {projects.sort((a, b) => a.name.localeCompare(b.name)).map((project) => (
+          {projects.sort((a, b) => a.name.localeCompare(b.name)).map((project, index) => (
             <div
               key={project.name}
               className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"
             >
               <div className="relative w-full aspect-video basis-1/2 group">
-                <img
-                  className="w-full h-full object-cover bg-muted rounded-xl border border-border/50 transition-transform duration-300 group-hover:brightness-50"
+                <Image
+                  className="w-full h-full object-cover bg-muted rounded-xl border border-border/50 transition-transform duration-300 group-hover:brightness-50 image-fade-in"
                   src={project.showcaseImage!}
                   alt={project.name}
+                  width={800}
+                  height={450}
+                  placeholder="blur"
+                  blurDataURL={getBlurDataURL(800, 450)}
+                  priority={index < 2}
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a href={project.homepageUrl!} target="_blank" rel="noopener noreferrer" >

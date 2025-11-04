@@ -257,4 +257,17 @@
     @apply font-neo;
     font-size: clamp(1.75rem, 1rem + 3.75vw, 2.5rem);
   }
+
+  .image-fade-in {
+    animation: imageFadeIn 250ms ease-out;
+  }
+
+  @keyframes imageFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }

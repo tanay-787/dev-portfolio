@@ -1,6 +1,8 @@
 import type { RepositoryTopicNode, RepositoryItem } from "@/lib/git-types"
 import type * as React from "react"
+import Image from "next/image"
 import { GlowingEffect } from "./ui/glowing-effect"
+import { getBlurDataURL } from "@/lib/image-blur"
 
 // Simple GitHub icon
 function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -47,10 +49,15 @@ export function ProjectCard({
       />
       {/* Snapshot area: intentionally crops the image and reveals only a portion */}
       <div className="relative h-44 sm:h-60 overflow-hidden border-b border-muted">
-        <img
+        <Image
           src={showcaseImage || "/placeholder.svg?height=400&width=800&query=project%20preview"}
           alt={name}
-          className="h-full w-full object-cover object-top scale-110 translate-y-3"
+          width={800}
+          height={240}
+          className="h-full w-full object-cover object-top scale-110 translate-y-3 image-fade-in"
+          placeholder="blur"
+          blurDataURL={getBlurDataURL(800, 240)}
+          loading="lazy"
         />
       </div>
 

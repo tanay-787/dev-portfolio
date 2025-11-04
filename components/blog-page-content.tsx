@@ -1,5 +1,6 @@
 import { RepositoryItem } from "@/lib/git-types";
 import { FC } from "react";
+import Image from "next/image";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 import { TracingBeam } from "./tracing-beam";
@@ -9,6 +10,7 @@ import { Arrow } from "@radix-ui/react-dropdown-menu";
 import { ArrowUpRight } from "lucide-react";
 import { DashedLine } from "@/components/dashed-line";
 import { Link001 } from "./ui/skiper-ui/animated-links";
+import { getBlurDataURL } from "@/lib/image-blur";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
@@ -43,10 +45,15 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
           {/* Hero image */}
           {repo.showcaseImage && (
             <div className="flex mb-12">
-              <img
-                className="w-full h-full object-contain bg-muted rounded-xl border border-border/50 shadow-lg"
+              <Image
+                className="w-full h-full object-contain bg-muted rounded-xl border border-border/50 shadow-lg image-fade-in"
                 src={repo.showcaseImage}
                 alt={`${frontmatter.title || repo.name} preview`}
+                width={1200}
+                height={675}
+                placeholder="blur"
+                blurDataURL={getBlurDataURL(1200, 675)}
+                priority
               />
             </div>
           )}

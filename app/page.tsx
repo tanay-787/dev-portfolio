@@ -3,13 +3,10 @@ import { getPortfolioRepos } from "@/lib/getPortfolioRepos"; // Import the data 
 
 import { NavigationBar } from "@/components/navigation-bar";
 import { Spotlights } from "@/components/ui/spotlight-new";
-import Hero1 from "@/components/sections/hero";
-import Tools from "@/components/sections/tools";
 import AboutMe from "@/components/sections/about-me";
 import type { RepositoryItem } from "@/lib/git-types";
 import Projects from "@/components/sections/projects";
 import Footer from "@/components/sections/footer"
-import Hero2 from "@/components/sections/sample-hero";
 import NewHero from "@/components/sections/new-hero";
 
 
@@ -31,18 +28,9 @@ function LandingPage({ repos }: { repos: RepositoryItem[] }) {
       {/* Main content area */}
       <main className="">
       <Spotlights />
-        {/* <Hero1 /> */}
-
         <NewHero/>
-
-        
-        
         <AboutMe /> 
-       
-        {/* <Tools /> */}
-
-
-       <Projects projects={repos} />
+        <Projects projects={repos} />
 
       </main>
 

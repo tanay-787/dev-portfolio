@@ -1,5 +1,6 @@
 import React from "react";
-import ScrollArrow from "./scroll-arrow"; // Import ScrollArrow
+import ScrollArrow from "./scroll-arrow";
+import Image from "next/image";
 
 export default function AboutMe() {
   return (
@@ -13,11 +14,13 @@ export default function AboutMe() {
           {/* Avatar / Graphic Art */}
           <div className="col-span-1 lg:col-span-5 flex items-center justify-center">
             <div className="relative w-full h-full max-w-[465px] rounded-full overflow-hidden shadow-xl border-4 border-primary/30 p-4">
-              {/* Replace this div with your graphic art / avatar image */}
-              <img
+              <Image
                 src="/my-avatar.png"
                 alt="Tanay Gupte Avatar"
-                className="object-cover w-full h-full"
+                width={465}
+                height={465}
+                className="object-cover w-full h-full image-fade-in"
+                priority
               />
             </div>
           </div>
