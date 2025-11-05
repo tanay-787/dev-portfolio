@@ -49,10 +49,10 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
                 className="w-full h-full object-contain bg-muted rounded-xl border border-border/50 shadow-lg image-fade-in"
                 src={repo.showcaseImage}
                 alt={`${frontmatter.title || repo.name} preview`}
-                width={1200}
-                height={675}
+                width={1920}
+                height={1080}
                 placeholder="blur"
-                blurDataURL={getBlurDataURL(1200, 675)}
+                blurDataURL={getBlurDataURL(1920, 1080)}
                 priority
               />
             </div>

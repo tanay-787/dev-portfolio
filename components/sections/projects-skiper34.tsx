@@ -8,6 +8,7 @@ import { RepositoryItem } from "@/lib/git-types";
 import { getBlurDataURL } from "@/lib/image-blur";
 import GitRepoIcon from "../icons/socials/git-repo";
 import { projectNames } from "./projects";
+import { Link006 } from "@/components/ui/skiper-ui/animated-links";
 
 interface ProjectsStickyProps {
   projects: RepositoryItem[];
@@ -102,9 +103,19 @@ const StickyProjectCard = ({
             {displayName}
           </h3>
           
-          <p className="text-scale-18 text-muted-foreground max-w-2xl">
+          <p className="text-scale-18 text-muted-foreground max-w-2xl mb-4">
             {project.description}
           </p>
+
+          {/* Subtle blog navigation hint */}
+          <div className="w-fit">
+          <Link006 
+            href={`/${project.name}`}
+            className="text-white/90 text-sm font-medium tracking-wide"
+          >
+            Read more
+          </Link006>
+          </div>
         </div>
       </motion.div>
     </motion.div>

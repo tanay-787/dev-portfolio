@@ -1,4 +1,4 @@
-import { getRawGithubFileUrl } from "@/lib/getRawGithubFileUrl";
+import { getShowcaseUrl } from "@/lib/getShowcaseUrl";
 import type { PortfolioQueryResponse, RepositoryItem } from "./git-types"; 
 
 
@@ -51,9 +51,9 @@ export async function getPortfolioRepos(): Promise<RepositoryItem[]> {
 
   const repos = portfolioList?.items?.nodes || [];
 
-  return repos.map((repo: any) => ({
+  return Promise.all(repos.map(async (repo: any) => ({
     ...repo,
-    showcaseImage: getRawGithubFileUrl("tanay-787", repo.name, "Showcase.png"),
-  }));
+    showcaseImage: await getShowcaseUrl("tanay-787", repo.name),
+  })));
 }
 

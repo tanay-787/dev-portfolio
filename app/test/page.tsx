@@ -8,7 +8,7 @@ export default async function TestProjectsPage() {
   
   return (
     <div className="min-h-screen">
-      <Projects projects={repos} />
+      <ProjectsSkiper34 projects={repos} />
     </div>
   );
 }
