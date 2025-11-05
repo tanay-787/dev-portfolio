@@ -9,6 +9,7 @@ import Projects from "@/components/sections/projects";
 import Footer from "@/components/sections/footer"
 import NewHero from "@/components/sections/new-hero";
 import ProjectsSkiper34 from "@/components/sections/projects-skiper34";
+import Hero from "@/components/sections/hero";
 
 
 export default async function Page() {
@@ -29,7 +30,7 @@ function LandingPage({ repos }: { repos: RepositoryItem[] }) {
       {/* Main content area */}
       <main className="">
       <Spotlights />
-        <NewHero/>
+        <Hero/>
         <AboutMe /> 
         {/* <Projects projects={repos} /> */}
         <ProjectsSkiper34 projects={repos} />

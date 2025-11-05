@@ -23,6 +23,7 @@
     "@animate-ui": "https://animate-ui.com/r/{name}.json",
     "@magicui": "https://magicui.design/r/{name}.json",
     "@clerk": "https://clerk.com/r/{name}.json",
-    "@skiper-ui": "https://skiper-ui.com/registry/{name}.json"
+    "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
+    "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json"
   }
 }

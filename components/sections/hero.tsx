@@ -10,6 +10,7 @@ import { Button } from "../ui/button";
 import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
 import AnimatedButton from "../animated-button";
 import { Download } from "../ui/animate-ui/icons/download";
+import { Status, StatusIndicator, StatusLabel } from "@/components/kibo-ui/status";
 
 type HeroProps = {
   title?: React.ReactNode; // can be string or JSX (multiple lines)
@@ -28,6 +29,11 @@ export default function Hero({
       <div className="max-w-7xl mx-auto px-10 lg:px-12"> 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 justify-center items-center"> 
           <div className="col-span-1 lg:col-span-7 ">
+            {/* Status Badge */}
+            <Status status="degraded" className="mb-4 w-fit">
+              <StatusIndicator />
+              <StatusLabel>This Portfolio is Under Development</StatusLabel>
+            </Status>
             <h1 className="mt-4 text-scale-96">
               <span className="inline font-neo italic font-semibold tracking-tighter">Crafting</span>
                 <br />
