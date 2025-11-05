@@ -84,7 +84,7 @@ const StickyProjectCard = ({
         />
         
         {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
         
         {/* Project info overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
@@ -92,17 +92,17 @@ const StickyProjectCard = ({
             href={project.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-sm text-white/70 hover:text-white transition-colors mb-2"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-2"
           >
-            <GitRepoIcon className="mr-1.5 inline h-[1em] w-[1em]" />
+            <GitRepoIcon className="mr-0.8 inline h-[1em] w-[1em]" />
             <span className="lowercase">{"tanay-787/"}{project.name}</span>
           </a>
           
-          <h3 className="text-scale-60 font-semibold text-white mb-3">
+          <h3 className="text-scale-60 font-semibold text-[#ededed] mb-2">
             {displayName}
           </h3>
           
-          <p className="text-scale-18 text-white/90 max-w-2xl">
+          <p className="text-scale-18 text-muted-foreground max-w-2xl">
             {project.description}
           </p>
         </div>
@@ -124,7 +124,7 @@ const ProjectsSkiper34 = ({ projects }: ProjectsStickyProps) => {
             <GitRepoIcon className="inline h-[1em] w-[1em] text-brand ml-2" />
           </h2>
 
-          {/* Scroll hint - positioned relative to title */}
+          {/* Scroll hint */}
           <div className="flex justify-center mt-8 mb-16">
             <span className="after:from-background after:to-foreground relative max-w-[12ch] text-xs uppercase leading-tight opacity-40 text-center after:absolute after:left-1/2 after:top-full after:h-16 after:w-px after:bg-gradient-to-b after:content-['']">
               scroll to explore
