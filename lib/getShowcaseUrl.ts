@@ -1,19 +1,20 @@
-import { getRawGithubFileUrl } from "./getRawGithubFileUrl";
-
 /**
  * Get showcase image URL with fallback from .webp to .png
+ * Images are stored in portfolio-content repo under {projectName}/assets/
  * @param owner - GitHub username/org (e.g., "tanay-787")
- * @param repo - Repository name
+ * @param projectName - Project name (used as folder name)
  * @param branchOrTag - Branch, tag, or commit hash (default: "HEAD")
  * @returns Promise<string> - URL to showcase image
  */
 export async function getShowcaseUrl(
   owner: string = "tanay-787",
-  repo: string,
+  projectName: string,
   branchOrTag: string = "HEAD"
 ): Promise<string> {
+  const baseUrl = `https://raw.githubusercontent.com/${owner}/portfolio-content/${branchOrTag}/${projectName}/assets`;
+  
   // Try .webp first (new format)
-  const webpUrl = getRawGithubFileUrl(owner, repo, "Showcase.webp", branchOrTag);
+  const webpUrl = `${baseUrl}/Showcase.webp`;
   
   try {
     const response = await fetch(webpUrl, { method: 'HEAD' });
@@ -25,5 +26,5 @@ export async function getShowcaseUrl(
   }
   
   // Fallback to .png (legacy format)
-  return getRawGithubFileUrl(owner, repo, "Showcase.png", branchOrTag);
+  return `${baseUrl}/Showcase.png`;
 }
