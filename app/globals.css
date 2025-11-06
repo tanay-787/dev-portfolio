@@ -185,44 +185,123 @@
     font-style: normal;
     line-height: 1.5;
   }
-/* Typography Scale - scale-* naming */
+
+/* 🎯 UTOPIA FLUID SYSTEM - Perfect 320px → 1920px scaling */
+:root {
+  /* Fluid Typography Scale (18px→22px base, 1.2→1.25 ratio) */
+  --step--2: clamp(0.7813rem, 0.7615rem + 0.0987vw, 0.8800rem);
+  --step--1: clamp(0.9375rem, 0.9050rem + 0.1625vw, 1.1000rem);
+  --step-0: clamp(1.1250rem, 1.0750rem + 0.2500vw, 1.3750rem);
+  --step-1: clamp(1.3500rem, 1.2762rem + 0.3688vw, 1.7188rem);
+  --step-2: clamp(1.6200rem, 1.5143rem + 0.5284vw, 2.1484rem);
+  --step-3: clamp(1.9440rem, 1.7957rem + 0.7415vw, 2.6855rem);
+  --step-4: clamp(2.3328rem, 2.1280rem + 1.0241vw, 3.3569rem);
+  --step-5: clamp(2.7994rem, 2.5200rem + 1.3968vw, 4.1962rem);
+  
+  /* Fluid Spacing Scale */
+  --space-3xs: clamp(0.2813rem, 0.2687rem + 0.0625vw, 0.3438rem);
+  --space-2xs: clamp(0.5625rem, 0.5375rem + 0.1250vw, 0.6875rem);
+  --space-xs: clamp(0.8438rem, 0.8063rem + 0.1875vw, 1.0313rem);
+  --space-s: clamp(1.1250rem, 1.0750rem + 0.2500vw, 1.3750rem);
+  --space-m: clamp(1.6875rem, 1.6125rem + 0.3750vw, 2.0625rem);
+  --space-l: clamp(2.2500rem, 2.1500rem + 0.5000vw, 2.7500rem);
+  --space-xl: clamp(3.3750rem, 3.2250rem + 0.7500vw, 4.1250rem);
+  --space-2xl: clamp(4.5000rem, 4.3000rem + 1.0000vw, 5.5000rem);
+  --space-3xl: clamp(6.7500rem, 6.4500rem + 1.5000vw, 8.2500rem);
+  
+  /* Fluid Spacing Pairs (for layout harmony) */
+  --space-3xs-2xs: clamp(0.2813rem, 0.2437rem + 0.1875vw, 0.4375rem);
+  --space-2xs-xs: clamp(0.5625rem, 0.4875rem + 0.3750vw, 0.8125rem);
+  --space-xs-s: clamp(0.8438rem, 0.7313rem + 0.5625vw, 1.1875rem);
+  --space-s-m: clamp(1.1250rem, 0.9500rem + 0.8750vw, 1.8125rem);
+  --space-m-l: clamp(1.6875rem, 1.4625rem + 1.1250vw, 2.5625rem);
+  --space-l-xl: clamp(2.2500rem, 1.9000rem + 1.7500vw, 3.6250rem);
+  --space-xl-2xl: clamp(3.3750rem, 2.8500rem + 2.6250vw, 5.2500rem);
+  --space-2xl-3xl: clamp(4.5000rem, 3.7000rem + 4.0000vw, 7.7000rem);
+}
+
+/* Typography Classes */
+.text-step--2 {
+  font-size: var(--step--2);
+  line-height: 1.5;
+}
+
+.text-step--1 {
+  font-size: var(--step--1);
+  line-height: 1.6;
+}
+
+.text-step-0 {
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+
+.text-step-1 {
+  font-size: var(--step-1);
+  line-height: 1.4;
+}
+
+.text-step-2 {
+  font-size: var(--step-2);
+  line-height: 1.3;
+}
+
+.text-step-3 {
+  font-size: var(--step-3);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-step-4 {
+  font-size: var(--step-4);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-step-5 {
+  font-size: var(--step-5);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* 📐 BACKWARD COMPATIBILITY - Legacy classes mapped to Utopia */
 .text-scale-16 {
-  font-size: 1rem; /* 16px */
+  font-size: var(--step--1);
   line-height: 1.5;
   letter-spacing: 0px;
 }
 
 .text-scale-18 {
-  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); /* 18px */
+  font-size: var(--step-0);
   line-height: 1.6;
   letter-spacing: 0px;
 }
 
 .text-scale-25 {
-  font-size: clamp(1.25rem, 1rem + 1.5vw, 1.5625rem); /* 25px */
-  line-height: 2rem;
+  font-size: var(--step-1);
+  line-height: 1.4;
 }
 
 .text-scale-40 {
-  font-size: clamp(1.75rem, 1rem + 3.75vw, 2.5rem); /* 40px */
-  line-height: 1.2;
+  font-size: var(--step-2);
+  line-height: 1.3;
 }
 
 .text-scale-60 {
-  font-size: clamp(2.25rem, 1rem + 6.25vw, 3.75rem); /* 60px */
-  line-height: 1.15;
+  font-size: var(--step-3);
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .text-scale-72 {
-  font-size: clamp(2.5rem, 1rem + 8vw, 4.5rem); /* 72px */
+  font-size: var(--step-4);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .text-scale-96 {
-  font-size: clamp(3rem, 1rem + 10vw, 6rem); /* 96px */
-  line-height: 1;
+  font-size: var(--step-5);
+  line-height: 1.05;
   letter-spacing: -0.04em;
 }
 
@@ -252,10 +331,83 @@
     font-variant-ligatures: normal;
   }
 
-  /* optional: a display class you can combine with text-scale utils */
+  /* 🎨 FLUID SPACING UTILITIES */
+  
+  /* Margins */
+  .m-fluid-3xs { margin: var(--space-3xs); }
+  .m-fluid-2xs { margin: var(--space-2xs); }
+  .m-fluid-xs { margin: var(--space-xs); }
+  .m-fluid-s { margin: var(--space-s); }
+  .m-fluid-m { margin: var(--space-m); }
+  .m-fluid-l { margin: var(--space-l); }
+  .m-fluid-xl { margin: var(--space-xl); }
+  .m-fluid-2xl { margin: var(--space-2xl); }
+  .m-fluid-3xl { margin: var(--space-3xl); }
+  
+  /* Margin Top */
+  .mt-fluid-3xs { margin-top: var(--space-3xs); }
+  .mt-fluid-2xs { margin-top: var(--space-2xs); }
+  .mt-fluid-xs { margin-top: var(--space-xs); }
+  .mt-fluid-s { margin-top: var(--space-s); }
+  .mt-fluid-m { margin-top: var(--space-m); }
+  .mt-fluid-l { margin-top: var(--space-l); }
+  .mt-fluid-xl { margin-top: var(--space-xl); }
+  .mt-fluid-2xl { margin-top: var(--space-2xl); }
+  .mt-fluid-3xl { margin-top: var(--space-3xl); }
+  
+  /* Margin Bottom */
+  .mb-fluid-3xs { margin-bottom: var(--space-3xs); }
+  .mb-fluid-2xs { margin-bottom: var(--space-2xs); }
+  .mb-fluid-xs { margin-bottom: var(--space-xs); }
+  .mb-fluid-s { margin-bottom: var(--space-s); }
+  .mb-fluid-m { margin-bottom: var(--space-m); }
+  .mb-fluid-l { margin-bottom: var(--space-l); }
+  .mb-fluid-xl { margin-bottom: var(--space-xl); }
+  .mb-fluid-2xl { margin-bottom: var(--space-2xl); }
+  .mb-fluid-3xl { margin-bottom: var(--space-3xl); }
+  
+  /* Padding */
+  .p-fluid-3xs { padding: var(--space-3xs); }
+  .p-fluid-2xs { padding: var(--space-2xs); }
+  .p-fluid-xs { padding: var(--space-xs); }
+  .p-fluid-s { padding: var(--space-s); }
+  .p-fluid-m { padding: var(--space-m); }
+  .p-fluid-l { padding: var(--space-l); }
+  .p-fluid-xl { padding: var(--space-xl); }
+  .p-fluid-2xl { padding: var(--space-2xl); }
+  .p-fluid-3xl { padding: var(--space-3xl); }
+  
+  /* Gaps */
+  .gap-fluid-3xs { gap: var(--space-3xs); }
+  .gap-fluid-2xs { gap: var(--space-2xs); }
+  .gap-fluid-xs { gap: var(--space-xs); }
+  .gap-fluid-s { gap: var(--space-s); }
+  .gap-fluid-m { gap: var(--space-m); }
+  .gap-fluid-l { gap: var(--space-l); }
+  .gap-fluid-xl { gap: var(--space-xl); }
+  .gap-fluid-2xl { gap: var(--space-2xl); }
+  .gap-fluid-3xl { gap: var(--space-3xl); }
+  
+  /* Spacing Pairs for Layout Harmony */
+  .gap-fluid-s-m { gap: var(--space-s-m); }
+  .gap-fluid-m-l { gap: var(--space-m-l); }
+  .gap-fluid-l-xl { gap: var(--space-l-xl); }
+  .p-fluid-s-m { padding: var(--space-s-m); }
+  .p-fluid-m-l { padding: var(--space-m-l); }
+  
+  /* Demo Styling */
+  .utopia-typography .text-step-4 { font-size: var(--step-4); }
+  .utopia-typography .text-step-2 { font-size: var(--step-2); }
+  .utopia-typography .text-step-0 { font-size: var(--step-0); }
+  .utopia-typography .text-step--1 { font-size: var(--step--1); }
+  .utopia-spacing .gap-2 { gap: var(--space-xs); }
+  
+  /* Enhanced Neo Display Class with Fluid Scaling */
   .display-neo {
     @apply font-neo;
-    font-size: clamp(1.75rem, 1rem + 3.75vw, 2.5rem);
+    font-size: var(--step-2);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 
   .image-fade-in {

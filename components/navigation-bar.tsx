@@ -101,7 +101,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   transition={{ duration: 1.2, ease: "easeOut" }}
   className="fixed top-4 z-50"
 >
-        <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
+        <div className="navbar-glass border border-border rounded-full shadow-lg px-fluid-s py-fluid-2xs">
           <GlowingEffect
             blur={0}
             borderWidth={1}
@@ -120,11 +120,11 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
               transition={{ duration: 0.8 }} 
               whileHover={{ scale: 1.05 }}
             >
-              <span className="text-scale-25 italic font-playfair font-semibold text-foreground">TG</span>
+              <span className="text-step-1 italic font-playfair font-semibold text-foreground">TG</span>
             </motion.div>
 
             {/* Right Side Controls */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-fluid-2xs">
               {/* Theme Toggle */}
               <motion.button
                 onClick={toggleTheme}
@@ -217,7 +217,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
             >
-              <div className="navbar-glass-menu border border-border rounded-2xl shadow-xl p-6">
+              <div className="navbar-glass-menu border border-border rounded-2xl shadow-xl p-fluid-m">
                 {/* Menu Items */}
                 <div className="space-y-1">
                   {menuItems.map((item, index) => (
@@ -230,7 +230,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
                       <a
                         href={item.href}
                         onClick={toggleMobileMenu}
-                        className="block px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
+                        className="block px-fluid-s py-fluid-xs text-step-0 font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
                       >
                         {item.label}
                       </a>

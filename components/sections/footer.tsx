@@ -76,13 +76,13 @@ const Footer = () => {
             </ul>
           </div>
           <Separator /> */}
-          <div className="py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6 xl:px-0">
+          <div className="py-fluid-l flex flex-col-reverse sm:flex-row items-center justify-between gap-x-fluid-xs gap-y-fluid-s px-fluid-m xl:px-0">
             {/* Copyright */}
-            <span className="text-muted-foreground">
+            <span className="text-muted-foreground text-step--1">
             Made with ❤️ by Tanay Gupte
             </span>
 
-            <div className="flex items-center gap-5 text-muted-foreground" aria-description="Socials">
+            <div className="flex items-center gap-fluid-s text-muted-foreground" aria-description="Socials">
             <Link href="mailto:tanaygupte22@gmail.com" target="_blank">
                 <GmailIcon className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>

@@ -88,22 +88,22 @@ const StickyProjectCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
         
         {/* Project info overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+        <div className="absolute bottom-0 left-0 right-0 p-fluid-l md:p-fluid-xl">
           <a 
             href={project.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-2"
+            className="inline-flex items-center text-step--2 text-muted-foreground hover:text-foreground transition-colors mb-fluid-2xs"
           >
             <GitRepoIcon className="mr-0.8 inline h-[1em] w-[1em]" />
             <span className="lowercase">{"tanay-787/"}{project.name}</span>
           </a>
           
-          <h3 className="text-scale-60 font-semibold text-[#ededed] mb-2">
+          <h3 className="text-step-3 font-semibold text-[#ededed] mb-fluid-2xs">
             {displayName}
           </h3>
           
-          <p className="text-scale-18 text-muted-foreground max-w-2xl mb-4">
+          <p className="text-step-0 text-muted-foreground max-w-2xl mb-fluid-s">
             {project.description}
           </p>
 
@@ -127,16 +127,16 @@ const ProjectsSkiper34 = ({ projects }: ProjectsStickyProps) => {
 
   return (
     <ReactLenis root>
-      <section aria-label="Projects" id="projects" className="py-16 pb-24">
-        <div className="max-w-7xl mx-auto px-10 lg:px-12">
-          <h2 className="text-scale-72 w-full text-center mb-12">
+      <section aria-label="Projects" id="projects" className="py-fluid-xl pb-fluid-2xl">
+        <div className="max-w-7xl mx-auto px-fluid-m lg:px-fluid-l">
+          <h2 className="text-step-4 w-full text-center mb-fluid-xl">
             <span className="">{'Featured '}</span>
             <span className="inline text-brand font-neo italic font-semibold">Projects</span>
             <GitRepoIcon className="inline h-[1em] w-[1em] text-brand ml-2" />
           </h2>
 
           {/* Scroll hint */}
-          <div className="flex justify-center mt-8 mb-16">
+          <div className="flex justify-center mt-fluid-l mb-fluid-xl">
             <span className="after:from-background after:to-foreground relative max-w-[12ch] text-xs uppercase leading-tight opacity-40 text-center after:absolute after:left-1/2 after:top-full after:h-16 after:w-px after:bg-gradient-to-b after:content-['']">
               scroll to explore
             </span>
@@ -144,7 +144,7 @@ const ProjectsSkiper34 = ({ projects }: ProjectsStickyProps) => {
         </div>
 
         {/* Sticky cards container */}
-        <div className="flex w-full flex-col items-center gap-[10vh] px-4 pt-[10vh]">
+        <div className="flex w-full flex-col items-center gap-[10vh] px-fluid-s pt-[10vh]">
           {sortedProjects.map((project, index) => (
             <StickyProjectCard key={project.name} project={project} index={index} />
           ))}

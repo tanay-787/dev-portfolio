@@ -4,16 +4,16 @@ import Image from "next/image";
 
 export default function AboutMe() {
   return (
-    <section aria-label="About Me" id="about-me" className="py-16 pb-24"> {/* Removed relative from here */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-scale-72 w-full  text-center">
+    <section aria-label="About Me" id="about-me" className="py-fluid-xl pb-fluid-2xl">
+      <div className="max-w-7xl mx-auto px-fluid-m lg:px-fluid-l">
+        <div className="text-step-4 w-full text-center">
         <span className="inline font-neo italic font-semibold">{'About '}</span><span className="inline text-brand">Me</span>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center justofy-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-fluid-xl items-center justify-center">
 
           {/* Avatar / Graphic Art */}
           <div className="col-span-1 lg:col-span-5 flex items-center justify-center">
-            <div className="relative w-full h-full max-w-[465px] rounded-full overflow-hidden shadow-xl border-4 border-primary/30 p-4">
+            <div className="relative w-full h-full max-w-[465px] rounded-full overflow-hidden shadow-xl border-4 border-primary/30 p-fluid-s">
               <Image
                 src="/my-avatar.png"
                 alt="Tanay Gupte Avatar"
@@ -27,7 +27,7 @@ export default function AboutMe() {
 
           {/* Text Section */}
           <div className="col-span-1 lg:col-span-7">
-            <p className="mt-6 max-w-xl text-muted-foreground text-base sm:text-lg leading-relaxed">
+            <p className="mt-fluid-m max-w-xl text-muted-foreground text-step-0 leading-relaxed">
               Hey, I’m <span className="font-neo italic font-semibold leading-[none] text-brand">Tanay</span>, an
               innovative and curious developer passionate about building
               user-centered applications. I enjoy solving problems, designing
@@ -35,26 +35,26 @@ export default function AboutMe() {
               modern web technologies.
             </p>
 
-            <div className="mt-6 space-y-4">
+            <div className="mt-fluid-m space-y-fluid-s">
               <div>
-                <h3 className="text-lg font-semibold">🎓 Education</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-step-1 font-semibold">🎓 Education</h3>
+                <p className="text-muted-foreground text-step--1">
                   Bachelor of Science in Information Technology (BSc. IT), Royal
                   College of Science and Commerce (2022 – 2025)
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold">📚 Courses</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-step-1 font-semibold">📚 Courses</h3>
+                <p className="text-muted-foreground text-step--1">
                   Full Stack Development Bootcamp – KnowledgeHut UpGrad (Aug
                   2024)
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold">🏆 Awards</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-step-1 font-semibold">🏆 Awards</h3>
+                <p className="text-muted-foreground text-step--1">
                   Winner, Frontend Development Hackathon 2024 – KnowledgeHut
                   UpGrad
                 </p>
@@ -63,7 +63,7 @@ export default function AboutMe() {
           </div>
         </div>
         {/* ScrollArrow moved outside the grid but within the max-w-7xl container */}
-        <div className="mt-12 flex justify-center">
+        <div className="mt-fluid-xl flex justify-center">
           <ScrollArrow
             href="#projects"
             size="md"

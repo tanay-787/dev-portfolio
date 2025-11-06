@@ -36,16 +36,16 @@ export const projectNames = [
 
 const Projects = ({ projects }: { projects: RepositoryItem[] }) => {
   return (
-    <section aria-label="Projects" id="projects" className="py-16 pb-24"> {/* Changed to section and applied padding */}
-      <div className="max-w-7xl mx-auto px-10 lg:px-12"> {/* Adjusted padding */}
-        <h2 className="text-scale-72 w-full md:text-center md:mx-auto">
+    <section aria-label="Projects" id="projects" className="py-fluid-xl pb-fluid-2xl">
+      <div className="max-w-7xl mx-auto px-fluid-m lg:px-fluid-l">
+        <h2 className="text-step-4 w-full md:text-center md:mx-auto">
         <span className="">{'Featured '}</span><span className="inline text-brand font-neo italic font-semibold">Projects</span> <GitRepoIcon className="inline h-[1em] w-[1em] text-brand" />
         </h2>
-        <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
+        <div className="mt-fluid-l md:mt-fluid-xl w-full mx-auto space-y-fluid-2xl">
           {projects.sort((a, b) => a.name.localeCompare(b.name)).map((project, index) => (
             <div
               key={project.name}
-              className="flex flex-col md:flex-row items-center gap-x-20 gap-y-6 md:odd:flex-row-reverse"
+              className="flex flex-col md:flex-row items-center gap-x-fluid-2xl gap-y-fluid-m md:odd:flex-row-reverse"
             >
               <div className="relative w-full aspect-video basis-1/2 group">
                 <Image
@@ -71,10 +71,10 @@ const Projects = ({ projects }: { projects: RepositoryItem[] }) => {
                   <span>{"tanay-787/"}{project.name}</span>
                 </span>
                 </a>
-                <h4 className="mb-2 text-scale-40 font-semibold">
+                <h4 className="mb-fluid-2xs text-step-2 font-semibold">
                   {projectNames.find(item => item.key === project.name)?.name || project.name}
                 </h4>
-                <p className="text-muted-foreground text-scale-18">
+                <p className="text-muted-foreground text-step-0">
                   {project.description}
                 </p>
                 <RepoTechStack repo={project}/>
@@ -83,7 +83,7 @@ const Projects = ({ projects }: { projects: RepositoryItem[] }) => {
                   href={`/${project.name}`}
                   icon={<ArrowRight className="ml-1 -mt-0.8" />}
                   isBlogLink
-                  className="mt-6 rounded-full min-w-40 text-[15px]"
+                  className="mt-fluid-m rounded-full min-w-40 text-step--1"
                 />
               </div>
             </div>

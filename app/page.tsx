@@ -27,21 +27,18 @@ function LandingPage({ repos }: { repos: RepositoryItem[] }) {
       {/* Site Header (Navigation Bar) */}
       <NavigationBar />
 
-      {/* Main content area */}
-      <main className="">
-      <Spotlights />
+      {/* Main content area with fluid spacing */}
+      <main className="space-y-fluid-xl">
+        <Spotlights />
         <Hero/>
         <AboutMe /> 
         {/* <Projects projects={repos} /> */}
         <ProjectsSkiper34 projects={repos} />
       </main>
 
-
-      {/* Footer */}
-      <footer className="py-8 text-center text-muted-foreground">
-        {/* <div className="container mx-auto">Made with ❤️ by Tanay Gupte</div>
-         */}
-         <Footer />
+      {/* Footer with fluid spacing */}
+      <footer className="py-fluid-l text-center text-step--1 text-muted-foreground">
+        <Footer />
       </footer>
     </div>
   );

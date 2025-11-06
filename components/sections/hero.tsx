@@ -25,26 +25,26 @@ export default function Hero({
   const [containerRef, dimensions] = useContainerSize<HTMLDivElement>();
 
   return (
-    <section aria-label="Hero" className={`py-12 pb-24`}> 
-      <div className="max-w-7xl mx-auto px-10 lg:px-12"> 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 justify-center items-center"> 
+    <section aria-label="Hero" className={`py-fluid-xl pb-fluid-2xl`}> 
+      <div className="max-w-7xl mx-auto px-fluid-m lg:px-fluid-l"> 
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-fluid-xl justify-center items-center"> 
           <div className="col-span-1 lg:col-span-7 ">
             {/* Status Badge */}
-            <Status status="degraded" className="mb-4 w-fit">
+            <Status status="degraded" className="mb-fluid-s w-fit">
               <StatusIndicator />
               <StatusLabel>This Portfolio is Under Development</StatusLabel>
             </Status>
-            <h1 className="mt-4 text-scale-96">
+            <h1 className="mt-fluid-s text-step-5">
               <span className="inline font-neo italic font-semibold tracking-tighter">Crafting</span>
                 <br />
                 <span className="inline text-brand tracking-tighter">End-to-End<TypingText text={''} cursorClassName="hidden xl:inline" cursor /></span>
             </h1>
             
-            <p className="mt-3 max-w-xl text-muted-foreground text-scale-18 ">
+            <p className="mt-fluid-xs max-w-xl text-muted-foreground text-step-0">
               {description}
             </p>
 
-            <div className="mt-4 flex gap-4 items-center">
+            <div className="mt-fluid-s flex gap-fluid-s items-center">
             <AnimatedButton 
                 text="My Resume"
                 href={"https://drive.google.com/uc?export=download&id=19raxk9FxgccvNEPfiJk4SPbbelht0TuA"} 
@@ -88,7 +88,7 @@ export default function Hero({
             </motion.div>
           </div>
         </div>
-        <div className="mt-12 flex justify-center">
+        <div className="mt-fluid-xl flex justify-center">
           <ScrollArrow
             href="#about-me"
             size="md"

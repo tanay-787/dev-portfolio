@@ -22,7 +22,7 @@ type Project = {
     liveLink,
   }: Project) {
     return (
-      <div className="grid lg:grid-cols-2 items-center gap-10 px-4">
+      <div className="grid lg:grid-cols-2 items-center gap-fluid-l px-fluid-s">
         {/* Image */}
         <div className="overflow-hidden rounded-xl border bg-card/30 shadow-lg">
           <Image
@@ -36,19 +36,19 @@ type Project = {
             loading="lazy"
           />
         </div>
-  
+
         {/* Content */}
-        <div className="text-left max-w-xl mx-auto space-y-4">
-          <h3 className="text-scale-24 font-semibold text-primary">{title}</h3>
-          <p className="text-scale-16 text-muted-foreground">{description}</p>
-  
-          <ul className="list-disc pl-4 text-scale-16 text-foreground">
+        <div className="text-left max-w-xl mx-auto space-y-fluid-s">
+          <h3 className="text-step-1 font-semibold text-primary">{title}</h3>
+          <p className="text-step--1 text-muted-foreground">{description}</p>
+
+          <ul className="list-disc pl-fluid-s text-step--1 text-foreground">
             {features.map((f, idx) => (
               <li key={idx}>{f}</li>
             ))}
           </ul>
-  
-          <div className="flex flex-wrap gap-3 items-center">
+
+          <div className="flex flex-wrap gap-fluid-xs items-center">
             {technologies.map((Icon, i) => (
               <div key={i} className="w-6 h-6 text-muted-foreground">
                 {Icon}
@@ -56,7 +56,7 @@ type Project = {
             ))}
           </div>
   
-          <div className="flex gap-4 pt-4">
+          <div className="flex gap-fluid-s pt-fluid-s">
             <a href={codeLink} target="_blank" rel="noopener noreferrer">
               <Button variant="outline">Code</Button>
             </a>
