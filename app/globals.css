@@ -425,6 +425,28 @@
   .p-fluid-xl { padding: var(--space-xl); }
   .p-fluid-2xl { padding: var(--space-2xl); }
   .p-fluid-3xl { padding: var(--space-3xl); }
+
+  /* Padding X */
+  .px-fluid-3xs { padding-inline: var(--space-3xs); }
+  .px-fluid-2xs { padding-inline: var(--space-2xs); }
+  .px-fluid-xs { padding-inline: var(--space-xs); }
+  .px-fluid-s { padding-inline: var(--space-s); }
+  .px-fluid-m { padding-inline: var(--space-m); }
+  .px-fluid-l { padding-inline: var(--space-l); }
+  .px-fluid-xl { padding-inline: var(--space-xl); }
+  .px-fluid-2xl { padding-inline: var(--space-2xl); }
+  .px-fluid-3xl { padding-inline: var(--space-3xl); }
+
+  /* Padding Y */
+  .py-fluid-3xs { padding-block: var(--space-3xs); }
+  .py-fluid-2xs { padding-block: var(--space-2xs); }
+  .py-fluid-xs { padding-block: var(--space-xs); }
+  .py-fluid-s { padding-block: var(--space-s); }
+  .py-fluid-m { padding-block: var(--space-m); }
+  .py-fluid-l { padding-block: var(--space-l); }
+  .py-fluid-xl { padding-block: var(--space-xl); }
+  .py-fluid-2xl { padding-block: var(--space-2xl); }
+  .py-fluid-3xl { padding-block: var(--space-3xl); }
   
   /* Gaps */
   .gap-fluid-3xs { gap: var(--space-3xs); }

@@ -24,6 +24,7 @@ const StickyProjectCard = ({
   const vertMargin = 10;
   const container = useRef<HTMLDivElement>(null);
   const [maxScrollY, setMaxScrollY] = useState(Infinity);
+  const [viewportHeight, setViewportHeight] = useState(0);
 
   const filter = useMotionValue(0);
   const negateFilter = useTransform(filter, (value) => -value);
@@ -33,6 +34,13 @@ const StickyProjectCard = ({
   });
   
   const scale = useTransform(scrollY, [maxScrollY, maxScrollY + 10000], [1, 0]);
+  const top = useTransform(scrollY, (value) => {
+    if (value <= maxScrollY) return `${vertMargin}vh`;
+    const overshoot = value - maxScrollY;
+    const maxOvershoot = 10000;
+    const offset = Math.min((overshoot / maxOvershoot) * 20, 20);
+    return `calc(${vertMargin}vh + ${offset}px)`;
+  });
   
   const isInView = useInView(container, {
     margin: `0px 0px -${100 - vertMargin}% 0px`,
@@ -55,6 +63,10 @@ const StickyProjectCard = ({
     }
   }, [isInView, scrollY]);
 
+  useEffect(() => {
+    setViewportHeight(window.innerHeight);
+  }, []);
+
   const displayName = projectNames.find(item => item.key === project.name)?.name || project.name;
 
   return (
@@ -63,16 +75,11 @@ const StickyProjectCard = ({
       className="sticky w-full max-w-7xl overflow-hidden rounded-3xl bg-muted border border-border/50"
       style={{
         scale: scale,
-        rotate: filter,
-        aspectRatio: '',
-        height: '90vh',
-        top: `auto`,
+        height: 'clamp(400px, 85vh, 90vh)',
+        top: top,
       }}
     >
       <motion.div
-        style={{
-          rotate: negateFilter,
-        }}
         className="relative h-full w-full"
       >
         <Image
@@ -111,12 +118,12 @@ const StickyProjectCard = ({
 
 
         {/* Project info overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-fluid-l md:p-fluid-xl z-20 ">
+        <div className="absolute bottom-0 left-0 right-0 p-fluid-l md:p-fluid-xl z-20 text-[#ededed]">
           <a 
             href={project.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-step--2 text-foreground transition-colors mb-fluid-2xs drop-shadow-xl/50"
+            className="inline-flex items-center text-step--2 transition-colors mb-fluid-2xs drop-shadow-xl/50"
             style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}
           >
             <GitRepoIcon className="mr-0.8 inline h-[1em] w-[1em]" />
@@ -124,7 +131,7 @@ const StickyProjectCard = ({
           </a>
           
           {/* Project title - enhanced scaling for card context */}
-          <h3 className="font-semibold text-[#ededed] mb-fluid-2xs"
+          <h3 className="font-semibold  mb-fluid-2xs"
               style={{ 
                 fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
                 textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3)'
@@ -133,7 +140,7 @@ const StickyProjectCard = ({
           </h3>
           
           {/* Project description - enhanced readability */}
-          <p className="text-foreground max-w-2xl mb-fluid-s leading-relaxed"
+          <p className=" max-w-2xl mb-fluid-s leading-relaxed"
              style={{ 
                fontSize: 'clamp(1rem, 2vw, 1.3rem)',
                textShadow: '0 1px 4px rgba(0, 0, 0, 0.6)'
@@ -145,7 +152,7 @@ const StickyProjectCard = ({
           <div className="w-fit">
           <Link006 
             href={`/${project.name}`}
-            className="text-white/90 text-sm font-medium tracking-wide"
+            className="text-sm font-medium tracking-wide"
           >
             Learn more
           </Link006>

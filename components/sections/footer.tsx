@@ -76,7 +76,7 @@ const Footer = () => {
             </ul>
           </div>
           <Separator /> */}
-          <div className="py-fluid-xl flex flex-col-reverse sm:flex-row items-center justify-between gap-x-fluid-xs gap-y-fluid-s px-fluid-m xl:px-0">
+          <div className="py-fluid-s flex flex-col sm:flex-row items-center justify-between gap-fluid-s px-fluid-m xl:px-0">
             {/* Copyright with enhanced scaling */}
             <span className="text-step--1 lg:text-step-0 text-muted-foreground">
             Made with ❤️ by Tanay Gupte
