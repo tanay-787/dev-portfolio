@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from "next/script";
 import { DM_Sans, DM_Mono, Playfair_Display } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import './globals.css';
