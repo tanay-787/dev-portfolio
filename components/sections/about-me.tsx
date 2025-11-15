@@ -4,12 +4,17 @@ import Image from "next/image";
 
 export default function AboutMe() {
   return (
-    <section aria-label="About Me" id="about-me" className="py-fluid-xl pb-fluid-2xl">
-      <div className="max-w-7xl mx-auto px-fluid-m lg:px-fluid-l">
-        <div className="text-step-4 w-full text-center">
-        <span className="inline font-neo italic font-semibold">{'About '}</span><span className="inline text-brand">Me</span>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-fluid-xl items-center justify-center">
+    <section aria-label="About Me" id="about-me" className="pt-fluid-3xl pb-fluid-2xl">
+      {/* Enhanced container for better large screen utilization */}
+      <div className="w-full max-w-[90vw] xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto px-fluid-m lg:px-fluid-l">
+        {/* Section header - enhanced scaling */}
+        <h2 className="text-display-section w-full text-center mb-fluid-l">
+          <span className="inline font-neo italic font-semibold">{'About '}</span>
+          <span className="inline text-brand">Me</span>
+        </h2>
+        
+        {/* Enhanced content grid with better proportions */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-fluid-l xl:gap-fluid-xl items-center">
 
           {/* Avatar / Graphic Art */}
           <div className="col-span-1 lg:col-span-5 flex items-center justify-center">
@@ -35,25 +40,26 @@ export default function AboutMe() {
               modern web technologies.
             </p>
 
+            {/* Achievement sections - subtle but structured hierarchy */}
             <div className="mt-fluid-m space-y-fluid-s">
               <div>
-                <h3 className="text-step-1 font-semibold">🎓 Education</h3>
-                <p className="text-muted-foreground text-step--1">
+                <h3 className="text-step-0 font-semibold">🎓 Education</h3>
+                <p className="text-muted-foreground text-step--1 mb-fluid-s">
                   Bachelor of Science in Information Technology (BSc. IT), Royal
                   College of Science and Commerce (2022 – 2025)
                 </p>
               </div>
 
               <div>
-                <h3 className="text-step-1 font-semibold">📚 Courses</h3>
-                <p className="text-muted-foreground text-step--1">
+                <h3 className="text-step-0 font-semibold mb-fluid-3xs">📚 Courses</h3>
+                <p className="text-muted-foreground text-step--1 mb-fluid-s">
                   Full Stack Development Bootcamp – KnowledgeHut UpGrad (Aug
                   2024)
                 </p>
               </div>
 
               <div>
-                <h3 className="text-step-1 font-semibold">🏆 Awards</h3>
+                <h3 className="text-step-0 font-semibold mb-fluid-3xs">🏆 Awards</h3>
                 <p className="text-muted-foreground text-step--1">
                   Winner, Frontend Development Hackathon 2024 – KnowledgeHut
                   UpGrad
@@ -62,7 +68,7 @@ export default function AboutMe() {
             </div>
           </div>
         </div>
-        {/* ScrollArrow moved outside the grid but within the max-w-7xl container */}
+        {/* Scroll indicator */}
         <div className="mt-fluid-xl flex justify-center">
           <ScrollArrow
             href="#projects"

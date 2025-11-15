@@ -67,7 +67,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
     { label: "Contact Me", href: "#contact-me" },
   ];
   return (
-    <div className={cn("max-w-7xl", className)}>
+    <div className={cn("w-full max-w-[90vw] xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto", className)}>
       <motion.nav
   initial={{
     y: -100,
@@ -101,7 +101,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
   transition={{ duration: 1.2, ease: "easeOut" }}
   className="fixed top-4 z-50"
 >
-        <div className="navbar-glass border border-border rounded-full shadow-lg px-fluid-s py-fluid-2xs">
+        <div className="navbar-glass border border-border rounded-full shadow-lg px-4 py-2">
           <GlowingEffect
             blur={0}
             borderWidth={1}
@@ -124,7 +124,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
             </motion.div>
 
             {/* Right Side Controls */}
-            <div className="flex items-center space-x-fluid-2xs">
+            <div className="flex items-center space-x-2">
               {/* Theme Toggle */}
               <motion.button
                 onClick={toggleTheme}
@@ -217,7 +217,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md"
             >
-              <div className="navbar-glass-menu border border-border rounded-2xl shadow-xl p-fluid-m">
+              <div className="navbar-glass-menu border border-border rounded-2xl shadow-xl p-6">
                 {/* Menu Items */}
                 <div className="space-y-1">
                   {menuItems.map((item, index) => (
@@ -230,7 +230,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
                       <a
                         href={item.href}
                         onClick={toggleMobileMenu}
-                        className="block px-fluid-s py-fluid-xs text-step-0 font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
+                        className="block px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-colors"
                       >
                         {item.label}
                       </a>

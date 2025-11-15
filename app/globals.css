@@ -186,38 +186,68 @@
     line-height: 1.5;
   }
 
-/* 🎯 UTOPIA FLUID SYSTEM - Perfect 320px → 1920px scaling */
+/* 🎯 MATHEMATICAL FLUID SYSTEM - Fixed & Working 320px → ∞ scaling */
 :root {
-  /* Fluid Typography Scale (18px→22px base, 1.2→1.25 ratio) */
-  --step--2: clamp(0.7813rem, 0.7615rem + 0.0987vw, 0.8800rem);
-  --step--1: clamp(0.9375rem, 0.9050rem + 0.1625vw, 1.1000rem);
-  --step-0: clamp(1.1250rem, 1.0750rem + 0.2500vw, 1.3750rem);
-  --step-1: clamp(1.3500rem, 1.2762rem + 0.3688vw, 1.7188rem);
-  --step-2: clamp(1.6200rem, 1.5143rem + 0.5284vw, 2.1484rem);
-  --step-3: clamp(1.9440rem, 1.7957rem + 0.7415vw, 2.6855rem);
-  --step-4: clamp(2.3328rem, 2.1280rem + 1.0241vw, 3.3569rem);
-  --step-5: clamp(2.7994rem, 2.5200rem + 1.3968vw, 4.1962rem);
+  /* Mathematical Foundation - Simplified for browser compatibility */
+  --phi: 1.618; /* Golden ratio */
   
-  /* Fluid Spacing Scale */
-  --space-3xs: clamp(0.2813rem, 0.2687rem + 0.0625vw, 0.3438rem);
-  --space-2xs: clamp(0.5625rem, 0.5375rem + 0.1250vw, 0.6875rem);
-  --space-xs: clamp(0.8438rem, 0.8063rem + 0.1875vw, 1.0313rem);
-  --space-s: clamp(1.1250rem, 1.0750rem + 0.2500vw, 1.3750rem);
-  --space-m: clamp(1.6875rem, 1.6125rem + 0.3750vw, 2.0625rem);
-  --space-l: clamp(2.2500rem, 2.1500rem + 0.5000vw, 2.7500rem);
-  --space-xl: clamp(3.3750rem, 3.2250rem + 0.7500vw, 4.1250rem);
-  --space-2xl: clamp(4.5000rem, 4.3000rem + 1.0000vw, 5.5000rem);
-  --space-3xl: clamp(6.7500rem, 6.4500rem + 1.5000vw, 8.2500rem);
+  /* Working Fluid Typography Scale with proper clamp() functions */
+  --step--2: clamp(0.69rem, 0.65rem + 0.2vw, 0.89rem);   /* ~11px → ~14px */
+  --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 1.11rem);  /* ~13px → ~18px */
+  --step-0: clamp(1rem, 0.94rem + 0.31vw, 1.38rem);      /* 16px → 22px BASE */
+  --step-1: clamp(1.2rem, 1.13rem + 0.38vw, 1.72rem);    /* ~19px → ~28px */
+  --step-2: clamp(1.44rem, 1.35rem + 0.47vw, 2.15rem);   /* ~23px → ~34px */
+  --step-3: clamp(1.73rem, 1.61rem + 0.59vw, 2.69rem);   /* ~28px → ~43px */
+  --step-4: clamp(2.07rem, 1.93rem + 0.73vw, 3.36rem);   /* ~33px → ~54px */
+  --step-5: clamp(2.49rem, 2.31rem + 0.91vw, 4.20rem);   /* ~40px → ~67px */
   
-  /* Fluid Spacing Pairs (for layout harmony) */
-  --space-3xs-2xs: clamp(0.2813rem, 0.2437rem + 0.1875vw, 0.4375rem);
-  --space-2xs-xs: clamp(0.5625rem, 0.4875rem + 0.3750vw, 0.8125rem);
-  --space-xs-s: clamp(0.8438rem, 0.7313rem + 0.5625vw, 1.1875rem);
-  --space-s-m: clamp(1.1250rem, 0.9500rem + 0.8750vw, 1.8125rem);
-  --space-m-l: clamp(1.6875rem, 1.4625rem + 1.1250vw, 2.5625rem);
-  --space-l-xl: clamp(2.2500rem, 1.9000rem + 1.7500vw, 3.6250rem);
-  --space-xl-2xl: clamp(3.3750rem, 2.8500rem + 2.6250vw, 5.2500rem);
-  --space-2xl-3xl: clamp(4.5000rem, 3.7000rem + 4.0000vw, 7.7000rem);
+  /* Golden Ratio Based Spacing System - Direct clamp() values */
+  --space-3xs: clamp(0.19rem, 0.17rem + 0.09vw, 0.28rem);    /* φ⁻³ scaling */
+  --space-2xs: clamp(0.31rem, 0.28rem + 0.15vw, 0.46rem);    /* φ⁻² scaling */
+  --space-xs: clamp(0.50rem, 0.45rem + 0.24vw, 0.74rem);     /* φ⁻¹ scaling */
+  --space-s: clamp(0.81rem, 0.73rem + 0.39vw, 1.20rem);      /* Base scaling */
+  --space-m: clamp(1.31rem, 1.18rem + 0.63vw, 1.94rem);      /* φ¹ scaling */
+  --space-l: clamp(2.12rem, 1.91rem + 1.02vw, 3.14rem);      /* φ² scaling */
+  --space-xl: clamp(3.44rem, 3.09rem + 1.65vw, 5.09rem);     /* φ³ scaling */
+  --space-2xl: clamp(5.56rem, 5.00rem + 2.67vw, 8.23rem);    /* φ⁴ scaling */
+  --space-3xl: clamp(9.00rem, 8.09rem + 4.32vw, 13.32rem);   /* φ⁵ scaling */
+  
+  /* Harmonized Spacing Pairs - Direct intermediate values */
+  --space-3xs-2xs: clamp(0.25rem, 0.22rem + 0.12vw, 0.37rem);
+  --space-2xs-xs: clamp(0.40rem, 0.36rem + 0.19vw, 0.60rem);
+  --space-xs-s: clamp(0.65rem, 0.59rem + 0.31vw, 0.97rem);
+  --space-s-m: clamp(1.06rem, 0.95rem + 0.51vw, 1.57rem);
+  --space-m-l: clamp(1.71rem, 1.54rem + 0.82vw, 2.54rem);
+  --space-l-xl: clamp(2.78rem, 2.50rem + 1.33vw, 4.11rem);
+  --space-xl-2xl: clamp(4.50rem, 4.04rem + 2.16vw, 6.66rem);
+  --space-2xl-3xl: clamp(7.28rem, 6.54rem + 3.49vw, 10.77rem);
+
+  /* Continuous Viewport-Proportional Scaling - No hard caps, exponential growth */
+  --space-viewport-xs: clamp(1rem, 1rem + 2vw, 8rem);     /* 16px → 128px+ */
+  --space-viewport-s: clamp(2rem, 2rem + 4vw, 16rem);     /* 32px → 256px+ */
+  --space-viewport-m: clamp(3rem, 3rem + 6vw, 24rem);     /* 48px → 384px+ */
+  --space-viewport-l: clamp(4rem, 4rem + 8vw, 32rem);     /* 64px → 512px+ */
+  --space-viewport-xl: clamp(6rem, 6rem + 12vw, 48rem);   /* 96px → 768px+ */
+
+  /* Enhanced Display Typography - Exponential scaling for large screens */
+  --display-hero: clamp(3rem, 3rem + 8vw, 12rem);         /* 48px → 192px+ */
+  --display-section: clamp(2rem, 2rem + 5vw, 8rem);       /* 32px → 128px+ */
+  --display-subtitle: clamp(1.5rem, 1.5rem + 3vw, 6rem);  /* 24px → 96px+ */
+
+  /* Fallback system for older browsers */
+  --fallback-step-0: 1.125rem; /* Static fallback */
+  --fallback-space-s: 1rem;    /* Static fallback */
+}
+
+/* Browser support detection and graceful degradation */
+@supports not (width: clamp(1rem, 1vw, 2rem)) {
+  :root {
+    /* Static values for browsers without clamp() support */
+    --step-0: var(--fallback-step-0);
+    --space-s: var(--fallback-space-s);
+    --space-m: 1.5rem;
+    --space-l: 2rem;
+  }
 }
 
 /* Typography Classes */
@@ -262,6 +292,25 @@
   font-size: var(--step-5);
   line-height: 1.05;
   letter-spacing: -0.03em;
+}
+
+/* Enhanced Display Typography for Large Screen Utilization */
+.text-display-hero {
+  font-size: var(--display-hero);
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+}
+
+.text-display-section {
+  font-size: var(--display-section);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-display-subtitle {
+  font-size: var(--display-subtitle);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 /* 📐 BACKWARD COMPATIBILITY - Legacy classes mapped to Utopia */
@@ -395,6 +444,15 @@
   .p-fluid-s-m { padding: var(--space-s-m); }
   .p-fluid-m-l { padding: var(--space-m-l); }
   
+  /* Additional spacing pairs used in components */
+  .space-y-fluid-s-m > * + * { margin-top: var(--space-s-m); }
+  .mb-fluid-l-xl { margin-bottom: var(--space-l-xl); }
+  
+  /* Space-y utilities for sections */
+  .space-y-fluid-xl > * + * { margin-top: var(--space-xl); }
+  .space-y-fluid-2xl > * + * { margin-top: var(--space-2xl); }
+  .space-y-fluid-3xl > * + * { margin-top: var(--space-3xl); }
+  
   /* Demo Styling */
   .utopia-typography .text-step-4 { font-size: var(--step-4); }
   .utopia-typography .text-step-2 { font-size: var(--step-2); }
@@ -422,4 +480,48 @@
       opacity: 1;
     }
   }
+
+  /* Viewport-Proportional Spacing Utilities */
+  .p-viewport-xs { padding: var(--space-viewport-xs); }
+  .p-viewport-s { padding: var(--space-viewport-s); }
+  .p-viewport-m { padding: var(--space-viewport-m); }
+  .p-viewport-l { padding: var(--space-viewport-l); }
+  .p-viewport-xl { padding: var(--space-viewport-xl); }
+
+  .px-viewport-xs { padding-inline: var(--space-viewport-xs); }
+  .px-viewport-s { padding-inline: var(--space-viewport-s); }
+  .px-viewport-m { padding-inline: var(--space-viewport-m); }
+  .px-viewport-l { padding-inline: var(--space-viewport-l); }
+  .px-viewport-xl { padding-inline: var(--space-viewport-xl); }
+
+  .py-viewport-xs { padding-block: var(--space-viewport-xs); }
+  .py-viewport-s { padding-block: var(--space-viewport-s); }
+  .py-viewport-m { padding-block: var(--space-viewport-m); }
+  .py-viewport-l { padding-block: var(--space-viewport-l); }
+  .py-viewport-xl { padding-block: var(--space-viewport-xl); }
+
+  .mt-viewport-xs { margin-top: var(--space-viewport-xs); }
+  .mt-viewport-s { margin-top: var(--space-viewport-s); }
+  .mt-viewport-m { margin-top: var(--space-viewport-m); }
+  .mt-viewport-l { margin-top: var(--space-viewport-l); }
+  .mt-viewport-xl { margin-top: var(--space-viewport-xl); }
+
+  .mb-viewport-xs { margin-bottom: var(--space-viewport-xs); }
+  .mb-viewport-s { margin-bottom: var(--space-viewport-s); }
+  .mb-viewport-m { margin-bottom: var(--space-viewport-m); }
+  .mb-viewport-l { margin-bottom: var(--space-viewport-l); }
+  .mb-viewport-xl { margin-bottom: var(--space-viewport-xl); }
+
+  .gap-viewport-xs { gap: var(--space-viewport-xs); }
+  .gap-viewport-s { gap: var(--space-viewport-s); }
+  .gap-viewport-m { gap: var(--space-viewport-m); }
+  .gap-viewport-l { gap: var(--space-viewport-l); }
+  .gap-viewport-xl { gap: var(--space-viewport-xl); }
+
+  /* Adaptive Container System */
+  .container-fluid-sm { max-width: min(90vw, 1200px); margin: 0 auto; }
+  .container-fluid-md { max-width: min(85vw, 1400px); margin: 0 auto; }
+  .container-fluid-lg { max-width: min(80vw, 1600px); margin: 0 auto; }
+  .container-fluid-xl { max-width: min(75vw, 1800px); margin: 0 auto; }
+  .container-fluid-2xl { max-width: min(70vw, 2000px); margin: 0 auto; }
 }

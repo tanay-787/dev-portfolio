@@ -10,6 +10,7 @@ import Footer from "@/components/sections/footer"
 import NewHero from "@/components/sections/new-hero";
 import ProjectsSkiper34 from "@/components/sections/projects-skiper34";
 import Hero from "@/components/sections/hero";
+import MagneticHero from "@/components/sections/magnetic-hero";
 
 
 export default async function Page() {
@@ -23,21 +24,21 @@ export default async function Page() {
 
 function LandingPage({ repos }: { repos: RepositoryItem[] }) {
   return (
-    <div className="flex flex-col min-h-screen max-w-full justify-center">
+    <div className="flex flex-col min-h-screen max-w-full">
       {/* Site Header (Navigation Bar) */}
       <NavigationBar />
 
-      {/* Main content area with fluid spacing */}
-      <main className="space-y-fluid-xl">
+      {/* Main content area with enhanced fluid spacing */}
+      <main className="space-y-fluid-2xl">
         <Spotlights />
-        <Hero/>
+        <Hero />
         <AboutMe /> 
         {/* <Projects projects={repos} /> */}
         <ProjectsSkiper34 projects={repos} />
       </main>
 
       {/* Footer with fluid spacing */}
-      <footer className="py-fluid-l text-center text-step--1 text-muted-foreground">
+      <footer className="py-fluid-l py-12 text-center text-step--1 text-muted-foreground">
         <Footer />
       </footer>
     </div>

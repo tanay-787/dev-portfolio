@@ -60,12 +60,13 @@ const StickyProjectCard = ({
   return (
     <motion.div
       ref={container}
-      className="sticky h-[200px] w-full max-w-7xl overflow-hidden rounded-3xl bg-muted border border-border/50"
+      className="sticky w-full max-w-7xl overflow-hidden rounded-3xl bg-muted border border-border/50"
       style={{
         scale: scale,
         rotate: filter,
-        height: `${100 - 2 * vertMargin}vh`,
-        top: `${vertMargin}vh`,
+        aspectRatio: '',
+        height: '90vh',
+        top: `auto`,
       }}
     >
       <motion.div
@@ -78,32 +79,65 @@ const StickyProjectCard = ({
           src={project.showcaseImage || "https://placehold.co/1920x1080/e5e5e5/666666?text=Project+Showcase"}
           alt={displayName}
           fill
-          className="object-cover scale-125 image-fade-in"
+          className="object-cover image-fade-in"
           placeholder="blur"
           blurDataURL={getBlurDataURL(1920, 1080)}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+          quality={95}
         />
         
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        {/* Floor fade overlay gradient */}
+        <div 
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))'
+          }}
+        />
         
+        {/* Curved overlay for text readability */}
+        {/* <svg 
+          className="absolute inset-0 w-full h-full z-0" 
+          viewBox="0 0 1920 1080" 
+          preserveAspectRatio="none"
+          style={{ pointerEvents: 'none', display: 'none' }}
+        >
+          <path
+            d="M 0 550 Q 400 650, 950 850 L 1920 1080 L 0 1080 Z"
+            fill="black"
+            opacity="0.85"
+          />
+        </svg> */}
+        
+
+
         {/* Project info overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-fluid-l md:p-fluid-xl">
+        <div className="absolute bottom-0 left-0 right-0 p-fluid-l md:p-fluid-xl z-20 ">
           <a 
             href={project.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-step--2 text-muted-foreground hover:text-foreground transition-colors mb-fluid-2xs"
+            className="inline-flex items-center text-step--2 text-foreground transition-colors mb-fluid-2xs drop-shadow-xl/50"
+            style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}
           >
             <GitRepoIcon className="mr-0.8 inline h-[1em] w-[1em]" />
             <span className="lowercase">{"tanay-787/"}{project.name}</span>
           </a>
           
-          <h3 className="text-step-3 font-semibold text-[#ededed] mb-fluid-2xs">
+          {/* Project title - enhanced scaling for card context */}
+          <h3 className="font-semibold text-[#ededed] mb-fluid-2xs"
+              style={{ 
+                fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+                textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3)'
+              }}>
             {displayName}
           </h3>
           
-          <p className="text-step-0 text-muted-foreground max-w-2xl mb-fluid-s">
+          {/* Project description - enhanced readability */}
+          <p className="text-foreground max-w-2xl mb-fluid-s leading-relaxed"
+             style={{ 
+               fontSize: 'clamp(1rem, 2vw, 1.3rem)',
+               textShadow: '0 1px 4px rgba(0, 0, 0, 0.6)'
+             }}>
             {project.description}
           </p>
 
@@ -113,7 +147,7 @@ const StickyProjectCard = ({
             href={`/${project.name}`}
             className="text-white/90 text-sm font-medium tracking-wide"
           >
-            Read more
+            Learn more
           </Link006>
           </div>
         </div>
@@ -127,9 +161,11 @@ const ProjectsSkiper34 = ({ projects }: ProjectsStickyProps) => {
 
   return (
     <ReactLenis root>
-      <section aria-label="Projects" id="projects" className="py-fluid-xl pb-fluid-2xl">
-        <div className="max-w-7xl mx-auto px-fluid-m lg:px-fluid-l">
-          <h2 className="text-step-4 w-full text-center mb-fluid-xl">
+      <section aria-label="Projects" id="projects" className="pt-fluid-3xl pb-fluid-2xl">
+        {/* Enhanced container for better large screen utilization */}
+        <div className="w-full max-w-7xl xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto px-fluid-m lg:px-fluid-l">
+          {/* Section header - enhanced scaling */}
+          <h2 className="text-display-section w-full text-center mb-fluid-l">
             <span className="">{'Featured '}</span>
             <span className="inline text-brand font-neo italic font-semibold">Projects</span>
             <GitRepoIcon className="inline h-[1em] w-[1em] text-brand ml-2" />
