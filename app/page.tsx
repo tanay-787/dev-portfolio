@@ -5,12 +5,9 @@ import { NavigationBar } from "@/components/navigation-bar";
 import { Spotlights } from "@/components/ui/spotlight-new";
 import AboutMe from "@/components/sections/about-me";
 import type { RepositoryItem } from "@/lib/git-types";
-import Projects from "@/components/sections/projects";
 import Footer from "@/components/sections/footer"
-import NewHero from "@/components/sections/new-hero";
-import ProjectsSkiper34 from "@/components/sections/projects-skiper34";
 import Hero from "@/components/sections/hero";
-import MagneticHero from "@/components/sections/magnetic-hero";
+import Projects from "@/components/sections/projects";
 
 
 export default async function Page() {
@@ -34,7 +31,7 @@ function LandingPage({ repos }: { repos: RepositoryItem[] }) {
         <Hero />
         <AboutMe /> 
         {/* <Projects projects={repos} /> */}
-        <ProjectsSkiper34 projects={repos} />
+        <Projects projects={repos} />
       </main>
 
       {/* Footer with fluid spacing */}
