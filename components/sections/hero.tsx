@@ -11,6 +11,9 @@ import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
 import AnimatedButton from "../animated-button";
 import { Download } from "../ui/animate-ui/icons/download";
 import { Status, StatusIndicator, StatusLabel } from "@/components/kibo-ui/status";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { Link006 } from "../ui/skiper-ui/animated-links";
+import { ExternalLink } from "../ui/animate-ui/icons/external-link";
 
 type HeroProps = {
   title?: React.ReactNode; // can be string or JSX (multiple lines)
@@ -64,10 +67,12 @@ export default function Hero({
             <div className="mt-fluid-m flex gap-fluid-s items-center">
               <AnimatedButton 
                 text="My Resume"
-                href={"https://drive.google.com/uc?export=download&id=19raxk9FxgccvNEPfiJk4SPbbelht0TuA"} 
-                icon={<Download className="ml-1 -mt-0.8"/>}
+                href={"https://1drv.ms/b/c/56798a0a94c08b35/EZCqn-YNOBVPovsamuPqzckBmxshyzfFP7RCWsYFYv0EUg?e=TheiuB"} 
+                icon={<ExternalLink className="ml-1 -mt-0.8"/>}
                 isExternal
               />
+              <div className="w-fit">
+          </div>
               <a
                 href="https://github.com/tanay-787"
                 target="_blank"
