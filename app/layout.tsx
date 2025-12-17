@@ -25,7 +25,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Tanay's Portfolio",
-  description: 'A portfolio website featuring the work done by Tanay',
+  description: 'A portfolio website featuring the work done by Tanay Gupte',
+  authors: { name: 'Tanay Gupte', url: 'https://github.com/tanay-787'}
 };
 
 export default async function RootLayout({

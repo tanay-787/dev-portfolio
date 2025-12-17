@@ -21,7 +21,6 @@ const query = `{
                   }
                 }
               }
-              }
             }
           }
         }
@@ -31,29 +30,52 @@ const query = `{
 }`;
 
 export async function getPortfolioRepos(): Promise<RepositoryItem[]> {
-  const res = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-    },
-    body: JSON.stringify({ query }),
-    next: { revalidate: 3600 }, // cache 1h
-  });
+  try {
+    if (!process.env.GITHUB_TOKEN) {
+      throw new Error("GITHUB_TOKEN environment variable is not set");
+    }
 
-  if (!res.ok) throw new Error("Failed to fetch GitHub lists");
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      },
+      body: JSON.stringify({ query }),
+      next: { revalidate: 3600 }, // cache 1h
+    });
 
-  const { data }: PortfolioQueryResponse = await res.json();
+    if (!res.ok) {
+      const errorText = await res.text();
+      throw new Error(`Failed to fetch GitHub lists: ${res.status} ${res.statusText} - ${errorText}`);
+    }
 
-  const portfolioList = data?.user?.lists.nodes.find(
-    (list) => list.name.toLowerCase() === "portfolio"
-  );
+    const response = await res.json();
+    if (response.errors) {
+      console.error("GitHub GraphQL errors:", response.errors);
+      throw new Error(`GitHub GraphQL error: ${JSON.stringify(response.errors)}`);
+    }
 
-  const repos = portfolioList?.items?.nodes || [];
+    const { data }: PortfolioQueryResponse = response;
 
-  return Promise.all(repos.map(async (repo: any) => ({
-    ...repo,
-    showcaseImage: await getShowcaseUrl("tanay-787", repo.name),
-  })));
+    const portfolioList = data?.user?.lists.nodes.find(
+      (list) => list.name.toLowerCase() === "portfolio"
+    );
+
+    if (!portfolioList) {
+      console.error("Portfolio list not found. Available lists:", data?.user?.lists.nodes.map((l: any) => l.name));
+      throw new Error("Portfolio list not found in GitHub");
+    }
+
+    const repos = portfolioList?.items?.nodes || [];
+
+    return Promise.all(repos.map(async (repo: any) => ({
+      ...repo,
+      showcaseImage: await getShowcaseUrl("tanay-787", repo.name),
+    })));
+  } catch (error) {
+    console.error("Error in getPortfolioRepos:", error);
+    throw error;
+  }
 }
 

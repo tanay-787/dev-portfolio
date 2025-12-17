@@ -37,9 +37,9 @@ export default function Hero({
   
         <div className="flex items-center justify-center gap-fluid-l xl:gap-fluid-xl"> 
           
-          {/* Content area - slightly more space on larger screens */}
+          {/* Content area */}
           <div className="lg:col-span-7 xl:col-span-8 space-y-fluid-s">
-            {/* Status Badge */}
+
             <Status status="degraded" className="mb-fluid-xs w-fit">
               <StatusIndicator />
               <StatusLabel>This Portfolio is Under Development</StatusLabel>

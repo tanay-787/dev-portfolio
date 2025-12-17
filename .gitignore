@@ -17,6 +17,7 @@
 /.next/
 /out/
 
+.img-tmp/
 # production
 /build
 

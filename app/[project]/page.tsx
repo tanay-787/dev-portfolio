@@ -1,18 +1,15 @@
-// app/[project]/page.tsx
+
 import { getPortfolioRepos } from "@/lib/getPortfolioRepos";
 import { notFound } from "next/navigation";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext} from "@/components/ui/carousel"
 import type { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
-import BlogPageContent from "@/components/blog-page-content"; // Import the new component
-import Image from 'next/image'
-//For Mock
-import { mockBlogs } from "@/lib/mockBlogs";
-import { readFile } from "fs/promises";
-import path from "path";
+import BlogPageContent from "@/components/blog-page-content";
 import { MdxImage } from "@/components/mdx-image";
 import { getBlogUrl } from "@/lib/getBlogUrl";
+import { TechBadge } from "@/components/kibo-ui/tech-badge";
 import { cache } from "react";
+
 
 interface ProjectPageProps {
   params: Promise<{ project: string }>;
@@ -36,7 +33,7 @@ const getPageData = cache(async (project: string) => {
 });
 
 
-// ✅ SEO metadata from frontmatter
+// SEO metadata from frontmatter
 export async function generateMetadata(
   { params }: ProjectPageProps
 ): Promise<Metadata> {
@@ -60,15 +57,15 @@ export async function generateMetadata(
         options: { parseFrontmatter: true },
       });
       frontmatter = parsed.frontmatter;
-    } catch {
-      // fallback
+    } catch(error) {
+      console.error(error)
     }
   }
 
   const title = frontmatter.title || repo.name;
   const description = frontmatter.description || repo.description || "A project from Tanay's portfolio.";
   const imageUrl = frontmatter.previewImage!;
-  console.log(imageUrl)
+  console.log()
 
   return {
     title: `${title} | Tanay Codes`,
@@ -105,8 +102,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   
   const components = {
     h1: (props: any) => <h1 className="mt-8 mb-4 text-scale-60" {...props} />,
-    h2: (props: any) => <h2 className="mt-6 mb-3 text-scale-40" {...props} />,
-    h3: (props: any) => <h3 className="mt-5 mb-2 text-scale-25" {...props} />,
+    h2: (props: any) => <h2 className="mt-8 mb-3 text-scale-40 text-brand" {...props} />,
+    h3: (props: any) => <h3 className="mt-10 mb-2 text-scale-25 text-brand" {...props} />,
     p: (props: any) => <p className="mb-4 text-scale-18 leading-relaxed" {...props} />,
     ul: (props: any) => <ul className="mb-4 ml-6 list-disc [&>li]:mt-2" {...props} />,
     ol: (props: any) => <ol className="mb-4 ml-6 list-decimal [&>li]:mt-2" {...props} />,
@@ -114,6 +111,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     a: (props: any) => <a className="font-medium text-primary underline underline-offset-4" {...props} />,
     img: (props: any) => <MdxImage {...props} />,
     blockquote: (props: any) => <blockquote className="mt-6 border-l-2 pl-6 italic" {...props} />,
+    strong: (props: any) => <strong className="mt-6 text-brand" {...props} />,
     pre: (props: any) => <pre className="my-6 overflow-x-auto rounded-lg bg-muted p-4 font-mono text-sm" {...props} />,
     code: (props: any) => <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm" {...props} />,
     Carousel,
@@ -121,7 +119,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-  MdxImage
+  MdxImage,
+  TechBadge
   };
 
   const { content, frontmatter } = await compileMDX<{ title?: string }>({
