@@ -97,24 +97,9 @@ const StickyProjectCard = ({
         <div 
           className="absolute inset-0 z-10 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6))'
+            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1.2))'
           }}
-        />
-        
-        {/* Curved overlay for text readability */}
-        {/* <svg 
-          className="absolute inset-0 w-full h-full z-0" 
-          viewBox="0 0 1920 1080" 
-          preserveAspectRatio="none"
-          style={{ pointerEvents: 'none', display: 'none' }}
-        >
-          <path
-            d="M 0 550 Q 400 650, 950 850 L 1920 1080 L 0 1080 Z"
-            fill="black"
-            opacity="0.85"
-          />
-        </svg> */}
-        
+        /> 
 
 
         {/* Project info overlay */}
@@ -130,7 +115,7 @@ const StickyProjectCard = ({
             <span className="lowercase">{"tanay-787/"}{project.name}</span>
           </a>
           
-          {/* Project title - enhanced scaling for card context */}
+          {/* Project title */}
           <h3 className="font-semibold  mb-fluid-2xs"
               style={{ 
                 fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
@@ -139,7 +124,7 @@ const StickyProjectCard = ({
             {displayName}
           </h3>
           
-          {/* Project description - enhanced readability */}
+          {/* Project description */}
           <p className=" max-w-2xl mb-fluid-s leading-relaxed"
              style={{ 
                fontSize: 'clamp(1rem, 2vw, 1.3rem)',
