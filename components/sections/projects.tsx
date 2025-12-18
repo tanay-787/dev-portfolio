@@ -72,7 +72,7 @@ const StickyProjectCard = ({
   return (
     <motion.div
       ref={container}
-      className="sticky w-full max-w-7xl overflow-hidden rounded-3xl bg-muted border border-border/50"
+      className="sticky w-full max-w-7xl overflow-hidden rounded-3xl bg-muted"
       style={{
         scale: scale,
         height: 'clamp(400px, 85vh, 90vh)',

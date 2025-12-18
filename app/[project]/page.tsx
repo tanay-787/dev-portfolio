@@ -7,7 +7,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import BlogPageContent from "@/components/blog-page-content";
 import { MdxImage } from "@/components/mdx-image";
 import { getBlogUrl } from "@/lib/getBlogUrl";
-import { TechBadge } from "@/components/kibo-ui/tech-badge";
+import { TechBadge } from "@/components/ui/kibo-ui/tech-badge";
 import { cache } from "react";
 
 

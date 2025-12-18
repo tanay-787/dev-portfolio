@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import { useContainerSize } from "@/hooks/useContainerSize"; // Import the hook
 import AnimatedButton from "../animated-button";
 import { Download } from "../ui/animate-ui/icons/download";
-import { Status, StatusIndicator, StatusLabel } from "@/components/kibo-ui/status";
+import { Status, StatusIndicator, StatusLabel } from "@/components/ui/kibo-ui/status";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Link006 } from "../ui/skiper-ui/animated-links";
 import { ExternalLink } from "../ui/animate-ui/icons/external-link";

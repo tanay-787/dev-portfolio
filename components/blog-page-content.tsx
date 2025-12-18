@@ -11,6 +11,7 @@ import { ArrowUpRight } from "lucide-react";
 import { DashedLine } from "@/components/dashed-line";
 import { Link001 } from "./ui/skiper-ui/animated-links";
 import { getBlurDataURL } from "@/lib/image-blur";
+import { TechBadge } from "./ui/kibo-ui/tech-badge";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
@@ -44,7 +45,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
 
           {/* Hero image */}
           {repo.showcaseImage && (
-            <div className="flex mb-12">
+            <div className="flex mb-6 md:mb-12">
               <Image
                 className="w-full h-full object-contain bg-muted rounded-xl border border-border/50 shadow-lg image-fade-in"
                 src={repo.showcaseImage}
@@ -67,6 +68,11 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
             
             {/* Right column (sidebar) */}
             <aside className="space-y-6 text-scale-16 text-muted-foreground border-l pl-4">
+              <div>
+                <h2 className="text-base font-semibold mb-2">Language Used</h2>
+                <TechBadge icon="JavaScript" />
+              </div>
+
               <div>
                 <h2 className="text-base font-semibold mb-2">Built Using</h2>
                 {repo.repositoryTopics.nodes.length > 0 ? (
