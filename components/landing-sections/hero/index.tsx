@@ -36,11 +36,11 @@ export default function HeroSection({
 
             <Status status="degraded" className="mb-fluid-xs w-fit">
               <StatusIndicator />
-              <StatusLabel>This Portfolio is Under Development</StatusLabel>
+              <StatusLabel>This portfolio is under development</StatusLabel>
             </Status>
             
             {/* HeroSection Title - Enhanced but controlled scaling */}
-            <h1 className="text-display-hero mt-fluid-s">
+            <h1 className="text-display-hero mt-fluid-xs">
               <span className=" font-neo italic font-semibold tracking-tighter leading-none">
                 {"Tanay "} 
               </span>
@@ -61,7 +61,7 @@ export default function HeroSection({
             <div className="mt-fluid-m flex gap-fluid-s items-center">
               <AnimatedButton 
                 text="My Resume"
-                href={"https://1drv.ms/b/c/56798a0a94c08b35/EZCqn-YNOBVPovsamuPqzckBmxshyzfFP7RCWsYFYv0EUg?e=TheiuB"} 
+                href={"https://flowcv.com/resume/cnwfpbnd02uh"} 
                 icon={<ExternalLink className="ml-1 -mt-0.8"/>}
                 isExternal
               />
