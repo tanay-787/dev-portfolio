@@ -1,13 +1,13 @@
 import React from "react";
 import { getPortfolioRepos } from "@/lib/getPortfolioRepos"; // Import the data fetching function
 
-import { NavigationBar } from "@/components/navigation-bar";
-import { Spotlights } from "@/components/ui/spotlight-new";
-import AboutMe from "@/components/sections/about-me";
+import { NavigationBar } from "@/components/global/navigation-bar";
+import { Spotlights } from "@/components/landing-sections/spotlight-new";
+import AboutMe from "@/components/landing-sections/about-me";
 import type { RepositoryItem } from "@/lib/git-types";
-import Footer from "@/components/sections/footer"
-import Hero from "@/components/sections/hero";
-import Projects from "@/components/sections/projects";
+import Footer from "@/components/global/footer"
+import HeroSection from "@/components/landing-sections/hero";
+import ProjectsSection from "@/components/landing-sections/projects";
 
 
 export default async function Page() {
@@ -28,10 +28,10 @@ function LandingPage({ repos }: { repos: RepositoryItem[] }) {
       {/* Main content area with enhanced fluid spacing */}
       <main className="space-y-fluid-2xl">
         <Spotlights />
-        <Hero />
+        <HeroSection />
         <AboutMe /> 
         {/* <Projects projects={repos} /> */}
-        <Projects projects={repos} />
+        <ProjectsSection projects={repos} />
       </main>
 
       {/* Footer with fluid spacing */}

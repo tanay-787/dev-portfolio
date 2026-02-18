@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { DM_Sans, DM_Mono, Playfair_Display } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme/theme-provider';
+import { ThemeProvider } from '@/components/global/theme-provider';
 import './globals.css';
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from '@/components/reusables/primitives/sonner';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
