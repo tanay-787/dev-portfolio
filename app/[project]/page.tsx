@@ -1,13 +1,13 @@
 
 import { getPortfolioRepos } from "@/lib/getPortfolioRepos";
 import { notFound } from "next/navigation";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext} from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext} from "@/components/reusables/primitives/carousel"
 import type { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
-import BlogPageContent from "@/components/blog-page-content";
-import { MdxImage } from "@/components/mdx-image";
+import BlogPageContent from "@/components/blogs/blog-page-content";
+import { MdxImage } from "@/components/blogs/mdx-image";
 import { getBlogUrl } from "@/lib/getBlogUrl";
-import { TechBadge } from "@/components/ui/kibo-ui/tech-badge";
+import { TechBadge } from "@/components/reusables/tech-badge";
 import { cache } from "react";
 
 

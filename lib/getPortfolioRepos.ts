@@ -69,10 +69,14 @@ export async function getPortfolioRepos(): Promise<RepositoryItem[]> {
 
     const repos = portfolioList?.items?.nodes || [];
 
-    return Promise.all(repos.map(async (repo: any) => ({
-      ...repo,
-      showcaseImage: await getShowcaseUrl("tanay-787", repo.name),
-    })));
+    return Promise.all(repos.map(async (repo: any) => {
+      const showcase = await getShowcaseUrl("tanay-787", repo.name);
+      return {
+        ...repo,
+        showcaseImage: showcase.image,
+        showcaseVideo: showcase.video,
+      };
+    }));
   } catch (error) {
     console.error("Error in getPortfolioRepos:", error);
     throw error;

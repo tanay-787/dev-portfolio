@@ -10,21 +10,38 @@ export async function getShowcaseUrl(
   owner: string = "tanay-787",
   projectName: string,
   branchOrTag: string = "HEAD"
-): Promise<string> {
+): Promise<{ image: string, video?: string }> {
   const baseUrl = `https://raw.githubusercontent.com/${owner}/portfolio-content/${branchOrTag}/${projectName}/assets`;
-  
+
+  // Try video first
+  const videoUrl = `${baseUrl}/Showcase.mp4`;
+  try {
+    const videoResponse = await fetch(videoUrl, { method: 'HEAD' });
+    if (videoResponse.ok) {
+      // Try image next
+      const webpUrl = `${baseUrl}/Showcase.webp`;
+      const webpResponse = await fetch(webpUrl, { method: 'HEAD' });
+      if (webpResponse.ok) {
+        return { image: webpUrl, video: videoUrl };
+      }
+      // Fallback to PNG
+      return { image: `${baseUrl}/Showcase.png`, video: videoUrl };
+    }
+  } catch {
+    // Network error, fall through to image
+  }
+
   // Try .webp first (new format)
   const webpUrl = `${baseUrl}/Showcase.webp`;
-  
   try {
     const response = await fetch(webpUrl, { method: 'HEAD' });
     if (response.ok) {
-      return webpUrl;
+      return { image: webpUrl };
     }
   } catch {
     // Network error, fall through to PNG
   }
-  
+
   // Fallback to .png (legacy format)
-  return `${baseUrl}/Showcase.png`;
+  return { image: `${baseUrl}/Showcase.png` };
 }

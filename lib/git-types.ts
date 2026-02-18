@@ -16,6 +16,7 @@ export interface Topic {
     url: string;
     homepageUrl: string | null;
     showcaseImage?: string | null;
+    showcaseVideo?: string | null;
     repositoryTopics: {
       nodes: RepositoryTopicNode[];
     };
