@@ -36,7 +36,7 @@ export default function HeroSection({
 
             <Status status="degraded" className="mb-fluid-xs w-fit">
               <StatusIndicator />
-              <StatusLabel>This portfolio is under development</StatusLabel>
+              <StatusLabel>This Portfolio is Under Development</StatusLabel>
             </Status>
             
             {/* HeroSection Title - Enhanced but controlled scaling */}
