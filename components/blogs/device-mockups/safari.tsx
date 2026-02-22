@@ -118,7 +118,7 @@ export function Safari({
             top:          `${TOP_PCT}%`,
             width:        `${WIDTH_PCT}%`,
             height:       `${HEIGHT_PCT}%`,
-            borderRadius: `0 0 ${CR}px ${CR}px`,
+            borderRadius: `0 0 0 0`,
           }}
         >
           <img
