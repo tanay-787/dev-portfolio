@@ -22,6 +22,8 @@ import Git from "@/components/icons/assets/colored/git";
 import Auth0 from "@/components/icons/assets/colored/auth0";
 import FirebaseStudio from "@/components/icons/assets/colored/firebase-studio";
 import Gemini from "@/components/icons/assets/colored/gemini";
+import GithubCopilotIcon from "@/components/icons/assets/colored/gh-copilot";
+import SocketIoIcon from "@/components/icons/assets/colored/socket-io";
 
 export const techStack = [
     {
@@ -120,6 +122,14 @@ export const techStack = [
         name: "Auth0",
         Icon: Auth0,
         url: "https://auth0.com"
+    },{
+        name: "Copilot",
+        Icon: GithubCopilotIcon,
+        url: "https://github.com/features/copilot"
+    },{
+        name: "Socket-IO",
+        Icon: SocketIoIcon,
+        url: "https://socket.io"
     }
 ]
   

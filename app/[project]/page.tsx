@@ -123,7 +123,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   TechBadge
   };
 
-  const { content, frontmatter } = await compileMDX<{ title?: string }>({
+  const { content, frontmatter } = await compileMDX<{ title?: string; projectType?: string }>({
     source: blogSource,
     options: { parseFrontmatter: true },
     components,

@@ -16,7 +16,7 @@ import { TechBadge } from "@/components/reusables/tech-badge";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
-  frontmatter: { title?: string };
+  frontmatter: { title?: string; projectType?: string };
   repo: RepositoryItem;
 }
 
@@ -46,11 +46,12 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
 
           {/* Hero image */}
           <HeroMediaSection
-  image={repo.showcaseImage}
-  video={repo.showcaseVideo}
-  title={frontmatter.title || repo.name}
-/>
-
+            image={repo.showcaseImage}
+            video={repo.showcaseVideo}
+            title={frontmatter.title || repo.name}
+            projectType={frontmatter.projectType}
+            projectUrl={repo.homepageUrl}
+          />
           {/* Main 2-column layout */}
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 mx-auto border-t pt-7 ">
             {/* Left column (Blog content) */}

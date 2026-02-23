@@ -1,6 +1,8 @@
 import { FC } from "react";
 import Image from "next/image";
 import { getBlurDataURL } from "@/lib/image-blur";
+import { Safari } from "@/components/blogs/device-mockups/safari";
+import { Android } from "@/components/blogs/device-mockups/android";
 
 interface HeroMediaSectionProps {
   image?: string | null;
@@ -8,6 +10,8 @@ interface HeroMediaSectionProps {
   title: string;
   description?: string;
   captionsUrl?: string;
+  projectType?: 'web' | 'native' | 'package';
+  projectUrl?: string | null;
 }
 
 const HeroMediaSection: FC<HeroMediaSectionProps> = ({
@@ -16,14 +20,19 @@ const HeroMediaSection: FC<HeroMediaSectionProps> = ({
   title,
   description,
   captionsUrl,
+  projectType,
+  projectUrl
 }) => {
   if (!image && !video) {
     return null;
   }
 
+  // Device mockup selection with static imports, all wrapped in the same div
   return (
     <div className="flex mb-6 md:mb-12">
-      {video ? (
+      {projectType === 'web' ? (
+        <Safari imageSrc={image ?? undefined} videoSrc={video ?? undefined} url={projectUrl ?? undefined} mode="default" />
+      ) : video ? (
         <video
           className="w-full h-full object-contain bg-muted rounded-xl border border-border/50 shadow-lg"
           controls

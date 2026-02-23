@@ -17,16 +17,16 @@ const Footer = () => {
 
             <div className="flex items-center gap-fluid-s text-muted-foreground" aria-description="Socials">
             <Link href="mailto:tanaygupte22@gmail.com" target="_blank">
-                <GmailIcon className="h-5 w-5 xl:h-6 xl:w-6 text-muted-foreground hover:text-foreground transition-colors duration-200" />
+                <GmailIcon className="h-4 w-4 xl:h-5 xl:w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
               <Link href="https://www.instagram.com/tanay7_" target="_blank">
-                <InstagramIcon className="h-5 w-5 xl:h-6 xl:w-6 text-muted-foreground hover:text-foreground transition-colors duration-200" />
+                <InstagramIcon className="h-4 w-4 xl:h-5 xl:w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
               <Link href="https://github.com/tanay-787" target="_blank">
-                <GithubIcon className="h-5 w-5 xl:h-6 xl:w-6 text-muted-foreground hover:text-foreground transition-colors duration-200" />
+                <GithubIcon className="h-4 w-4 xl:h-5 xl:w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
               <Link href="https://linkedin.com/in/tanay-gupte" target="_blank">
-                <LinkedinIcon className="h-5 w-5 xl:h-6 xl:w-6 text-muted-foreground hover:text-foreground transition-colors duration-200" />
+                <LinkedinIcon className="h-4 w-4 xl:h-5 xl:w-5 text-muted-foreground hover:text-foreground transition-colors duration-200" />
               </Link>
             </div>
           </div>

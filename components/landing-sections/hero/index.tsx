@@ -58,7 +58,7 @@ export default function HeroSection({
 
             {/* Action area - Consistent spacing */}
             <div className="inline">
-            <div className="mt-fluid-m flex gap-fluid-s items-center">
+            <div className="mt-fluid-m flex gap-fluid-xs items-center">
               <AnimatedButton 
                 text="My Resume"
                 href={"https://flowcv.com/resume/cnwfpbnd02uh"} 
@@ -74,7 +74,7 @@ export default function HeroSection({
                 aria-label="GitHub Profile"
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
-                <GithubIcon className="w-8 h-8 xl:w-10 xl:h-10" />
+                <GithubIcon className="w-8 xl:h-8" />
               </a>
               <a
                 href="https://linkedin.com/in/tanay-gupte"
@@ -83,7 +83,7 @@ export default function HeroSection({
                 aria-label="LinkedIn Profile"
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
-                <LinkedinIcon className="w-8 h-8 xl:w-10 xl:h-10" />
+                <LinkedinIcon className="w-8 xl:h-8" />
               </a>
             </div>
             </div>
