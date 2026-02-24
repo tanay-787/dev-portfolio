@@ -49,7 +49,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
             image={repo.showcaseImage}
             video={repo.showcaseVideo}
             title={frontmatter.title || repo.name}
-            projectType={frontmatter.projectType}
+            projectType={['web','native','package'].includes(frontmatter.projectType as string) ? frontmatter.projectType as 'web'|'native'|'package' : undefined}
             projectUrl={repo.homepageUrl}
           />
           {/* Main 2-column layout */}
