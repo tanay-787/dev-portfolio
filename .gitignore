@@ -38,6 +38,9 @@ yarn-error.log*
 .vercel
 
 # typescript
+
+# idx
+.idx/@dev.nix
 *.tsbuildinfo
 next-env.d.ts
 
