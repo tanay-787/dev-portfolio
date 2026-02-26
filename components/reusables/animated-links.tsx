@@ -68,6 +68,7 @@ const Link001 = ({
         "before:pointer-events-none before:absolute before:left-0 before:top-[1.5em] before:h-[0.05em] before:w-full before:bg-current before:content-['']",
         "before:origin-right before:scale-x-0 before:transition-transform before:duration-300 before:ease-[cubic-bezier(0.4,0,0.2,1)]",
         "hover:before:origin-left hover:before:scale-x-100",
+        "hover:before:origin-left hover:before:scale-x-100 active:before:origin-left active:before:scale-x-100 touch:before:origin-left touch:before:scale-x-100",
         className,
       )}
     >
@@ -270,6 +271,7 @@ const Link006 = ({
       className={cn(
         "group relative flex items-center transition-colors duration-300 hover:text-brand",
         "before:pointer-events-none before:absolute before:left-0 before:top-[1.5em] before:h-[0.05em] before:w-full before:bg-current before:content-[''] before:scale-x-100",
+        "hover:before:scale-x-100 active:before:scale-x-100 touch:before:scale-x-100 active:before:text-brand touch:before:text-brand",
         className,
       )}
     >
