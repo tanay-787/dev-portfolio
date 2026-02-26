@@ -83,10 +83,16 @@ const StickyProjectCard = ({
       <motion.div
         className="relative h-full w-full"
       >
-        <HeroMediaSection
-          image={project.showcaseImage || "https://placehold.co/1920x1080/e5e5e5/666666?text=Project+Showcase"}
-          title={displayName}
-        />
+        <Image
+          src={project.showcaseImage!}
+          alt={displayName}
+          fill
+          className="object-cover image-fade-in"
+          placeholder="blur"
+          blurDataURL={getBlurDataURL(1920,1080)}
+          sizes="(max-width: 786px 100vw, (max-width: 1200px) 90vw, 1200px"
+          quality={95}	
+/>
         
         {/* Floor fade overlay gradient */}
         <div 
