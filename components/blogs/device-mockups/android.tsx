@@ -75,14 +75,25 @@ export function Android({
           clipPath="url(#clip0_514_20855)"
           preserveAspectRatio="xMidYMid slice"
         >
-          <video
-            className="size-full object-cover"
-            src={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
+          {videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be') ? (
+            <iframe
+              width="360"
+              height="800"
+              src={videoSrc}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ width: '100%', height: '100%', border: 0 }}
+            />
+          ) : (
+            <video
+              className="size-full object-cover"
+              src={videoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          )}
         </foreignObject>
       )}
       <defs>

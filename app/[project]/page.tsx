@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import type { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
 import BlogPageContent from "@/components/blogs/blog-page-content";
+import NativeBlogPageContent from "@/components/blogs/native-blog-page-content";
 import { MdxImage } from "@/components/blogs/mdx-image";
 import { getBlogUrl } from "@/lib/getBlogUrl";
 import { TechBadge } from "@/components/reusables/tech-badge";
@@ -49,10 +50,10 @@ export async function generateMetadata(
   }
 
   // Compile & extract frontmatter (fallback to repo data if missing)
-  let frontmatter: { title?: string; description?: string; previewImage?: string } = {};
+  let frontmatter: { title?: string; description?: string; previewImage?: string; } = {};
   if (blogMarkdown) {
     try {
-      const parsed = await compileMDX<{ title?: string; description?: string; previewImage?: string }>({
+      const parsed = await compileMDX<{ title?: string; description?: string; previewImage?: string; }>({
         source: blogMarkdown,
         options: { parseFrontmatter: true },
       });
@@ -65,7 +66,6 @@ export async function generateMetadata(
   const title = frontmatter.title || repo.name;
   const description = frontmatter.description || repo.description || "A project from Tanay's portfolio.";
   const imageUrl = frontmatter.previewImage!;
-  console.log()
 
   return {
     title: `${title} | Tanay Codes`,
@@ -123,13 +123,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   TechBadge
   };
 
-  const { content, frontmatter } = await compileMDX<{ title?: string; projectType?: string }>({
+  const { content, frontmatter } = await compileMDX<{ title?: string; projectType?: string; videoUrl?: string }>({
     source: blogSource,
     options: { parseFrontmatter: true },
     components,
   });
 
   return (
-    <BlogPageContent content={content} frontmatter={frontmatter} repo={repo} />
+    frontmatter.projectType === 'native' 
+      ? <NativeBlogPageContent content={content} frontmatter={frontmatter} repo={repo} />
+      : <BlogPageContent content={content} frontmatter={frontmatter} repo={repo} />
   );
 }

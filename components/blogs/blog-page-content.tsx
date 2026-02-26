@@ -16,7 +16,7 @@ import { TechBadge } from "@/components/reusables/tech-badge";
 
 interface BlogPageContentProps {
   content: React.ReactNode;
-  frontmatter: { title?: string; projectType?: string };
+  frontmatter: { title?: string; projectType?: string; videoUrl?: string };
   repo: RepositoryItem;
 }
 
@@ -47,7 +47,7 @@ const BlogPageContent: FC<BlogPageContentProps> = ({ content, frontmatter, repo 
           {/* Hero image */}
           <HeroMediaSection
             image={repo.showcaseImage}
-            video={repo.showcaseVideo}
+            video={frontmatter.videoUrl}
             title={frontmatter.title || repo.name}
             projectType={['web','native','package'].includes(frontmatter.projectType as string) ? frontmatter.projectType as 'web'|'native'|'package' : undefined}
             projectUrl={repo.homepageUrl}
