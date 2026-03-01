@@ -24,6 +24,11 @@ import FirebaseStudio from "@/components/icons/assets/colored/firebase-studio";
 import Gemini from "@/components/icons/assets/colored/gemini";
 import GithubCopilotIcon from "@/components/icons/assets/colored/gh-copilot";
 import SocketIoIcon from "@/components/icons/assets/colored/socket-io";
+import Expo from "@/components/icons/assets/colored/expo";
+import AzureSpeechIcon from "@/components/icons/assets/colored/azure-speech";
+import MSFoundry from "@/components/icons/assets/colored/ms-foundry";
+import AzureServices from "@/components/icons/assets/colored/azure-services";
+import Mistral from "@/components/icons/assets/colored/mistral";
 
 export const techStack = [
     {
@@ -103,7 +108,7 @@ export const techStack = [
         Icon: VercelIcon,
         url: "https://vercel.com"
     },{
-        name: "Gemini",
+        name: "Gemini-AI",
         Icon: Gemini,
         url: "https://ai.google.dev"
     },{
@@ -130,6 +135,30 @@ export const techStack = [
         name: "Socket-IO",
         Icon: SocketIoIcon,
         url: "https://socket.io"
+    },{
+        name: 'React-Native',
+        Icon: Reactjs,
+        url: 'https://reactnative.dev'
+    },{
+        name: 'Expo',
+        Icon: Expo,
+        url: 'https://expo.dev'
+    },{
+        name: 'Azure-Speech-Services',
+        Icon: AzureSpeechIcon,
+        url: 'https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/'
+    },{
+        name: 'Microsoft-Foundry',
+        Icon: MSFoundry,
+        url: 'https://ai.azure.com/'
+    },{
+        name: 'Azure-Services',
+        Icon: AzureServices,
+        url: 'https://azure.microsoft.com/en-us/services'
+    },{
+        name: 'Mistral-AI',
+        Icon: Mistral,
+        url: 'https://mistral.ai'
     }
 ]
   

@@ -13,6 +13,7 @@ export interface TechStackItem {
   name: string
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> // <- accept an SVG component
   color?: string
+  url?: string
 }
 
 interface TechStackCirclesProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -47,12 +48,15 @@ export function TechStackCircles({
         {visibleItems.map((item, index) => {
           const Icon = item.Icon
           return (
-            <div
+            <a
               key={item.id ?? item.name}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
-                "flex items-center justify-center rounded-full bg-muted border-none border-background",
+                "flex items-center justify-center rounded-full bg-muted border-1 border-background",
                 sizeClass,
-                "transition-transform hover:scale-110 hover:z-10",
+                "transition-transform hover:z-10",
                 "shadow-sm",
                 {
                   "-ml-3 first:ml-0": overlap > 0,
@@ -63,8 +67,8 @@ export function TechStackCircles({
               }}
               title={item.name}
             >
-              <Icon className={cn("w-1/2 h-1/2", item.color)} />
-            </div>
+              <Icon className={cn("w-1/2 h-1/2 text-foreground", item.color)} />
+            </a>
           )
         })}
         {remainingCount > 0 && (
