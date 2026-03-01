@@ -29,7 +29,7 @@ const HeroMediaSection: FC<HeroMediaSectionProps> = ({
 
   // Device mockup selection with static imports, all wrapped in the same div
   return (
-    <div className="flex mb-6 md:mb-12">
+    <div className="flex w-full mb-6 md:mb-12">
       {projectType === 'web' ? (
         <Safari imageSrc={image ?? undefined} videoSrc={video ?? undefined} url={projectUrl ?? undefined} mode="default" />
       ) : projectType === 'native' && video ? (
