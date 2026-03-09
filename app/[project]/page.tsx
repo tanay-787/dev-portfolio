@@ -10,6 +10,9 @@ import { MdxImage } from "@/components/blogs/mdx-image";
 import { getBlogUrl } from "@/lib/getBlogUrl";
 import { TechBadge } from "@/components/reusables/tech-badge";
 import { cache } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { BlogNavBar } from "@/components/blogs/blog-nav-bar";
 
 
 interface ProjectPageProps {
@@ -96,6 +99,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!repo) notFound();
 
+  const allRepos = await getPortfolioRepos();
+  const navItems = allRepos.map((r: any) => ({
+    label: r.name,
+    href: `/${r.name.toLowerCase()}`,
+  }));
 
   // Production setup
   const blogSource = blogMarkdown || "# Blog not found";
@@ -130,8 +138,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   });
 
   return (
-    frontmatter.projectType === 'native' 
-      ? <NativeBlogPageContent content={content} frontmatter={frontmatter} repo={repo} />
-      : <BlogPageContent content={content} frontmatter={frontmatter} repo={repo} />
+    <>
+      <header className={`relative mx-auto w-full ${frontmatter.projectType === 'native' ? 'max-w-5xl' : 'max-w-4xl'} px-2 py-2`}>
+        <div className={`flex items-center justify-between ${frontmatter.projectType === 'native' ? 'px-fluid-m lg:px-fluid-l' : 'mx-12'}`}>
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back</span>
+          </Link>
+          <BlogNavBar navItems={navItems} />
+        </div>
+      </header>
+      {frontmatter.projectType === 'native'
+        ? <NativeBlogPageContent content={content} frontmatter={frontmatter} repo={repo} />
+        : <BlogPageContent content={content} frontmatter={frontmatter} repo={repo} />}
+    </>
   );
 }

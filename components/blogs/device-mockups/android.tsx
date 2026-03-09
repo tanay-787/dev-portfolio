@@ -67,7 +67,7 @@ export function Android({
           {videoSrc!.includes("youtube.com") || videoSrc!.includes("youtu.be") ? (
             <iframe
               src={videoSrc}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow=""
               allowFullScreen
               style={{ width: "100%", height: "100%", border: 0 }}
             />
