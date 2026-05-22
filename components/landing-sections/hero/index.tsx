@@ -40,11 +40,11 @@ export default function HeroSection({
             </Status>
             
             {/* HeroSection Title - Enhanced but controlled scaling */}
-            <h1 className="text-display-hero mt-fluid-xs">
-              <span className=" font-neo italic font-semibold tracking-tighter leading-none">
+            <h1 className="text-display-hero mt-fluid-xs leading-none sm:leading-1.5">
+              <span className=" font-neo italic font-semibold tracking-tighter">
                 {"Tanay "} 
               </span>
-              <span className=" font-neo italic font-semibold text-brand tracking-tighter leading-none">
+              <span className=" font-neo italic font-semibold text-brand tracking-tighter">
               Gupte<TypingText text={''} cursorClassName="hidden lg:inline" cursor />
               </span>
             </h1>

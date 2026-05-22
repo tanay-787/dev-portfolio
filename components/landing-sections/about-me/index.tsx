@@ -33,9 +33,9 @@ export default function AboutMe() {
           {/* Text Section */}
           <div className="col-span-1 lg:col-span-7">
             <p className="mt-fluid-m max-w-xl text-muted-foreground text-step-0 leading-relaxed">
-              Hey, I’m <span className="font-neo italic font-semibold leading-[none] text-brand">Tanay</span>, an
-              innovative and curious developer passionate about building
-              user-centered applications. I enjoy solving problems, designing
+              Hey, I’m <span className="font-neo italic font-semibold leading-[none] text-brand">Tanay</span>,
+              
+              I enjoy solving problems, designing
               smooth user experiences, and bringing creative ideas to life with
               modern web technologies.
             </p>
