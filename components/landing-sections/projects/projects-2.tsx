@@ -32,6 +32,15 @@ export const projectNames = [
   }, {
     key: 'resume-analyzer-app',
     name: 'Resume-Analyzer AI'
+  }, {
+    key: 'refind',
+    name: 'Refind'
+  }, {
+    key: 'voice-query',
+    name: 'VoiceQuery'
+  }, {
+    key: 'ghcc-client',
+    name: 'GhCC Client'
   }
 ]
 
