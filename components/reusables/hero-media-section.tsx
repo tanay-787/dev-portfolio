@@ -32,8 +32,8 @@ const HeroMediaSection: FC<HeroMediaSectionProps> = ({
     <div className="flex w-full mb-6 md:mb-12">
       {projectType === 'web' ? (
         <Safari imageSrc={image ?? undefined} videoSrc={video ?? undefined} url={projectUrl ?? undefined} mode="default" />
-      ) : projectType === 'native' && video ? (
-        <Android videoSrc={video ?? undefined} />
+      ) : projectType === 'native' ? (
+        <Android src={image ?? undefined} videoSrc={video ?? undefined} />
       ) : video ? (
         <video
           className="w-full h-full object-contain bg-muted rounded-xl border border-border/50 shadow-lg"
