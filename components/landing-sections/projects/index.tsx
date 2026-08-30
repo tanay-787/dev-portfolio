@@ -90,9 +90,9 @@ const StickyProjectCard = ({
           className="object-cover image-fade-in"
           placeholder="blur"
           blurDataURL={getBlurDataURL(1920,1080)}
-          sizes="(max-width: 786px 100vw, (max-width: 1200px) 90vw, 1200px"
-          quality={95}	
-/>
+          sizes="(max-width: 786px) 100vw, (max-width: 1200px) 90vw, 1200px"
+          quality={95}
+        />
         
         {/* Floor fade overlay gradient */}
         <div 
