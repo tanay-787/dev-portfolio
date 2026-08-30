@@ -32,7 +32,8 @@ const query = `{
 export async function getPortfolioRepos(): Promise<RepositoryItem[]> {
   try {
     if (!process.env.GITHUB_TOKEN) {
-      throw new Error("GITHUB_TOKEN environment variable is not set");
+      console.warn("GITHUB_TOKEN environment variable is not set. Returning empty repo list for build.");
+      return [];
     }
 
     const res = await fetch("https://api.github.com/graphql", {
