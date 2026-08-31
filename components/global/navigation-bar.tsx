@@ -72,7 +72,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) 
     { label: "Contact Me", href: "#contact-me" },
   ];
   return (
-    <div className={cn("w-full max-w-[90vw] xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto", className)}>
+    <div className={cn("container-landing", className)}>
       <motion.nav
   initial={{
     y: -100,

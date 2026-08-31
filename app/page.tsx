@@ -25,17 +25,16 @@ function LandingPage({ repos }: { repos: RepositoryItem[] }) {
       {/* Site Header (Navigation Bar) */}
       <NavigationBar />
 
-      {/* Main content area with enhanced fluid spacing */}
-      <main className="space-y-fluid-2xl">
+      {/* Main content area */}
+      <main>
         <Spotlights />
         <HeroSection />
         <AboutMe /> 
-        {/* <Projects projects={repos} /> */}
         <ProjectsSection projects={repos} />
       </main>
 
       {/* Footer with fluid spacing */}
-      <footer className="py-fluid-l py-12 text-center text-step--1 text-muted-foreground">
+      <footer className="py-fluid-l text-center text-step--1 text-muted-foreground">
         <Footer />
       </footer>
     </div>

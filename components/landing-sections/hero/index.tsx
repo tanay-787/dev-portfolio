@@ -4,7 +4,6 @@ import GithubIcon from "@/components/icons/assets/socials/github";
 import LinkedinIcon from "@/components/icons/assets/socials/linkedin";
 import ScrollArrow from "../scroll-arrow";
 import { TypingText } from "@/components/landing-sections/hero/typing-text";
-import { useContainerSize } from "@/hooks/useContainerSize";
 import AnimatedButton from "@/components/reusables/animated-button";
 import { Status, StatusIndicator, StatusLabel } from "@/components/reusables/status";
 import { ExternalLink } from "@/components/icons/animated";
@@ -19,54 +18,51 @@ export default function HeroSection({
   description = "A developer learning to build reliable, user-focused products across the stack.",
   className = "",
 }: HeroSectionProps) {
-  const [containerRef, dimensions] = useContainerSize<HTMLDivElement>();
-
   return (
     <section 
       aria-label="HeroSection" 
-      className="relative min-h-[75vh] flex items-center pt-fluid-xl pb-fluid-2xl"
+      className="relative min-h-screen flex flex-col justify-between pt-24 pb-fluid-s"
     > 
-      {/* Enhanced container - grows with screen size but maintains balance */}
-      <div className="w-full max-w-[90vw] xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto px-fluid-m lg:px-fluid-l "> 
-  
+      {/* Top spacer for navbar balance */}
+      <div className="hidden sm:block h-4" aria-hidden="true" />
+
+      {/* Standard landing container centered */}
+      <div className="container-landing flex flex-col justify-center my-auto"> 
         <div className="flex items-center justify-center gap-fluid-l xl:gap-fluid-xl"> 
           
           {/* Content area */}
-          <div className="lg:col-span-7 xl:col-span-8 space-y-fluid-s">
+          <div className="w-full space-y-fluid-s flex flex-col items-center text-center">
 
-            <Status status="degraded" className="mb-fluid-xs w-fit">
+            <Status status="online" className="mb-fluid-xs w-fit">
               <StatusIndicator />
-              <StatusLabel>This Portfolio is Under Development</StatusLabel>
+              <StatusLabel>Open for Opportunities</StatusLabel>
             </Status>
             
-            {/* HeroSection Title - Enhanced but controlled scaling */}
-            <h1 className="text-display-hero mt-fluid-xs leading-none sm:leading-1.5">
-              <span className=" font-neo italic font-semibold tracking-tighter">
+            {/* HeroSection Title - Large, commanding single-line typography */}
+            <h1 className="text-display-hero mt-fluid-xs leading-[0.90] tracking-tighter text-center sm:whitespace-nowrap">
+              <span className="font-neo italic font-semibold">
                 {"Tanay "} 
               </span>
-              <span className=" font-neo italic font-semibold text-brand tracking-tighter">
-              Gupte<TypingText text={''} cursorClassName="hidden lg:inline" cursor />
+              <span className="font-neo italic font-semibold text-brand">
+                Gupte<TypingText text={''} cursorClassName="hidden lg:inline" cursor />
               </span>
             </h1>
             
             {/* Description - Better scaling for readability */}
             <p 
-              className="mt-fluid-s max-w-lg text-step-0 text-muted-foreground leading-relaxed"
+              className="mt-fluid-s max-w-xl text-step-0 text-muted-foreground leading-relaxed text-center mx-auto"
             >
               {description}
             </p>
 
             {/* Action area - Consistent spacing */}
-            <div className="inline">
-            <div className="mt-fluid-m flex gap-fluid-xs items-center">
+            <div className="mt-fluid-m flex gap-fluid-xs items-center justify-center">
               <AnimatedButton 
                 text="My Resume"
                 href={"https://flowcv.com/resume/cnwfpbnd02uh"} 
                 icon={<ExternalLink className="ml-1 -mt-0.8"/>}
                 isExternal
               />
-              <div className="w-fit">
-          </div>
               <a
                 href="https://github.com/tanay-787"
                 target="_blank"
@@ -74,7 +70,7 @@ export default function HeroSection({
                 aria-label="GitHub Profile"
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
-                <GithubIcon className="w-8 xl:h-8" />
+                <GithubIcon className="size-8 xl:size-9" />
               </a>
               <a
                 href="https://linkedin.com/in/tanay-gupte"
@@ -83,41 +79,22 @@ export default function HeroSection({
                 aria-label="LinkedIn Profile"
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
-                <LinkedinIcon className="w-8 xl:h-8" />
+                <LinkedinIcon className="size-8 xl:size-9" />
               </a>
             </div>
-            </div>
           </div>
-
-          {/* Visual area - Balanced sizing */}
-          {/* <div 
-            ref={containerRef}
-            className="hidden lg:flex lg:col-span-5 xl:col-span-4 
-                       relative items-center justify-center aspect-square 
-                       max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="w-full h-full"
-            >
-              <TechCloud width={dimensions.width} height={dimensions.height} /> 
-            </motion.div>
-          </div> */}
         </div>
+      </div>
         
-        {/* Scroll indicator */}
-        <div className="mt-fluid-xl flex justify-center">
-          <ScrollArrow
-            href="#about-me"
-            size="md"
-            className="text-foreground"
-            duration={1.4}
-            spacing={14}
-          />
-        </div>
+      {/* Scroll indicator anchored cleanly at the bottom */}
+      <div className="flex justify-center pb-fluid-s">
+        <ScrollArrow
+          href="#about-me"
+          size="md"
+          className="text-foreground"
+          duration={1.4}
+          spacing={14}
+        />
       </div>
     </section>
   );
