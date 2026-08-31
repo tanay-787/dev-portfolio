@@ -12,7 +12,8 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-  }
+  },
+  allowedDevOrigins: ['10.218.247.80']
 };
 
 export default nextConfig;
