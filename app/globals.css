@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Baskerville Neo';
   src: url('/fonts/Baskerville-Neo-Display.otf') format('opentype');
-  font-weight: 400; /* better to use 400 instead of "normal" */
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -14,10 +14,8 @@
   font-display: swap;
 }
 
-
 @import "tailwindcss";
 @import "tw-animate-css";
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -25,9 +23,10 @@
   --color-brand: oklch(0.7024 0.1573 29.51);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono); */
   --font-mono: var(--font-dm-mono); 
+  --font-playfair: var(--font-playfair);
+  --font-neo: var(--font-neo), sans-serif;
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -57,10 +56,78 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* 🎯 UTOPIA MATHEMATICAL FLUID SPACING (320px → 1440px) */
+  --spacing-fluid-3xs: clamp(0.25rem, 0.23rem + 0.09vw, 0.31rem);
+  --spacing-fluid-2xs: clamp(0.50rem, 0.46rem + 0.18vw, 0.63rem);
+  --spacing-fluid-xs: clamp(0.75rem, 0.70rem + 0.27vw, 0.94rem);
+  --spacing-fluid-s: clamp(1.00rem, 0.93rem + 0.36vw, 1.25rem);
+  --spacing-fluid-m: clamp(1.50rem, 1.39rem + 0.54vw, 1.88rem);
+  --spacing-fluid-l: clamp(2.00rem, 1.86rem + 0.71vw, 2.50rem);
+  --spacing-fluid-xl: clamp(3.00rem, 2.79rem + 1.07vw, 3.75rem);
+  --spacing-fluid-2xl: clamp(4.00rem, 3.71rem + 1.43vw, 5.00rem);
+  --spacing-fluid-3xl: clamp(6.00rem, 5.57rem + 2.14vw, 7.50rem);
+
+  /* Harmonized Spacing Pairs */
+  --spacing-fluid-3xs-2xs: clamp(0.25rem, 0.21rem + 0.18vw, 0.38rem);
+  --spacing-fluid-2xs-xs: clamp(0.50rem, 0.43rem + 0.36vw, 0.75rem);
+  --spacing-fluid-xs-s: clamp(0.75rem, 0.68rem + 0.36vw, 1.00rem);
+  --spacing-fluid-s-m: clamp(1.00rem, 0.88rem + 0.63vw, 1.44rem);
+  --spacing-fluid-m-l: clamp(1.50rem, 1.32rem + 0.89vw, 2.13rem);
+  --spacing-fluid-l-xl: clamp(2.00rem, 1.71rem + 1.43vw, 3.00rem);
+  --spacing-fluid-xl-2xl: clamp(3.00rem, 2.57rem + 2.14vw, 4.50rem);
+  --spacing-fluid-2xl-3xl: clamp(4.00rem, 3.43rem + 2.86vw, 6.00rem);
+
+  /* 🎯 UTOPIA MATHEMATICAL FLUID TYPOGRAPHY (320px → 1440px) */
+  --text-step--2: clamp(0.69rem, 0.66rem + 0.17vw, 0.80rem);
+  --text-step--2--line-height: 1.5;
+
+  --text-step--1: clamp(0.83rem, 0.78rem + 0.26vw, 1.00rem);
+  --text-step--1--line-height: 1.6;
+
+  --text-step-0: clamp(1.00rem, 0.93rem + 0.36vw, 1.25rem);
+  --text-step-0--line-height: 1.65;
+
+  --text-step-1: clamp(1.20rem, 1.10rem + 0.51vw, 1.56rem);
+  --text-step-1--line-height: 1.4;
+
+  --text-step-2: clamp(1.44rem, 1.29rem + 0.74vw, 1.95rem);
+  --text-step-2--line-height: 1.3;
+
+  --text-step-3: clamp(1.73rem, 1.53rem + 1.02vw, 2.44rem);
+  --text-step-3--line-height: 1.2;
+  --text-step-3--letter-spacing: -0.01em;
+
+  --text-step-4: clamp(2.07rem, 1.79rem + 1.41vw, 3.05rem);
+  --text-step-4--line-height: 1.1;
+  --text-step-4--letter-spacing: -0.02em;
+
+  --text-step-5: clamp(2.49rem, 2.11rem + 1.89vw, 3.82rem);
+  --text-step-5--line-height: 1.05;
+  --text-step-5--letter-spacing: -0.03em;
+
+  /* Enhanced Display Headlines (1.5x Single-Line Poster Scale) */
+  --text-display-hero: clamp(3.50rem, 8.20vw, 15.50rem);
+  --text-display-hero--line-height: 0.90;
+  --text-display-hero--letter-spacing: -0.04em;
+
+  --text-display-section: clamp(2.25rem, 1.61rem + 3.21vw, 4.50rem);
+  --text-display-section--line-height: 1.1;
+  --text-display-section--letter-spacing: -0.02em;
+
+  --text-display-subtitle: clamp(1.50rem, 1.25rem + 1.25vw, 2.25rem);
+  --text-display-subtitle--line-height: 1.3;
+  --text-display-subtitle--letter-spacing: -0.01em;
+
+  /* Keyframes & Animations */
+  --animate-aurora: aurora 60s linear infinite;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-image-fade-in: imageFadeIn 250ms ease-out forwards;
 }
 
 :root {
@@ -97,6 +164,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --font-neo: 'Baskerville Neo', serif;
 }
 
 .dark {
@@ -134,28 +202,13 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-:root {
-  --font-neo: 'Baskerville Neo', serif;
-}
-
-@theme inline {
-  --animate-aurora: aurora 60s linear infinite;
-  @keyframes aurora {
-    from {
-      background-position:
-        50% 50%,
-        50% 50%;
-    }
-    to {
-      background-position:
-        350% 50%,
-        350% 50%;
-    }
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
   }
-}
-
-@theme inline {
-  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
 }
 
 @keyframes spotlight {
@@ -169,9 +222,13 @@
   }
 }
 
-@theme inline {
-  --font-playfair: var(--font-playfair);
-  --font-neo: var(--font-neo), sans-serif;
+@keyframes imageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @layer base { 
@@ -185,365 +242,91 @@
     font-style: normal;
     line-height: 1.5;
   }
-
-/* 🎯 MATHEMATICAL FLUID SYSTEM - Fixed & Working 320px → ∞ scaling */
-:root {
-  /* Mathematical Foundation - Simplified for browser compatibility */
-  --phi: 1.618; /* Golden ratio */
-  
-  /* Working Fluid Typography Scale with proper clamp() functions */
-  --step--2: clamp(0.69rem, 0.65rem + 0.2vw, 0.89rem);   /* ~11px → ~14px */
-  --step--1: clamp(0.83rem, 0.78rem + 0.25vw, 1.11rem);  /* ~13px → ~18px */
-  --step-0: clamp(1rem, 0.94rem + 0.31vw, 1.38rem);      /* 16px → 22px BASE */
-  --step-1: clamp(1.2rem, 1.13rem + 0.38vw, 1.72rem);    /* ~19px → ~28px */
-  --step-2: clamp(1.44rem, 1.35rem + 0.47vw, 2.15rem);   /* ~23px → ~34px */
-  --step-3: clamp(1.73rem, 1.61rem + 0.59vw, 2.69rem);   /* ~28px → ~43px */
-  --step-4: clamp(2.07rem, 1.93rem + 0.73vw, 3.36rem);   /* ~33px → ~54px */
-  --step-5: clamp(2.49rem, 2.31rem + 0.91vw, 4.20rem);   /* ~40px → ~67px */
-  
-  /* Golden Ratio Based Spacing System - Direct clamp() values */
-  --space-3xs: clamp(0.19rem, 0.17rem + 0.09vw, 0.28rem);    /* φ⁻³ scaling */
-  --space-2xs: clamp(0.31rem, 0.28rem + 0.15vw, 0.46rem);    /* φ⁻² scaling */
-  --space-xs: clamp(0.50rem, 0.45rem + 0.24vw, 0.74rem);     /* φ⁻¹ scaling */
-  --space-s: clamp(0.81rem, 0.73rem + 0.39vw, 1.20rem);      /* Base scaling */
-  --space-m: clamp(1.31rem, 1.18rem + 0.63vw, 1.94rem);      /* φ¹ scaling */
-  --space-l: clamp(2.12rem, 1.91rem + 1.02vw, 3.14rem);      /* φ² scaling */
-  --space-xl: clamp(3.44rem, 3.09rem + 1.65vw, 5.09rem);     /* φ³ scaling */
-  --space-2xl: clamp(5.56rem, 5.00rem + 2.67vw, 8.23rem);    /* φ⁴ scaling */
-  --space-3xl: clamp(9.00rem, 8.09rem + 4.32vw, 13.32rem);   /* φ⁵ scaling */
-  
-  /* Harmonized Spacing Pairs - Direct intermediate values */
-  --space-3xs-2xs: clamp(0.25rem, 0.22rem + 0.12vw, 0.37rem);
-  --space-2xs-xs: clamp(0.40rem, 0.36rem + 0.19vw, 0.60rem);
-  --space-xs-s: clamp(0.65rem, 0.59rem + 0.31vw, 0.97rem);
-  --space-s-m: clamp(1.06rem, 0.95rem + 0.51vw, 1.57rem);
-  --space-m-l: clamp(1.71rem, 1.54rem + 0.82vw, 2.54rem);
-  --space-l-xl: clamp(2.78rem, 2.50rem + 1.33vw, 4.11rem);
-  --space-xl-2xl: clamp(4.50rem, 4.04rem + 2.16vw, 6.66rem);
-  --space-2xl-3xl: clamp(7.28rem, 6.54rem + 3.49vw, 10.77rem);
-
-  /* Continuous Viewport-Proportional Scaling - No hard caps, exponential growth */
-  --space-viewport-xs: clamp(1rem, 1rem + 2vw, 8rem);     /* 16px → 128px+ */
-  --space-viewport-s: clamp(2rem, 2rem + 4vw, 16rem);     /* 32px → 256px+ */
-  --space-viewport-m: clamp(3rem, 3rem + 6vw, 24rem);     /* 48px → 384px+ */
-  --space-viewport-l: clamp(4rem, 4rem + 8vw, 32rem);     /* 64px → 512px+ */
-  --space-viewport-xl: clamp(6rem, 6rem + 12vw, 48rem);   /* 96px → 768px+ */
-
-  /* Enhanced Display Typography - Exponential scaling for large screens */
-  --display-hero: clamp(3rem, 3rem + 8vw, 12rem);         /* 48px → 192px+ */
-  --display-section: clamp(2rem, 2rem + 5vw, 8rem);       /* 32px → 128px+ */
-  --display-subtitle: clamp(1.5rem, 1.5rem + 3vw, 6rem);  /* 24px → 96px+ */
-
-  /* Fallback system for older browsers */
-  --fallback-step-0: 1.125rem; /* Static fallback */
-  --fallback-space-s: 1rem;    /* Static fallback */
-}
-
-/* Browser support detection and graceful degradation */
-@supports not (width: clamp(1rem, 1vw, 2rem)) {
-  :root {
-    /* Static values for browsers without clamp() support */
-    --step-0: var(--fallback-step-0);
-    --space-s: var(--fallback-space-s);
-    --space-m: 1.5rem;
-    --space-l: 2rem;
-  }
-}
-
-/* Typography Classes */
-.text-step--2 {
-  font-size: var(--step--2);
-  line-height: 1.5;
-}
-
-.text-step--1 {
-  font-size: var(--step--1);
-  line-height: 1.6;
-}
-
-.text-step-0 {
-  font-size: var(--step-0);
-  line-height: 1.6;
-}
-
-.text-step-1 {
-  font-size: var(--step-1);
-  line-height: 1.4;
-}
-
-.text-step-2 {
-  font-size: var(--step-2);
-  line-height: 1.3;
-}
-
-.text-step-3 {
-  font-size: var(--step-3);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-.text-step-4 {
-  font-size: var(--step-4);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.text-step-5 {
-  font-size: var(--step-5);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-}
-
-/* Enhanced Display Typography for Large Screen Utilization */
-.text-display-hero {
-  font-size: var(--display-hero);
-  line-height: 1.5;
-  letter-spacing: -0.04em;
-}
-
-.text-display-section {
-  font-size: var(--display-section);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.text-display-subtitle {
-  font-size: var(--display-subtitle);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-
-/* 📐 BACKWARD COMPATIBILITY - Legacy classes mapped to Utopia */
-.text-scale-16 {
-  font-size: var(--step--1);
-  line-height: 1.5;
-  letter-spacing: 0px;
-}
-
-.text-scale-18 {
-  font-size: var(--step-0);
-  line-height: 1.6;
-  letter-spacing: 0px;
-}
-
-.text-scale-25 {
-  font-size: var(--step-1);
-  line-height: 1.4;
-}
-
-.text-scale-40 {
-  font-size: var(--step-2);
-  line-height: 1.3;
-}
-
-.text-scale-60 {
-  font-size: var(--step-3);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.text-scale-72 {
-  font-size: var(--step-4);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.text-scale-96 {
-  font-size: var(--step-5);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-}
-
-::selection {
+  ::selection {
     background-color: var(--accent);
     color: var(--foreground);
   }
 }
 
-@layer components {
-  .navbar-glass {
-    @apply bg-background backdrop-blur-lg;
-    /* You can add border and shadow styles here if needed */
-    /* Example: @apply border-b border-border shadow-sm; */
-  }
+/* 🎨 SEMANTIC LAYOUT & COMPONENT UTILITIES */
+@utility container-landing {
+  width: 100%;
+  max-width: 90vw;
+  margin-inline: auto;
+  padding-inline: var(--spacing-fluid-m);
 
-  .navbar-glass-menu{
-    @apply bg-background backdrop-blur-md;
+  @variant lg {
+    padding-inline: var(--spacing-fluid-l);
+  }
+  @variant xl {
+    max-width: 85vw;
+  }
+  @variant 2xl {
+    max-width: 80vw;
   }
 }
 
-@layer utilities {
-  .font-neo {
-    font-family: var(--font-neo);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    font-variant-ligatures: normal;
-  }
+@utility section-landing {
+  padding-top: var(--spacing-fluid-3xl);
+  padding-bottom: var(--spacing-fluid-2xl);
+}
 
-  /* 🎨 FLUID SPACING UTILITIES */
-  
-  /* Margins */
-  .m-fluid-3xs { margin: var(--space-3xs); }
-  .m-fluid-2xs { margin: var(--space-2xs); }
-  .m-fluid-xs { margin: var(--space-xs); }
-  .m-fluid-s { margin: var(--space-s); }
-  .m-fluid-m { margin: var(--space-m); }
-  .m-fluid-l { margin: var(--space-l); }
-  .m-fluid-xl { margin: var(--space-xl); }
-  .m-fluid-2xl { margin: var(--space-2xl); }
-  .m-fluid-3xl { margin: var(--space-3xl); }
-  
-  /* Margin Top */
-  .mt-fluid-3xs { margin-top: var(--space-3xs); }
-  .mt-fluid-2xs { margin-top: var(--space-2xs); }
-  .mt-fluid-xs { margin-top: var(--space-xs); }
-  .mt-fluid-s { margin-top: var(--space-s); }
-  .mt-fluid-m { margin-top: var(--space-m); }
-  .mt-fluid-l { margin-top: var(--space-l); }
-  .mt-fluid-xl { margin-top: var(--space-xl); }
-  .mt-fluid-2xl { margin-top: var(--space-2xl); }
-  .mt-fluid-3xl { margin-top: var(--space-3xl); }
-  
-  /* Margin Bottom */
-  .mb-fluid-3xs { margin-bottom: var(--space-3xs); }
-  .mb-fluid-2xs { margin-bottom: var(--space-2xs); }
-  .mb-fluid-xs { margin-bottom: var(--space-xs); }
-  .mb-fluid-s { margin-bottom: var(--space-s); }
-  .mb-fluid-m { margin-bottom: var(--space-m); }
-  .mb-fluid-l { margin-bottom: var(--space-l); }
-  .mb-fluid-xl { margin-bottom: var(--space-xl); }
-  .mb-fluid-2xl { margin-bottom: var(--space-2xl); }
-  .mb-fluid-3xl { margin-bottom: var(--space-3xl); }
-  
-  /* Padding */
-  .p-fluid-3xs { padding: var(--space-3xs); }
-  .p-fluid-2xs { padding: var(--space-2xs); }
-  .p-fluid-xs { padding: var(--space-xs); }
-  .p-fluid-s { padding: var(--space-s); }
-  .p-fluid-m { padding: var(--space-m); }
-  .p-fluid-l { padding: var(--space-l); }
-  .p-fluid-xl { padding: var(--space-xl); }
-  .p-fluid-2xl { padding: var(--space-2xl); }
-  .p-fluid-3xl { padding: var(--space-3xl); }
+@utility navbar-glass {
+  background-color: var(--background);
+  backdrop-filter: blur(16px);
+}
 
-  /* Padding X */
-  .px-fluid-3xs { padding-inline: var(--space-3xs); }
-  .px-fluid-2xs { padding-inline: var(--space-2xs); }
-  .px-fluid-xs { padding-inline: var(--space-xs); }
-  .px-fluid-s { padding-inline: var(--space-s); }
-  .px-fluid-m { padding-inline: var(--space-m); }
-  .px-fluid-l { padding-inline: var(--space-l); }
-  .px-fluid-xl { padding-inline: var(--space-xl); }
-  .px-fluid-2xl { padding-inline: var(--space-2xl); }
-  .px-fluid-3xl { padding-inline: var(--space-3xl); }
+@utility navbar-glass-menu {
+  background-color: var(--background);
+  backdrop-filter: blur(12px);
+}
 
-  /* Padding Y */
-  .py-fluid-3xs { padding-block: var(--space-3xs); }
-  .py-fluid-2xs { padding-block: var(--space-2xs); }
-  .py-fluid-xs { padding-block: var(--space-xs); }
-  .py-fluid-s { padding-block: var(--space-s); }
-  .py-fluid-m { padding-block: var(--space-m); }
-  .py-fluid-l { padding-block: var(--space-l); }
-  .py-fluid-xl { padding-block: var(--space-xl); }
-  .py-fluid-2xl { padding-block: var(--space-2xl); }
-  .py-fluid-3xl { padding-block: var(--space-3xl); }
-  
-  /* Gaps */
-  .gap-fluid-3xs { gap: var(--space-3xs); }
-  .gap-fluid-2xs { gap: var(--space-2xs); }
-  .gap-fluid-xs { gap: var(--space-xs); }
-  .gap-fluid-s { gap: var(--space-s); }
-  .gap-fluid-m { gap: var(--space-m); }
-  .gap-fluid-l { gap: var(--space-l); }
-  .gap-fluid-xl { gap: var(--space-xl); }
-  .gap-fluid-2xl { gap: var(--space-2xl); }
-  .gap-fluid-3xl { gap: var(--space-3xl); }
-  
-  /* Spacing Pairs for Layout Harmony */
-  .gap-fluid-s-m { gap: var(--space-s-m); }
-  .gap-fluid-m-l { gap: var(--space-m-l); }
-  .gap-fluid-l-xl { gap: var(--space-l-xl); }
-  .p-fluid-s-m { padding: var(--space-s-m); }
-  .p-fluid-m-l { padding: var(--space-m-l); }
-  
-  /* Additional spacing pairs used in components */
-  .space-y-fluid-s-m > * + * { margin-top: var(--space-s-m); }
-  .mb-fluid-l-xl { margin-bottom: var(--space-l-xl); }
-  
-  /* Space-y utilities for sections */
-  .space-y-fluid-xl > * + * { margin-top: var(--space-xl); }
-  .space-y-fluid-2xl > * + * { margin-top: var(--space-2xl); }
-  .space-y-fluid-3xl > * + * { margin-top: var(--space-3xl); }
-  
-  /* Demo Styling */
-  .utopia-typography .text-step-4 { font-size: var(--step-4); }
-  .utopia-typography .text-step-2 { font-size: var(--step-2); }
-  .utopia-typography .text-step-0 { font-size: var(--step-0); }
-  .utopia-typography .text-step--1 { font-size: var(--step--1); }
-  .utopia-spacing .gap-2 { gap: var(--space-xs); }
-  
-  /* Enhanced Neo Display Class with Fluid Scaling */
-  .display-neo {
-    @apply font-neo;
-    font-size: var(--step-2);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
+@utility font-neo {
+  font-family: var(--font-neo);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variant-ligatures: normal;
+}
 
-  .image-fade-in {
-    animation: imageFadeIn 250ms ease-out;
-  }
+@utility image-fade-in {
+  animation: imageFadeIn 250ms ease-out forwards;
+}
 
-  @keyframes imageFadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+/* Backward compatibility for blog / mdx components */
+@utility text-scale-16 {
+  font-size: var(--text-step--1);
+  line-height: 1.5;
+}
 
-  /* Viewport-Proportional Spacing Utilities */
-  .p-viewport-xs { padding: var(--space-viewport-xs); }
-  .p-viewport-s { padding: var(--space-viewport-s); }
-  .p-viewport-m { padding: var(--space-viewport-m); }
-  .p-viewport-l { padding: var(--space-viewport-l); }
-  .p-viewport-xl { padding: var(--space-viewport-xl); }
+@utility text-scale-18 {
+  font-size: var(--text-step-0);
+  line-height: 1.6;
+}
 
-  .px-viewport-xs { padding-inline: var(--space-viewport-xs); }
-  .px-viewport-s { padding-inline: var(--space-viewport-s); }
-  .px-viewport-m { padding-inline: var(--space-viewport-m); }
-  .px-viewport-l { padding-inline: var(--space-viewport-l); }
-  .px-viewport-xl { padding-inline: var(--space-viewport-xl); }
+@utility text-scale-25 {
+  font-size: var(--text-step-1);
+  line-height: 1.4;
+}
 
-  .py-viewport-xs { padding-block: var(--space-viewport-xs); }
-  .py-viewport-s { padding-block: var(--space-viewport-s); }
-  .py-viewport-m { padding-block: var(--space-viewport-m); }
-  .py-viewport-l { padding-block: var(--space-viewport-l); }
-  .py-viewport-xl { padding-block: var(--space-viewport-xl); }
+@utility text-scale-40 {
+  font-size: var(--text-step-2);
+  line-height: 1.3;
+}
 
-  .mt-viewport-xs { margin-top: var(--space-viewport-xs); }
-  .mt-viewport-s { margin-top: var(--space-viewport-s); }
-  .mt-viewport-m { margin-top: var(--space-viewport-m); }
-  .mt-viewport-l { margin-top: var(--space-viewport-l); }
-  .mt-viewport-xl { margin-top: var(--space-viewport-xl); }
+@utility text-scale-60 {
+  font-size: var(--text-step-3);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
 
-  .mb-viewport-xs { margin-bottom: var(--space-viewport-xs); }
-  .mb-viewport-s { margin-bottom: var(--space-viewport-s); }
-  .mb-viewport-m { margin-bottom: var(--space-viewport-m); }
-  .mb-viewport-l { margin-bottom: var(--space-viewport-l); }
-  .mb-viewport-xl { margin-bottom: var(--space-viewport-xl); }
+@utility text-scale-72 {
+  font-size: var(--text-step-4);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
 
-  .gap-viewport-xs { gap: var(--space-viewport-xs); }
-  .gap-viewport-s { gap: var(--space-viewport-s); }
-  .gap-viewport-m { gap: var(--space-viewport-m); }
-  .gap-viewport-l { gap: var(--space-viewport-l); }
-  .gap-viewport-xl { gap: var(--space-viewport-xl); }
-
-  /* Adaptive Container System */
-  .container-fluid-sm { max-width: min(90vw, 1200px); margin: 0 auto; }
-  .container-fluid-md { max-width: min(85vw, 1400px); margin: 0 auto; }
-  .container-fluid-lg { max-width: min(80vw, 1600px); margin: 0 auto; }
-  .container-fluid-xl { max-width: min(75vw, 1800px); margin: 0 auto; }
-  .container-fluid-2xl { max-width: min(70vw, 2000px); margin: 0 auto; }
+@utility text-scale-96 {
+  font-size: var(--text-step-5);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
