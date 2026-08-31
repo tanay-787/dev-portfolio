@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function AboutMe() {
   return (
-    <section aria-label="About Me" id="about-me" className="pt-fluid-3xl pb-fluid-2xl">
-      {/* Enhanced container for better large screen utilization */}
-      <div className="w-full max-w-[90vw] xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto px-fluid-m lg:px-fluid-l">
+    <section aria-label="About Me" id="about-me" className="section-landing">
+      {/* Standard landing container */}
+      <div className="container-landing">
         {/* Section header - enhanced scaling */}
         <h2 className="text-display-section w-full text-center mb-fluid-l">
           <span className="inline font-neo italic font-semibold">{'About '}</span>

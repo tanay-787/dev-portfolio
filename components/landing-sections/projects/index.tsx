@@ -73,7 +73,7 @@ const StickyProjectCard = ({
   return (
     <motion.div
       ref={container}
-      className="sticky w-full max-w-7xl overflow-hidden rounded-3xl bg-muted"
+      className="relative sticky w-full max-w-7xl overflow-hidden rounded-3xl bg-muted"
       style={{
         scale: scale,
         height: 'clamp(400px, 85vh, 90vh)',
@@ -117,20 +117,18 @@ const StickyProjectCard = ({
           </a>
           
           {/* Project title */}
-          <h3 className="font-semibold  mb-fluid-2xs"
-              style={{ 
-                fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-                textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3)'
-              }}>
+          <h3 
+            className="text-step-2 font-semibold mb-fluid-2xs"
+            style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3)' }}
+          >
             {displayName}
           </h3>
           
           {/* Project description */}
-          <p className=" max-w-2xl mb-fluid-s leading-relaxed"
-             style={{ 
-               fontSize: 'clamp(1rem, 2vw, 1.3rem)',
-               textShadow: '0 1px 4px rgba(0, 0, 0, 0.6)'
-             }}>
+          <p 
+            className="text-step-0 max-w-2xl mb-fluid-s leading-relaxed"
+            style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.6)' }}
+          >
             {project.description}
           </p>
 
@@ -154,9 +152,9 @@ const ProjectsSection = ({ projects }: ProjectsSectionStickyProps) => {
 
   return (
     <ReactLenis root>
-      <section aria-label="Projects" id="projects" className="pt-fluid-3xl pb-fluid-2xl">
-        {/* Enhanced container for better large screen utilization */}
-        <div className="w-full max-w-7xl xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto px-fluid-m lg:px-fluid-l">
+      <section aria-label="Projects" id="projects" className="section-landing">
+        {/* Standard landing container */}
+        <div className="container-landing">
           {/* Section header - enhanced scaling */}
           <h2 className="text-display-section w-full text-center mb-fluid-l">
             <span className="">{'Featured '}</span>
@@ -173,7 +171,7 @@ const ProjectsSection = ({ projects }: ProjectsSectionStickyProps) => {
         </div>
 
         {/* Sticky cards container */}
-        <div className="flex w-full flex-col items-center gap-[10vh] px-fluid-s pt-[10vh]">
+        <div className="relative flex w-full flex-col items-center gap-[10vh] px-fluid-s pt-[10vh]">
           {sortedProjects.map((project, index) => (
             <StickyProjectCard key={project.name} project={project} index={index} />
           ))}
