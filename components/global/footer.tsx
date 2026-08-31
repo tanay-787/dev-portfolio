@@ -7,7 +7,7 @@ import GmailIcon from "../icons/assets/socials/gmail";
 
 const Footer = () => {
   return (
-        <div className="w-full h-auto max-w-[90vw] xl:max-w-[85vw] 2xl:max-w-[80vw] mx-auto border-t">
+        <div className="container-landing border-t">
 
           <div className="py-fluid-s flex flex-col sm:flex-row items-center justify-between gap-fluid-s px-fluid-m xl:px-0">
             {/* Copyright with enhanced scaling */}
