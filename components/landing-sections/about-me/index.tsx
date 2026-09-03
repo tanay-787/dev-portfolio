@@ -7,8 +7,11 @@ export default function AboutMe() {
     <section aria-label="About Me" id="about-me" className="section-landing">
       {/* Standard landing container */}
       <div className="container-landing">
-        {/* Section header - enhanced scaling */}
-        <h2 className="text-display-section w-full text-center mb-fluid-l">
+        {/* Accessible screen-reader H1 when Hero is hidden on mobile */}
+        <h1 className="sr-only md:hidden">Tanay Gupte — Product Developer</h1>
+
+        {/* Section header - visible on tablet/desktop, visually hidden on mobile */}
+        <h2 className="sr-only md:not-sr-only text-display-section w-full text-center mb-fluid-l">
           <span className="inline font-neo italic font-semibold">{'About '}</span>
           <span className="inline text-brand">Me</span>
         </h2>

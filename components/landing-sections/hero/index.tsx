@@ -21,7 +21,7 @@ export default function HeroSection({
   return (
     <section 
       aria-label="HeroSection" 
-      className="relative min-h-screen flex flex-col justify-between pt-24 pb-fluid-s"
+      className="relative min-h-screen hidden md:flex flex-col justify-between pt-24 pb-fluid-s"
     > 
       {/* Top spacer for navbar balance */}
       <div className="hidden sm:block h-4" aria-hidden="true" />
