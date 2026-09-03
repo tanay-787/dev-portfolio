@@ -15,7 +15,7 @@ type HeroSectionProps = {
 };
 
 export default function HeroSection({
-  description = "A developer learning to build reliable, user-focused products across the stack.",
+  description = "Building user-focused products by combining product thinking with hands-on engineering.",
   className = "",
 }: HeroSectionProps) {
   return (
@@ -28,58 +28,53 @@ export default function HeroSection({
 
       {/* Standard landing container centered */}
       <div className="container-landing flex flex-col justify-center my-auto"> 
-        <div className="flex items-center justify-center gap-fluid-l xl:gap-fluid-xl"> 
+        <div className="flex items-center justify-center"> 
           
-          {/* Content area */}
-          <div className="w-full space-y-fluid-s flex flex-col items-center text-center">
+          {/* Content area: Unified CSS Grid */}
+          <div className="w-fit max-w-full grid grid-cols-1 md:grid-cols-[1fr_auto] gap-x-fluid-m gap-y-fluid-s text-left">
 
-            <Status status="online" className="mb-fluid-xs w-fit">
-              <StatusIndicator />
-              <StatusLabel>Open for Opportunities</StatusLabel>
-            </Status>
+            <div className="col-span-1 md:col-span-2">
+              <Status status="online" className="w-fit">
+                <StatusIndicator />
+                <StatusLabel>Open for Opportunities</StatusLabel>
+              </Status>
+            </div>
             
             {/* HeroSection Title - Large, commanding single-line typography */}
-            <h1 className="text-display-hero mt-fluid-xs leading-[0.90] tracking-tighter text-center sm:whitespace-nowrap">
+            <h1 className="col-span-1 md:col-span-2 text-display-hero mt-fluid-xs leading-[0.90] tracking-tighter text-left sm:whitespace-nowrap">
               <span className="font-neo italic font-semibold">
                 {"Tanay "} 
               </span>
-              <span className="font-neo italic font-semibold text-brand">
-                Gupte<TypingText text={''} cursorClassName="hidden lg:inline" cursor />
+              <span className="font-neo italic font-semibold text-brand relative inline-block">
+                Gupte
+                {/* <TypingText text={''} cursorClassName="hidden lg:inline lg:absolute lg:left-full lg:ml-1" cursor /> */}
               </span>
             </h1>
             
-            {/* Description - Better scaling for readability */}
-            <p 
-              className="mt-fluid-s max-w-xl text-step-0 text-muted-foreground leading-relaxed text-center mx-auto"
-            >
+            {/* Description */}
+            <p className="col-span-1 max-w-md lg:max-w-lg text-step-0 text-muted-foreground leading-relaxed self-center">
               {description}
             </p>
 
-            {/* Action area - Consistent spacing */}
-            <div className="mt-fluid-m flex gap-fluid-xs items-center justify-center">
-              <AnimatedButton 
-                text="My Resume"
-                href={"https://flowcv.com/resume/cnwfpbnd02uh"} 
-                icon={<ExternalLink className="ml-1 -mt-0.8"/>}
-                isExternal
-              />
+            {/* Action area: full height, pinned to right edge */}
+            <div className="col-span-1 flex gap-fluid-xs items-center justify-start md:justify-end h-8 md:h-full md:max-h-16 justify-self-start md:justify-self-end">
               <a
                 href="https://github.com/tanay-787"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center justify-center h-full aspect-square"
               >
-                <GithubIcon className="size-8 xl:size-9" />
+                <GithubIcon className="h-full w-full" />
               </a>
               <a
                 href="https://linkedin.com/in/tanay-gupte"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center justify-center h-full aspect-square"
               >
-                <LinkedinIcon className="size-8 xl:size-9" />
+                <LinkedinIcon className="h-full w-full" />
               </a>
             </div>
           </div>

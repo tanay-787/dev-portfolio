@@ -112,7 +112,7 @@
   --text-step-5--letter-spacing: -0.03em;
 
   /* Enhanced Display Headlines (1.5x Single-Line Poster Scale) */
-  --text-display-hero: clamp(3.50rem, 8.20vw, 15.50rem);
+  --text-display-hero: clamp(5rem, 12.5vw, 15.50rem);
   --text-display-hero--line-height: 0.90;
   --text-display-hero--letter-spacing: -0.04em;
 
